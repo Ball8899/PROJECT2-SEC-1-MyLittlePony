@@ -1,4 +1,4 @@
-# PROJECT2-SEC-1-MyLittlePony
+# PROJECT2-SEC-1-MyLittlePonyProject
 
 
 # Member MyLittlePony
