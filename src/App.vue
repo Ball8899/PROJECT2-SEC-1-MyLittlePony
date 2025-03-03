@@ -1,6 +1,8 @@
 <script setup>
 import Navigation from "./components/Navigation.vue";
 import Header from "./components/Header.vue";
+import Booking from "./components/Booking.vue";
+import Calendar from "./components/Calender.vue";
 </script>
 
 <template>

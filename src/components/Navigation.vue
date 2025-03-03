@@ -8,15 +8,15 @@
    <div
      class="flex text-white py-5 items-center px-10 justify-between"
    >
-     <h1 class="text-4xl font-bold">JET</h1><h1>.</h1><h1>GO</h1>
+     <h1 class="text-4xl font-bold">JET</h1><h1 class="text-amber-400 font-bold text-2xl">.</h1><h1 class="text-amber-400 font-bold text-2xl">GO</h1>
      <div class="relative">
        <input
          type="text"
          placeholder="Destination"
-         class="ml-5 pl-10 pr-4 py-2 bg-white rounded-sm focus:outline-none w-64"
+         class="ml-5 pl-10 pr-4 py-2 bg-white text-black rounded-sm focus:outline-none w-64"
        />
        <svg
-         class="absolute left-8 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white"
+         class="absolute left-8 top-1/2 transform -translate-y-1/2 w-5 h-5 text-amber-400 "
          xmlns="http://www.w3.org/2000/svg"
          fill="none"
          viewBox="0 0 24 24"
@@ -44,12 +44,12 @@
      <div
        class="flex gap-8 text-xl font-light text-white"
      >
-       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer">Hotels & Homes</p>
-       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer">Flights</p>
-       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer">Cars</p>
-       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer">Attractions & Tours</p>
-       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer">Flight + Hotel</p>
-       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer">Destinations</p>
+       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer  transition-all duration-300">Hotels & Homes</p>
+       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer  transition-all duration-300">Flights</p>
+       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer  transition-all duration-300">Cars</p>
+       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer  transition-all duration-300">Attractions & Tours</p>
+       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer  transition-all duration-300">Flight + Hotel</p>
+       <p class="hover:text-black hover:bg-white px-1.5 cursor-pointer  transition-all duration-300">Destinations</p>
      </div>
    </div>
  </div>
