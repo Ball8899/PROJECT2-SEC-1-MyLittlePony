@@ -3,21 +3,21 @@
 </script>
 
 <template>
-  <div class="flex flex-row px-5 py-4 justify-between">
+  <div class="flex flex-row px-5 py-3 justify-between">
     <div class="text-xl flex flex-row items-center">
-      <button class="w-[100%] px-10 py-2.5 flex flex-row gap-6">
+      <button class="w-[100%] px-4.5 py-2.5 flex flex-row gap-6">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <div class="flex flex-row">
-        <h1 class="text-blue-700 text-5xl font-bold">JET</h1>
-        <h1 class="text-amber-400 font-bold text-2xl">.</h1>
-        <h1 class="text-amber-400 font-bold text-2xl">GO</h1>
+      <div class="ml-3 flex flex-row">
+        <h1 class="text-blue-700 text-4xl font-bold">JET</h1>
+        <h1 class="text-amber-400 font-bold text-3xl">.</h1>
+        <h1 class="text-amber-400 font-bold text-3xl">GO</h1>
       </div>
       <div class="pl-10 relative mx-auto text-gray-600">
-        <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-          type="search" name="search" placeholder="Search">
+        <input class="border-1 border-gray-300 bg-white h-10 px-5 pr-19 rounded-lg text-sm focus:outline-none"
+          type="search" name="search" placeholder="Destinations">
         <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
-          <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+          <svg class="text-blue-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
             width="512px" height="512px">
             <path
@@ -46,7 +46,7 @@
         Customer Support
       </button>
       <button class="hover:bg-gray-100 px-4 py-2 rounded-lg">Search Booking</button>
-      <button class="hover:bg-gray-100 px-4 py-2 rounded-lg bg-blue-600/90 text-white">
+      <button class="hover:bg-amber-400 hover:text-black duration-500 px-4 py-2 rounded-lg bg-blue-600/90 text-white">
         Sign in / Register
       </button>
     </div>
