@@ -18,7 +18,7 @@ fetch('http://localhost:5173/api/continents/')
 </script>
 
 <template>
-  <div class="bg-white max-h-[700px] text-gray-500 w-[90%] overflow-auto">
+  <div class="bg-white max-h-[700px] text-gray-500 w-[40%] overflow-auto">
     <div class="text-lg p-5 mb-1.5" v-for="(continent, index) in destination" :key="continent.id">
       {{ continent.continentName }}
 

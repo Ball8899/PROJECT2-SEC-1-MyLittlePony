@@ -1,0 +1,52 @@
+[
+  {
+    "productId": 1,
+    "productName": "Wireless Mouse",
+    "price": 25.99
+  },
+  {
+    "productId": 2,
+    "productName": "Bluetooth Headphones",
+    "price": 49.99
+  },
+  {
+    "productId": 3,
+    "productName": "Mechanical Keyboard",
+    "price": 75.0
+  },
+  {
+    "productId": 4,
+    "productName": "USB-C Hub",
+    "price": 29.99
+  },
+  {
+    "productId": 5,
+    "productName": "Gaming Monitor",
+    "price": 199.99
+  },
+  {
+    "productId": 6,
+    "productName": "External SSD 1TB",
+    "price": 119.99
+  },
+  {
+    "productId": 7,
+    "productName": "Laptop Stand",
+    "price": 35.0
+  },
+  {
+    "productId": 8,
+    "productName": "Smartphone Charger",
+    "price": 15.99
+  },
+  {
+    "productId": 9,
+    "productName": "Smartwatch",
+    "price": 199.99
+  },
+  {
+    "productId": 10,
+    "productName": "Wireless Earbuds",
+    "price": 69.99
+  }
+]

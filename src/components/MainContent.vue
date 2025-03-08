@@ -1,12 +1,25 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, defineProps, defineEmits} from 'vue'
 import Booking from './Booking.vue'
 const showBooking = ref(true)
 
+const emits = defineEmits(['update'])
 
 const toggleBooking = () => {
     showBooking.value = !showBooking.value
 }
+
+const toggle = defineProps({
+  showToggle: {
+    type: Boolean,
+    }
+})
+
+const updateEmits = () => {
+    emits('update')
+}
+
+
 </script>
 
 <template>
@@ -47,7 +60,7 @@ const toggleBooking = () => {
                         </button>
                     </div>
                 </div>
-                <Booking class=" w-[90%] m-auto -mt-25 rounded-xl" v-if="showBooking" />
+                <Booking @update="updateEmits" :show-toggle="toggle.showToggle" class=" w-[90%] m-auto -mt-25 rounded-xl" v-if="showBooking" />
             </div>
 
         </div>

@@ -1,43 +1,48 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps, watch, defineEmits} from "vue";
 import Calendar from "./Calender.vue";
 import Adult from "./Adult.vue";
 import Destination from "./Destination.vue";
 const current = new Date().toLocaleDateString();
 
-const showCalendar = ref(false);
-const showAdult = ref(false);
-const showLeaving = ref(false);
-const showGoing = ref(false);
+const emits = defineEmits(['update'])
 
-const arrShow = ref([showCalendar, showAdult, showGoing, showLeaving]);
+const showToggleProp = defineProps({
+  showToggle: {
+    type: Boolean,
+  }
+})
 
-const closeToggles = (show) => {
+
+const showCalendar = ref(false)
+const showAdult = ref(false)
+const showLeaving = ref(false)
+const showGoing = ref(false)
+
+watch(() => showToggleProp.showToggle, () => {
+  if (showToggleProp.showToggle === true) {
+      manageToggles('')
+  }
+})
+
+const arrShow = ref([
+  { name: "showCalendar", value: showCalendar },
+  { name: "showAdult", value: showAdult },
+  { name: "showLeaving", value: showLeaving },
+  { name: "showGoing", value: showGoing },
+]);
+
+const manageToggles = (show) => {
   arrShow.value.forEach((element) => {
-    show !== element;
-    element.value = false;
+    element.value = element.name === show ? !element.value : false;
   });
 };
 
-const toggleCalendar = () => {
-  closeToggles("showCalendar");
-  showCalendar.value = !showCalendar.value;
+const toggle = (nameDialog) => {
+  emits('update')
+  manageToggles(nameDialog);
 };
 
-const toogleAdult = () => {
-  closeToggles("showAdult");
-  showAdult.value = !showAdult.value;
-};
-
-const toggleLeaving = () => {
-  closeToggles("showLeaving");
-  showLeaving.value = !showLeaving.value;
-};
-
-const toggleGoing = () => {
-  closeToggles("showGoing");
-  showGoing.value = !showGoing.value;
-};
 </script>
 
 <template>
@@ -63,7 +68,7 @@ const toggleGoing = () => {
     <div class="flex flex-row mt-2 gap-2 justify-between">
       <div class="">
         <button
-          @click="toggleLeaving"
+          @click.stop="toggle('showLeaving')" 
           class="w-[290px] text-left text-gray-500 text-lg font-bold border-2 border-gray-300 p-4 rounded-md"
         >
           Leaving
@@ -72,7 +77,7 @@ const toggleGoing = () => {
       </div>
       <div>
         <button
-          @click="toggleGoing"
+          @click.stop="toggle('showGoing')"
           class="w-[290px] text-left text-gray-500 text-lg font-bold border-2 border-gray-300 p-4 rounded-md"
         >
           Going to
@@ -81,21 +86,21 @@ const toggleGoing = () => {
       </div>
       <div>
         <button
-          @click="toggleCalendar"
+          @click.stop="toggle('showCalendar')"
           class="w-[290px] text-left text-gray-500 text-lg font-bold border-2 border-gray-300 p-4 rounded-md"
         >
           {{ current }}
         </button>
-        <Calendar v-if="showCalendar"></Calendar>
+        <Calendar class="absolute" v-if="showCalendar"></Calendar>
       </div>
       <div>
         <button
-          @click="toogleAdult"
+          @click.stop="toggle('showAdult')"
           class="w-[290px] text-left text-gray-500 text-lg font-bold border-2 border-gray-300 p-4 rounded-md"
         >
           1 Adult, Economy
         </button>
-        <Adult v-if="showAdult"></Adult>
+        <Adult class="absolute" v-if="showAdult"></Adult>
       </div>
     </div>
     <div class="flex flex-row gap-5 justify-end mt-5">
