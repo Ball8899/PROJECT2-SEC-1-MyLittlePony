@@ -1,11 +1,24 @@
 <script setup>
 import { ref } from 'vue'
 import Calendar from './Calender.vue'
+import Adult from './Adult.vue'
+import Destination from './Destination.vue'
 const current = new Date().toLocaleDateString()
 
 const showCalendar = ref(false)
+const showAdult = ref(false)
+const showDestination = ref(false)
+
 const toggleCalendar = () => {
     showCalendar.value = !showCalendar.value
+}
+
+const toogleAdult = () => {
+    showAdult.value = !showAdult.value
+}
+
+const toggleDestination = () => {
+    showDestination.value = !showDestination.value
 }
     
 </script>
@@ -24,12 +37,17 @@ const toggleCalendar = () => {
     </div>
     <div class="flex flex-row mt-2 gap-2">
         <div>
-            <button class="w-[300px] text-left text-gray-500 text-lg font-bold border-2 border-gray-300 p-4 rounded-md" >Leaving</button>
-            <button class="w-[300px] text-left text-gray-500 ml-2 text-lg font-bold border-2 border-gray-300 p-4 rounded-md">Going to</button>
+            <button @click="toggleDestination" class="w-[280px] text-left text-gray-500 text-lg font-bold border-2 border-gray-300 p-4 rounded-md" >Leaving</button>
+            <button class="w-[280px] text-left text-gray-500 ml-2 text-lg font-bold border-2 border-gray-300 p-4 rounded-md">Going to</button>
+            <Destination v-if="showDestination"></Destination>
         </div>
         <div>
             <button @click="toggleCalendar" class="w-[300px] text-left text-gray-500 text-lg font-bold border-2 border-gray-300 p-4 rounded-md" >{{current}}</button>
             <Calendar v-if="showCalendar"></Calendar>
+        </div>
+        <div>
+            <button @click="toogleAdult" class="w-[300px] text-left text-gray-500 text-lg font-bold border-2 border-gray-300 p-4 rounded-md">1 Adult, Economy</button>
+            <Adult v-if="showAdult"></Adult>
         </div>
       </div>
   </div>
