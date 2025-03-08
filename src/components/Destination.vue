@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 const destination = ref({})
-fetch('http://localhost:5173/api/continents/')
+fetch('http://172.20.0.3:8080/api/continents/')
     .then(response => {
         if (!response.ok) {
             console.error(response.body)

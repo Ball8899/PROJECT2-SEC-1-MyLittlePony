@@ -32,11 +32,11 @@ const nextMonth = () => {
 <template>
   <div class="calendar-container bg-white w-[300px] h-[300px] border p-4 rounded-lg text-black">
     <div class="flex justify-between mb-4">
-      <button @click="previousMonth" class="bg-gray-300 p-2 rounded">Previous</button>
+      <button @click.stop="previousMonth" class="bg-gray-300 p-2 rounded">Previous</button>
       <span class="text-xl">
         {{ new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' }) }} {{ currentYear }}
       </span>
-      <button @click="nextMonth" class="bg-gray-300 p-2 rounded">Next</button>
+      <button @click.stop="nextMonth" class="bg-gray-300 p-2 rounded">Next</button>
     </div>
 
     <div class="grid grid-cols-7 gap-2 text-center mb-2">
