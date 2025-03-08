@@ -7,7 +7,7 @@
 | 66130500013   | Jakkapong Suksomboon   |   |  
 | 66130500027 | Napat Chumtham   |  napatzzz |  
 | 66130500036  | Thattaphol Seelong   |   |  
-| 66130500041  |  Thammasorn Chatchayanusorn  |   |  
+| 66130500041  |  Thammasorn Chatchayanusorn  | Thammasornn |  
 
 #### What is we project 
 - Web Application for booking flight and hotels in the world 
@@ -35,7 +35,7 @@
 - Manage All components
 - Fetch function for display value
 
-##### 66130500036 All flight booking information report
+##### 66130500041 All flight booking information report
 - Can CURD  information
 - Create related components 
 
@@ -51,4 +51,4 @@
 | 66130500013   | Meeting & Design |   |  
 | 66130500027 | Meeting & Design  | Upload project and create homepage and component for booking |  
 | 66130500036  | Meeting & Design |   |  
-| 66130500041  | Meeting & Design |   | 
+| 66130500041  | Meeting & Design | Upload Component listHotel function to loop hotel details in file.json and hotelList for scoped slot hotel detail on All booking page  | 
