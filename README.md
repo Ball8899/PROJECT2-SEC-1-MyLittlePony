@@ -1,14 +1,54 @@
-<<<<<<< HEAD
 # PROJECT2-SEC-1-MyLittlePonyProject
 
+#### Team Member MyLittlePony
 
-# Member MyLittlePony
-66130500013 Jakkapong Suksomboon <br>
-66130500027 Napat Chumtham <br>
-66130500036 Thattaphol Seelong <br>
-66130500041 Thammasorn Chatchayanusorn <br>
-<<<<<<< HEAD
-=======
-# PROJECT2-SEC-1-MyLittlePony
+| Student ID  | Full Name | Github User  | 
+|---|---|---|
+| 66130500013   | Jakkapong Suksomboon   |   |  
+| 66130500027 | Napat Chumtham   |  napatzzz |  
+| 66130500036  | Thattaphol Seelong   |   |  
+| 66130500041  |  Thammasorn Chatchayanusorn  |   |  
 
- -
+#### What is we project 
+- Web Application for booking flight and hotels in the world 
+
+#### Future 
+##### User Role
+- Booking user can booking flight and hotels
+- Display information for booking
+
+##### Admin Role
+- Manage flight information
+- Manage Hotel information
+
+
+
+#### Future And Responsible
+
+##### 66130500013 Homes & Hotel Managements
+- Can CURD Homes & Hotel information
+- Create related components
+
+##### 66130500027 Flight And Tours Managements
+- Can CURD  information
+- Create related components of flight and Tour
+- Manage All components
+- Fetch function for display value
+
+##### 66130500036 All flight booking information report
+- Can CURD  information
+- Create related components 
+
+##### 66130500036 Flight booking information report
+- Can CURD  information
+- Create related components
+
+
+### Weekly Progression
+
+  | Student ID  | Week 1 | Week 2  | Week 3 | Week 4 | Week 5
+|---|---|---|---|---|---|
+| 66130500013   | Meeting & Design |   |  
+| 66130500027 | Meeting & Design  | Upload project and create homepage and component for booking |  
+| 66130500036  | Meeting & Design |   |  
+| 66130500041  | Meeting & Design |   | 
