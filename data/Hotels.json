@@ -1,0 +1,199 @@
+[
+    {
+      "id": 1,
+      "name": "NASA BANGKOK",
+      "address": "44 Sukhumvit 71 Rd | 8.53KM from city center",
+      "rating": 3.9,
+      "reviews": "7,862",
+      "price": 539,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"BANGKOK"
+    },
+    {
+      "id": 2,
+      "name": "12 the Residence Hotel & Apartment",
+      "address": "22 12 ถนน สรณคมณ์ Si Kan | 23.56KM from city center",
+      "rating": 4.4,
+      "reviews": "2,433",
+      "price": 786,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"BANGKOK"
+
+    },
+    {
+      "id": 3,
+      "name": "B Your Home Hotel Donmueang",
+      "address": "22 Thawi Wat 1 Alley, Si Kan | 23.39KM from city center",
+      "rating": 4.1,
+      "reviews": "2,518",
+      "price": 642,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chonburi"
+
+    },
+    {
+      "id": 4,
+      "name": "JI Hotel (Shanghai The Bund Jiujiang Road)",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3,
+      "reviews": "2,114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chonburi"
+
+    },
+    {
+      "id": 5,
+      "name": "Chachoengsao",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3,
+      "reviews": "2,114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chachoengsao"
+
+    },
+    {
+      "id": 6,
+      "name": "Chachoengsao",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3 ,
+      "reviews": "2/114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chachoengsao"
+
+    },
+
+    {
+      "id": 7,
+      "name": "Radisson Collection Hyland Shanghai",
+      "address": "44 Sukhumvit 71 Rd | 8.53KM from city center",
+      "rating": 3.9,
+      "reviews": "7,862",
+      "price": 539,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"BANGKOK"
+    },
+    {
+      "id": 8,
+      "name": "12 the Residence Hotel & Apartment",
+      "address": "22 12 ถนน สรณคมณ์ Si Kan | 23.56KM from city center",
+      "rating": 4.4,
+      "reviews": "2,433",
+      "price": 786,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"BANGKOK"
+
+    },
+    {
+      "id": 9,
+      "name": "B Your Home Hotel Donmueang",
+      "address": "22 Thawi Wat 1 Alley, Si Kan | 23.39KM from city center",
+      "rating": 4.1,
+      "reviews": "2,518",
+      "price": 642,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chonburi"
+
+    },
+    {
+      "id": 10,
+      "name": "Amari Don Muang Airport Bangkok",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3,
+      "reviews": "2,114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chonburi"
+
+    },
+    {
+      "id": 11,
+      "name": "Chachoengsao",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3,
+      "reviews": "2,114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chachoengsao"
+
+    },
+    {
+      "id": 12,
+      "name": "Chachoengsao",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3 ,
+      "reviews": "2/114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chachoengsao"
+
+    },
+    {
+      "id": 13,
+      "name": "NASA BANGKOK",
+      "address": "44 Sukhumvit 71 Rd | 8.53KM from city center",
+      "rating": 3.9,
+      "reviews": "7,862",
+      "price": 539,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"BANGKOK"
+    },
+    {
+      "id": 14,
+      "name": "12 the Residence Hotel & Apartment",
+      "address": "22 12 ถนน สรณคมณ์ Si Kan | 23.56KM from city center",
+      "rating": 4.4,
+      "reviews": "2,433",
+      "price": 786,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"BANGKOK"
+
+    },
+    {
+      "id": 15,
+      "name": "B Your Home Hotel Donmueang",
+      "address": "22 Thawi Wat 1 Alley, Si Kan | 23.39KM from city center",
+      "rating": 4.1,
+      "reviews": "2,518",
+      "price": 642,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chonburi"
+
+    },
+    {
+      "id": 16,
+      "name": "Amari Don Muang Airport Bangkok",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3,
+      "reviews": "2,114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chonburi"
+
+    },
+    {
+      "id": 17,
+      "name": "Chachoengsao",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3,
+      "reviews": "2,114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chachoengsao"
+
+    },
+    {
+      "id": 18,
+      "name": "Chachoengsao",
+      "address": "333 Choet Wutthakat Rd | 22.96KM from city center",
+      "rating": 4.3 ,
+      "reviews": "2/114",
+      "price": 2483,
+      "image": "https://via.placeholder.com/300x200",
+      "provinces":"Chachoengsao"
+
+    }
+  ]
+  
