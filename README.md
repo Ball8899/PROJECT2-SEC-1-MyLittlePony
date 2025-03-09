@@ -50,5 +50,5 @@
 |---|---|---|---|---|---|
 | 66130500013   | Meeting & Design |   |  
 | 66130500027 | Meeting & Design  | Upload project and create homepage and component for booking |  
-| 66130500036  | Meeting & Design |  Upload componet bookingdetail  |  
+| 66130500036  | Meeting & Design |  Upload  bookingdetail  |  
 | 66130500041  | Meeting & Design | Upload Component listHotel function to loop hotel details in file.json and hotelList for scoped slot hotel detail on All booking page  | 
