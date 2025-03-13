@@ -9,10 +9,10 @@ import Navbar from "./components/Navbar.vue";
   <div>
     <Navbar />
   </div>
-  <div class="flex flex-row"> <flightBookedSideBar class="w-1/4 mr-6" /> <div class="flex flex-col bg-gray-100 p-6 rounded-lg shadow-md">
+  <div class="flex flex-row"> <flightBookedSideBar class="w-1/4 mr-6" /> <div class="flex flex-col bg-gray-100 p-6 rounded-lg shadow-md max-h-178 overflow-y-auto">
    
    <filterFlightBooked :items="flight" v-slot="{ booked }">
-     <div class="bg-white p-6 rounded-lg shadow-lg w-full mb-5 justify-center ">
+     <div class="bg-white p-6 rounded-lg shadow-lg w-full mb-5 justify-center " @click="รอComponent036">
        <div class="flex justify-between items-center border-b pb-4 mb-4">
          <div>
            <span class="text-gray-600">หมายเลขการจอง:</span>

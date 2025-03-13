@@ -12,8 +12,6 @@ filterValue.value = booked;
 }
 console.log(filterValue.value);
 
-const bookingsArray = computed(() => props.items.bookings || []);
-
 const filteredItems = computed(() => {
   if (filterValue.value === 'All') {
     return props.items;
@@ -49,7 +47,7 @@ const filteredItems = computed(() => {
 
   <ul>
   <li v-for="(item, index) in filteredItems" :key="index">
-    <slot :booked="item"> Default text </slot>
+    <slot :booked="item"> Booked </slot>
   </li>
 </ul>
 </template>
