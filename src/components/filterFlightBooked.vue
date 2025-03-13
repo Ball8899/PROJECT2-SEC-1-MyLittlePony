@@ -1,33 +1,55 @@
 <script setup>
-import {ref} from 'vue';
+import {ref , computed} from 'vue';
 const filterValue = ref('All')
 const props = defineProps({
   items: {
-    type: Array,
+    type: Object,
     required: true,
   },
 });
 const getFilterValue = (booked) =>{
 filterValue.value = booked;
 }
+console.log(filterValue.value);
+
+const bookingsArray = computed(() => props.items.bookings || []);
 
 const filteredItems = computed(() => {
   if (filterValue.value === 'All') {
-    return props.items; 
+    return props.items;
   }
-  return props.items.filter(item => item.status === filterValue.value);
+  return props.items.filter(item => item.status.toLowerCase() === filterValue.value.toLowerCase());
 });
+
 </script>
 
 <template>
-  <div>
-    <button @click="getFilterValue('All')">All Booked</button>
-    <button @click="getFilterValue('Waiting')">Waiting For Payment</button>
-    <button @click="getFilterValue('Review')">Waiting For Review</button>
-  </div>
+  <div class="flex bg-gray-100 py-5 px-12">
+    <button 
+        @click="getFilterValue('All')" 
+        :class="['px-5 py-2 w-50 h-10 border-r-gray-300 border-r-1 rounded-l-xl', filterValue === 'All' ? 'bg-blue-900 text-white' : 'bg-white hover:text-blue-600']">
+        All Booking
+    </button>
+    <button 
+        @click="getFilterValue('Waiting')" 
+        :class="['px-5 py-2 w-50 h-10 border-r-gray-300 border-r-1', filterValue === 'Waiting' ? 'bg-blue-900 text-white' : 'bg-white hover:text-blue-600']">
+        Waiting Payment
+    </button>
+    <button 
+        @click="getFilterValue('Complete')" 
+        :class="['px-5 py-2 w-50 h-10 border-r-gray-300 border-r-1', filterValue === 'Complete' ? 'bg-blue-900 text-white' : 'bg-white hover:text-blue-600']">
+        Waiting Review
+    </button>
+    <button 
+        @click="getFilterValue('Cancelled')" 
+        :class="['px-5 py-2 w-50 h-10  rounded-r-xl', filterValue === 'Cancelled' ? 'bg-blue-900 text-white' : 'bg-white hover:text-blue-600']">
+        Cancelled
+    </button>
+</div>
+
   <ul>
-      <li v-for="(item, index) in filteredItems" :key="index">
-        <slot name="Booked" :Item="item"> Booked </slot>
-      </li>
-    </ul>
+  <li v-for="(item, index) in filteredItems" :key="index">
+    <slot :booked="item"> Default text </slot>
+  </li>
+</ul>
 </template>
