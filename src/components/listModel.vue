@@ -11,7 +11,7 @@ const props = defineProps({
   <div class="">
     <ul>
       <li v-for="(item, index) in items" :key="index">
-        <slot :hotelDetail="item"></slot>
+        <slot name="listItems" :Item="item"></slot>
       </li>
     </ul>
   </div>
