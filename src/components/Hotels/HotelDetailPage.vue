@@ -182,7 +182,7 @@ import ListModelofHotel from "./ListModelofHotel.vue";
         </p>
       </div>
     </div>
-    <div class="bg-white rounded-lg absolute h-100  w-320 left-20 top-296">
+    <div class="bg-white rounded-lg absolute h-100 left-20   w-320    top-296">
       <h1 class="text-xl p-4 font-semibold">
         Sea View Grand Deluxe King Room (Happy&Bliss building)
       </h1>

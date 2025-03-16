@@ -1,12 +1,16 @@
 <script setup>
 
 
+
 </script>
 
 <template>
 
     <div 
-      class="z-20 bg-white rounded-3xl shadow-md border border-gray-100 transition-all duration-300 mb-32 hover:-translate-y-1 w-66 h-88 flex flex-col overflow-hidden"
+      class="z-20 bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-md border border-gray-100 
+           transition-all duration-300 mb-4 sm:mb-6 md:mb-8 lg:mb-10 hover:-translate-y-1 
+           w-full max-w-xs sm:max-w-sm md:max-w-md flex flex-col h-88 
+           overflow-hidden sm:h-88 md:h-88 lg:h-88 xl:h-88"
     >
       <div class="relative">
         <slot name="image">

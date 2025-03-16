@@ -24,9 +24,8 @@ const hotels = ref([]);
 <template>
   <div class="">
     <ListModelofHotel :items="Hotel">
-      <template #header> Name </template>
-      <template #filterName> </template>
-
+      <template #header class="hidden"> Name </template>
+      <template #Topics>Name</template>
       <template #List="{ Item }">
         <CardModel>
           <template #image>

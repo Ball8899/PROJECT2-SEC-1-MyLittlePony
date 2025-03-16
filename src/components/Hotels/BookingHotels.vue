@@ -1,31 +1,23 @@
 <script setup>
 import { onMounted, reactive, ref } from "vue";
-import Navbar from "../Navbar.vue";
-import {
-  getHotels,
-  getHotelById,
-  createBooking,
-} from "./HotelfetchUtils";
-import listModel from "../listModel.vue";
+import { getHotels, getHotelById, createBooking } from "./HotelfetchUtils";
 const hotel = ref([]);
 
-const fName = ref("")
-const lName = ref("")
-const email = ref("")
-const phoneNumber = ref("")
+const fName = ref("");
+const lName = ref("");
+const email = ref("");
+const phoneNumber = ref("");
 
-
-const newBookingHotel= reactive({
-    "hotelId": 5,
-    "guestName": `${fName.value}  ${lName.value}`,
-    "email": email,
-    "phoneNumber": phoneNumber,
-    "checkIn": "2023-12-20",
-    "checkOut": "2023-12-25",
-    "guests": 2,
-    "totalPrice": 10500
-
-})
+const newBookingHotel = reactive({
+  hotelId: 5,
+  guestName: `${fName.value}  ${lName.value}`,
+  email: email,
+  phoneNumber: phoneNumber,
+  checkIn: "2023-12-20",
+  checkOut: "2023-12-25",
+  guests: 2,
+  totalPrice: 10500,
+});
 
 onMounted(async () => {
   try {
@@ -36,24 +28,27 @@ onMounted(async () => {
 });
 
 const addBooking = async () => {
-  try{
-     await createBooking(`${import.meta.env.VITE_APP_URL}/bookings`,newBookingHotel)
-} catch (err) {
-    console.error('Error fetching hotels:', err);
+  try {
+    await createBooking(
+      `${import.meta.env.VITE_APP_URL}/bookings`,
+      newBookingHotel
+    );
+  } catch (err) {
+    console.error("Error fetching hotels:", err);
+  }
 };
-}
-
 </script>
 
 <template>
-  <Navbar/>
   <div class="bg-gray-100 min-h-screen py-8 px-4 md:px-0">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mr-28 mb-8">
-        <h1 class="text-3xl font-bold text-gray-800">Complete Your Booking</h1>
-        <p class="text-lg text-gray-600 mt-2">
-          Just a few more steps to secure your stay
-        </p>
+          <h1 class="text-3xl  font-bold text-blue-600">
+            Complete Your Booking
+          </h1>
+          <p class="text-lg text-blue-500 mt-2">
+            Just a few more steps to secure your stay
+          </p>
       </div>
 
       <div class="flex flex-col lg:flex-row gap-8">
@@ -78,7 +73,6 @@ const addBooking = async () => {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-1"
-                
                     >First name *</label
                   >
                   <input
@@ -211,7 +205,6 @@ const addBooking = async () => {
                 <button
                   type="submit"
                   class="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition font-medium text-lg"
-                  
                 >
                   Complete Booking
                 </button>
@@ -222,182 +215,173 @@ const addBooking = async () => {
 
         <!-- <listModel :items="hotel">
         <template #hotelList="{ Item }> -->
-          <div class="max-w-2xl px-4 bg-white rounded-lg shadow-sm p-6">
-            <!-- Hotel Header Section -->
-            <div class="flex gap-6 mb-8">
-              <img
-                src="https://picsum.photos/300/200"
-                alt="Hotel exterior"
-                class="w-48 h-32 object-cover rounded-lg"
-              />
-              <div>
-                <h1 class="text-2xl font-bold text-navy-900 mb-2">
-                  B Your Home Hotel
-                </h1>
-                <h2 class="text-xl text-navy-800 mb-2">
-                  Donmueang Airport Bangkok ★★★★
-                </h2>
-                <div class="flex items-center gap-3">
-                  <div
-                    class="bg-blue-600 text-white px-3 py-1 rounded-md font-medium"
-                  >
-                    4.1/5
-                  </div>
-                  <span class="font-medium text-gray-700">Very Good</span>
-                  <span class="text-gray-500">2,567 reviews</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="border-t border-gray-200 py-6">
-              <h3 class="text-xl font-bold text-navy-900 mb-4">
-                Standard Room
-              </h3>
-              <div class="space-y-2 text-gray-600">
-                <div class="flex items-center gap-2">
-                  <span>👥 x2</span>
-                  <span>•</span>
-                  <span>1 king bed or 2 single beds</span>
-                  <span>•</span>
-                  <span class="text-blue-600">Free Wi-Fi</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <span>Non-smoking</span>
-                  <span>•</span>
-                  <span>15-22m²</span>
-                  <span>•</span>
-                  <span>Floor: 2</span>
-                </div>
-                <div class="text-blue-600 flex items-center gap-2 mt-2">
-                  <svg
-                    class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span>Free Cancellation before 23:59, Mar 18</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="border-t border-gray-200 py-6">
-              <div class="grid grid-cols-2 gap-8">
-                <div>
-                  <div class="text-gray-600 mb-1">Check-in</div>
-                  <div class="font-medium">Fri, Mar 21</div>
-                  <div class="text-sm text-gray-500">14:00-02:00</div>
-                </div>
-                <div>
-                  <div class="text-gray-600 mb-1">Check-out</div>
-                  <div class="font-medium">Sat, Mar 22</div>
-                  <div class="text-sm text-gray-500">Before 12:00</div>
-                </div>
-              </div>
-              <div class="flex gap-8 mt-4">
-                <button
-                  class="flex items-center gap-2 text-navy-900 font-medium"
-                >
-                  <span>1 night</span>
-                  <svg
-                    class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <button
-                  class="flex items-center gap-2 text-navy-900 font-medium"
-                >
-                  <span>1 room</span>
-                  <svg
-                    class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- Price Details Section -->
-            <div class="border-t border-gray-200 py-6">
-              <h3 class="text-xl font-bold text-navy-900 mb-4">
-                Price Details
-              </h3>
-              <div class="space-y-3">
-                <div class="flex justify-between">
-                  <span class="text-gray-600">1 room × 1 night</span>
-                  <span class="font-medium">฿ 1,677.58</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Service charge</span>
-                  <span class="font-medium">฿ 66.90</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">VAT</span>
-                  <span class="font-medium">฿ 43.76</span>
-                </div>
-                <div class="flex justify-between text-green-600">
-                  <span class="font-medium">Limited Time Offer</span>
-                  <span class="font-medium">-฿ 947.77</span>
-                </div>
-                <div class="flex justify-between text-green-600">
-                  <span class="font-medium">Special Discount</span>
-                  <span class="font-medium">-฿ 104.60</span>
-                </div>
-              </div>
-
-              <div class="mt-6 pt-4 border-t border-gray-200">
-                <div class="flex justify-between items-center">
-                  <span class="text-lg font-bold text-navy-900"
-                    >Prepay Online</span
-                  >
-                  <span class="text-2xl font-bold text-navy-900">฿ 735.87</span>
-                </div>
+        <div class="max-w-2xl px-4 bg-white rounded-lg shadow-sm p-6">
+          <!-- Hotel Header Section -->
+          <div class="flex gap-6 mb-8">
+            <img
+              src="https://picsum.photos/300/200"
+              alt="Hotel exterior"
+              class="w-48 h-32 object-cover rounded-lg"
+            />
+            <div>
+              <h1 class="text-2xl font-bold text-navy-900 mb-2">
+                B Your Home Hotel
+              </h1>
+              <h2 class="text-xl text-navy-800 mb-2">
+                Donmueang Airport Bangkok ★★★★
+              </h2>
+              <div class="flex items-center gap-3">
                 <div
-                  class="flex items-center justify-end gap-2 mt-2 text-blue-600"
+                  class="bg-blue-600 text-white px-3 py-1 rounded-md font-medium"
                 >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span>We Price Match</span>
+                  4.1/5
                 </div>
+                <span class="font-medium text-gray-700">Very Good</span>
+                <span class="text-gray-500">2,567 reviews</span>
               </div>
             </div>
           </div>
 
-        
+          <div class="border-t border-gray-200 py-6">
+            <h3 class="text-xl font-bold text-navy-900 mb-4">Standard Room</h3>
+            <div class="space-y-2 text-gray-600">
+              <div class="flex items-center gap-2">
+                <span>👥 x2</span>
+                <span>•</span>
+                <span>1 king bed or 2 single beds</span>
+                <span>•</span>
+                <span class="text-blue-600">Free Wi-Fi</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span>Non-smoking</span>
+                <span>•</span>
+                <span>15-22m²</span>
+                <span>•</span>
+                <span>Floor: 2</span>
+              </div>
+              <div class="text-blue-600 flex items-center gap-2 mt-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>Free Cancellation before 23:59, Mar 18</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200 py-6">
+            <div class="grid grid-cols-2 gap-8">
+              <div>
+                <div class="text-gray-600 mb-1">Check-in</div>
+                <div class="font-medium">Fri, Mar 21</div>
+                <div class="text-sm text-gray-500">14:00-02:00</div>
+              </div>
+              <div>
+                <div class="text-gray-600 mb-1">Check-out</div>
+                <div class="font-medium">Sat, Mar 22</div>
+                <div class="text-sm text-gray-500">Before 12:00</div>
+              </div>
+            </div>
+            <div class="flex gap-8 mt-4">
+              <button class="flex items-center gap-2 text-navy-900 font-medium">
+                <span>1 night</span>
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <button class="flex items-center gap-2 text-navy-900 font-medium">
+                <span>1 room</span>
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Price Details Section -->
+          <div class="border-t border-gray-200 py-6">
+            <h3 class="text-xl font-bold text-navy-900 mb-4">Price Details</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-gray-600">1 room × 1 night</span>
+                <span class="font-medium">฿ 1,677.58</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Service charge</span>
+                <span class="font-medium">฿ 66.90</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">VAT</span>
+                <span class="font-medium">฿ 43.76</span>
+              </div>
+              <div class="flex justify-between text-green-600">
+                <span class="font-medium">Limited Time Offer</span>
+                <span class="font-medium">-฿ 947.77</span>
+              </div>
+              <div class="flex justify-between text-green-600">
+                <span class="font-medium">Special Discount</span>
+                <span class="font-medium">-฿ 104.60</span>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-gray-200">
+              <div class="flex justify-between items-center">
+                <span class="text-lg font-bold text-navy-900"
+                  >Prepay Online</span
+                >
+                <span class="text-2xl font-bold text-navy-900">฿ 735.87</span>
+              </div>
+              <div
+                class="flex items-center justify-end gap-2 mt-2 text-blue-600"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>We Price Match</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- </template>
       </listModel> -->
       </div>
@@ -406,11 +390,11 @@ const addBooking = async () => {
 </template>
 
 <style scoped>
-          .text-navy-900 {
-            color: #1a237e;
-          }
+.text-navy-900 {
+  color: #1a237e;
+}
 
-          .text-navy-800 {
-            color: #283593;
-          }
+.text-navy-800 {
+  color: #283593;
+}
 </style>

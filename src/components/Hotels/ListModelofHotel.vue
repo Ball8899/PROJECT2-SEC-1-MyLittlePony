@@ -43,11 +43,12 @@ const filteredItems = computed(() => {
 </script>
 
 <template>
-  <div class="px-45 left-15 relative">
+  <div class=" relative sm:px-23 md:px-60 lg:px-15 xl:px-45 ">
     <h1 class="text-3xl py-8">
-      <slot name="header">Name</slot>
+      <slot name="Topics">NAME</slot>
     </h1>
-    <div class="text-lg flex">
+    <div class="text-lg text-center gap-2 flex   
+      ">
       <slot name="FilterButton">
         <h1
           @click="setFilterValue('ALL')"
@@ -62,22 +63,35 @@ const filteredItems = computed(() => {
           BANGKOK
         </h1>
         <h1
-          @click="setFilterValue('Chonburi')"
-          class="bg-white shadow-lg px-4 max-w-32 cursor-pointer mx-2 py-1 hover:text-white hover:bg-blue-600 rounded-sm"
+          @click="setFilterValue('BANGKOK')"
+          class="bg-white shadow-lg px-4 max-w-32 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
         >
-          Chonburi
+          BANGKOK
         </h1>
         <h1
-          @click="setFilterValue('Chachoengsao')"
-          class="bg-white shadow-lg px-4 max-w-36 cursor-pointer py-1 hover:text-white hover:bg-blue-600 rounded-sm"
+          @click="setFilterValue('BANGKOK')"
+          class="bg-white shadow-lg px-4 max-w-32 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
         >
-          Chachoengsao
+          BANGKOK
         </h1>
+        <h1
+          @click="setFilterValue('BANGKOK')"
+          class="bg-white shadow-lg px-4 max-w-32 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
+        >
+          BANGKOK
+        </h1>
+        <h1
+          @click="setFilterValue('BANGKOK')"
+          class="bg-white shadow-lg px-4 max-w-32 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
+        >
+          BANGKOK
+        </h1>
+        
       </slot>
     </div>
     <button
-      @click="scrollLeft"
-      class="absolute -translate-y-1/2 left-38 hover:bg-blue-600 top-80 bg-white rounded-full p-2 shadow z-10 group"
+      @click="scrollLeft" 
+      class="absolute sm:left-18 md:left-56 lg:left-11 xl:left-39  -translate-y-1/2 left-38 hover:bg-blue-600 top-80 bg-white rounded-full p-2 shadow z-10 group"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +109,7 @@ const filteredItems = computed(() => {
 
     <button
       @click="scrollRight"
-      class="absolute -translate-y-1/2 right-40 top-80 hover:bg-blue-600 bg-white rounded-full p-2 shadow z-10 group"
+      class="absolute sm:right-18 md:right-56 lg:right-11 xl:right-39  -translate-y-1/2 right-40 top-80 hover:bg-blue-600 bg-white rounded-full p-2 shadow z-10 group"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
