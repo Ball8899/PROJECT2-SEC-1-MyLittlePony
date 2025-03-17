@@ -168,7 +168,6 @@ const closeDetails = () => {
                     </button>
                 </div>
 
-                <!-- First flight section -->
                 <div class="border border-gray-200 rounded mb-4">
                     <div
                         class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 border-b border-gray-200">
@@ -185,7 +184,6 @@ const closeDetails = () => {
                     </div>
                 </div>
 
-                <!-- Second flight section (if return flight exists) -->
                 <div v-if="flight.return" class="border border-gray-200 rounded">
                     <div
                         class="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 border-b border-gray-200">

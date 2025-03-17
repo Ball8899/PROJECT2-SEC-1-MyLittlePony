@@ -186,15 +186,14 @@ const resetFeedback = () => {
 
 
 
-        <!--likely-->
         <Likely @update-feedback="handleFeedbackUpdate" @reset-feedback="resetFeedback">
             <template #likely></template>
             <template #improvement-options></template>
         </Likely>
-        <!--Flight-->
+
             <FlightDetails v-if="flightData" :flight="flightData">
             </FlightDetails>
-        <!--Your Add-ons-->
+
         <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4">
             <h2 class="text-xl sm:text-xl font-bold">Your Add-ons</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6">
@@ -298,7 +297,6 @@ const resetFeedback = () => {
             </div>
         </div>
 
-        <!--Passenger Information-->
         <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4">
             <h2 class="text-xl font-bold">Passenger Information</h2>
             <p class="text-gray-600 text-sm mt-1">
@@ -328,7 +326,8 @@ const resetFeedback = () => {
                 </p>
             </div>
         </div>
-        <!--Contact Information-->
+
+        
         <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4">
             <h2 class="text-xl font-bold">Contact Information</h2>
             <p class="text-sm font-bold mt-6">GHGGG SADSADSSAD</p>
@@ -339,7 +338,8 @@ const resetFeedback = () => {
                 Email: &nbsp;&nbsp;&nbsp;ax***22@gmail.com
             </p>
         </div>
-        <!--Featured Properties -->
+
+        
         <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4">
             <h2 class="text-xl font-bold">Featured Properties</h2>
             
