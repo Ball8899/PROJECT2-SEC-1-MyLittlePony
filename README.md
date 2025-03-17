@@ -48,7 +48,7 @@
 
   | Student ID  | Week 1 | Week 2  | Week 3 | Week 4 | Week 5
 |---|---|---|---|---|---|
-| 66130500013   | Meeting & Design | Upload CardHotelList.vue , ListModelOfHotel.vue , CardModel.vue and Upload Hotel.json for test |  
+| 66130500013   | Meeting & Design | Upload CardHotelList.vue , ListModelOfHotel.vue , CardModel.vue and Upload Hotel.json for test | create Fetch data of Hotels and fix Responsive | 
 | 66130500027 | Meeting & Design  | Upload project and create homepage and component for booking |  
 | 66130500036  | Meeting & Design |  Upload create componet BookingDetail,Likely,PaymentStatus,TotalAmount  |  
 | 66130500041  | Meeting & Design | Upload Component listHotel function to loop hotel details in file.json and hotelList for scoped slot hotel detail on All booking page  | 
