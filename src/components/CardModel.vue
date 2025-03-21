@@ -26,7 +26,7 @@
         <slot name="hotelName">Name</slot>
       </p>
 
-      <p class="font-normal text-lg text-gray-500 text-xs mb-2">
+      <p class="font-normal text-gray-500 text-xs mb-2">
         <slot name="hoteladdress">address</slot>
       </p>
 

@@ -2,7 +2,12 @@
 import Menu from "./components/Menu.vue";
 import Navbar from "./components/Navbar.vue";
 import MainContent from "./components/MainContent.vue";
+import FlightList from './components/FlightList/FlightList.vue'
 import { ref, watch } from 'vue'
+import { useRoute } from "vue-router";
+const route = useRoute()
+console.log(route);
+
 const resetShow = ref(false)
 
 </script>
@@ -11,10 +16,12 @@ const resetShow = ref(false)
   <div @click="resetShow = true">
     <div>
       <div><Navbar></Navbar></div>
-      <div class="flex flex-row">
-        <Menu></Menu>
-        <MainContent @update="resetShow = false" :show-toggle="resetShow" class=""></MainContent>
-      </div>
+      <router-view></router-view>
+          <div v-if="!['/list-flight','/flight-booking-form'].includes(route.path)"  class="flex flex-row">
+            <Menu class="w-[20%]"></Menu>
+            <MainContent @update="resetShow = false" :show-toggle="resetShow" class="w-[80%]"></MainContent>
+          </div> 
+
     </div>
   </div>
 </template>

@@ -1,123 +1,45 @@
-<template>
-  <div class="w-[55%] m-auto py-20 shadow-lg mt-20 rounded-2xl select-none">
-    <div class="flex flex-row justify-between px-10">
-      <button @click="previousMonth">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <h3 class="text-center font-semibold">
-        {{
-          new Date(currentYear, currentMonth).toLocaleString("default", {
-            month: "long",
-          })
-        }}
-        {{ currentYear }}
-      </h3>
-      <div class="px-8"></div>
-      <h3 class="text-center font-semibold">
-        {{
-          new Date(currentYear, currentMonth + 1).toLocaleString("default", {
-            month: "long",
-          })
-        }}
-        {{ currentMonth === 11 ? currentYear + 1 : currentYear }}
-      </h3>
-      <button @click="nextMonth">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-    </div>
-    <div class="grid grid-cols-2 py-5 justify-items-center px-10 gap-10">
-      <div class="w-[100%]">
-        <div class="grid grid-cols-7 gap-1 text-center justify-items-center">
-          <div
-            v-for="(day, index) in shortWeekdays"
-            :key="index"
-            class="w-12 h-12 flex items-center justify-center"
-          >
-            {{ day }}
-          </div>
-        </div>
-
-        <div class="grid grid-cols-7 gap-1 justify-items-center">
-          <div
-            v-for="(day, index) in currentMonthDays"
-            :key="index"
-            :class="[
-              'w-12 h-12 flex items-center justify-center text-sm rounded-lg',
-              day.day ? 'cursor-pointer' : '',
-              day.isSelectionStart || day.isSelectionEnd ? 
-                'bg-blue-600 text-white' : 
-                day.isInRange ? 
-                  'bg-blue-100' : 
-                  'hover:bg-gray-100'
-            ]"
-            @mousedown="day.date && handleMouseDown(day.date)"
-            @mousemove="day.date && handleMouseMove(day.date)"
-            @mouseup="day.date && handleMouseUp(day.date)"
-          >
-            {{ day.day }}
-          </div>
-        </div>
-      </div>
-      <div class="w-[100%]">
-        <div class="grid grid-cols-7 gap-1 text-center justify-items-center">
-          <div
-            v-for="(day, index) in shortWeekdays"
-            :key="index"
-            class="w-12 h-12 flex items-center justify-center"
-          >
-            {{ day }}
-          </div>
-        </div>
-        <div class="grid grid-cols-7 gap-1 justify-items-center">
-          <div
-            v-for="(day, index) in nextMonthDays"
-            :key="index"
-            :class="[
-              'w-12 h-12 flex items-center justify-center text-sm rounded-lg',
-              day.day ? 'cursor-pointer' : '',
-              day.isSelectionStart || day.isSelectionEnd ? 
-                'bg-blue-600 text-white' : 
-                day.isInRange ? 
-                  'bg-blue-100' : 
-                  'hover:bg-gray-100'
-            ]"
-            @mousedown="day.date && handleMouseDown(day.date)"
-            @mousemove="day.date && handleMouseMove(day.date)"
-            @mouseup="day.date && handleMouseUp(day.date)"
-          >
-            {{ day.day }}
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div v-if="selectionStart || selectionEnd" class="mt-6 px-10 text-center">
-      <p class="text-sm text-gray-600">
-        Selected Range: {{ selectionStart?.toLocaleDateString() }} 
-        {{ selectionEnd ? `- ${selectionEnd?.toLocaleDateString()}` : '' }}
-      </p>
-    </div>
-  </div>
-</template>
-
 <script setup>
-import { ref, computed, watch, onMounted, onUnmounted } from "vue";
+import { ref, watch,computed, defineProps, watchEffect, defineEmits } from "vue";
+const emit = defineEmits(["updateCalendar"])
+
+const props = defineProps({
+  typeFlight: { 
+    type: String,
+    requried: true,
+  },
+  startDate: {
+    type: Date,
+    default: new Date()
+  },
+  endDate: {
+    type: Date,
+    default: new Date()
+  }
+  
+});
+const selectionType = ref("depart");
+const handleType = (type) => {
+  selectionType.value = type;
+};
 
 const currentDate = ref(new Date());
 const currentMonth = computed(() => currentDate.value.getMonth());
 const currentYear = computed(() => currentDate.value.getFullYear());
-const selectionStart = ref(null);
-const selectionEnd = ref(null);
-const isDragging = ref(false); 
+const selectionStart = ref(new Date(props.startDate));
+const selectionEnd = ref(new Date(props.endDate));
+const isDragging = ref(false);
 const hoverDate = ref(null);
 
-watch([currentMonth, currentYear], () => {
-  selectionStart.value = null;
-  selectionEnd.value = null;
+
+watch([currentMonth, currentYear, selectionEnd, selectionStart], () => {
+  emit("updateCalendar", {
+    start: selectionStart.value,
+    end: selectionEnd.value
+  })
   hoverDate.value = null;
   isDragging.value = false;
 });
+
 
 const isDateSelectionStart = (date) => {
   if (!date || !selectionStart.value) return false;
@@ -140,7 +62,8 @@ const isDateSelectionEnd = (date) => {
 };
 
 const isDateInRange = (date) => {
-  if (!date || !selectionStart.value) return false;
+  if (!date || !selectionStart.value || props.typeFlight === "one-way")
+    return false;
 
   const end = selectionEnd.value || hoverDate.value;
   if (!end) return false;
@@ -157,31 +80,52 @@ const isDateInRange = (date) => {
 
 const handleMouseDown = (date) => {
   if (!date) return;
-  
-  selectionStart.value = date;
-  selectionEnd.value = null;
-  isDragging.value = true;
+
+  if (props.typeFlight === "one-way") {
+    selectionStart.value = date;
+    selectionEnd.value = null;
+    isDragging.value = false;
+  } else {
+    if (selectionType.value === "depart") {
+      selectionStart.value = date;
+      if (selectionEnd.value && selectionEnd.value.getTime() < selectionStart.value.getTime()) {
+        [selectionStart.value, selectionEnd.value] = [selectionEnd.value, selectionStart.value];
+      }
+    } else if (selectionType.value === "return") {
+      if (!selectionStart.value || date.getTime() < selectionStart.value.getTime()) {
+        selectionStart.value = date;
+      } else {
+        selectionEnd.value = date;
+      }
+      if (selectionEnd.value && selectionEnd.value.getTime() < selectionStart.value.getTime()) {
+        [selectionStart.value, selectionEnd.value] = [selectionEnd.value, selectionStart.value];
+      }
+    }
+  }
 };
 
+
 const handleMouseMove = (date) => {
-  if (!date) return;
-  
+  if (!date || props.typeFlight === "one-way") return;
+
   hoverDate.value = date;
-  
   if (isDragging.value && selectionStart.value) {
     selectionEnd.value = date;
   }
 };
 
 const handleMouseUp = (date) => {
-  if (!date || !selectionStart.value) return;
-  
+  if (!date || !selectionStart.value || props.typeFlight === "one-way") return;
+
   isDragging.value = false;
-  if (date.getTime() < selectionStart.value.getTime()) {
-    selectionEnd.value = selectionStart.value;
-    selectionStart.value = date;
-  } else {
-    selectionEnd.value = date;
+
+  if (selectionType.value === "return") {
+    if (
+      !selectionEnd.value ||
+      date.getTime() > selectionStart.value.getTime()
+    ) {
+      selectionEnd.value = date;
+    }
   }
 };
 
@@ -205,7 +149,7 @@ const createCalendarDays = (year, month, isCurrentMonth) => {
       isSelected: false,
       isSelectionStart: false,
       isSelectionEnd: false,
-      isInRange: false
+      isInRange: false,
     });
   }
 
@@ -219,7 +163,7 @@ const createCalendarDays = (year, month, isCurrentMonth) => {
       isCurrentMonth,
       isSelectionStart: isDateSelectionStart(date),
       isSelectionEnd: isDateSelectionEnd(date),
-      isInRange: isDateInRange(date)
+      isInRange: isDateInRange(date),
     });
   }
 
@@ -232,22 +176,9 @@ const currentMonthDays = computed(() => {
 
 const nextMonthDays = computed(() => {
   const nextMonth = (currentMonth.value + 1) % 12;
-  const nextYear = currentMonth.value === 11 ? currentYear.value + 1 : currentYear.value;
+  const nextYear =
+    currentMonth.value === 11 ? currentYear.value + 1 : currentYear.value;
   return createCalendarDays(nextYear, nextMonth, false);
-});
-
-const handleGlobalMouseUp = () => {
-  if (isDragging.value) {
-    isDragging.value = false;
-  }
-};
-
-onMounted(() => {
-  window.addEventListener('mouseup', handleGlobalMouseUp);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('mouseup', handleGlobalMouseUp);
 });
 
 const previousMonth = () => {
@@ -262,3 +193,146 @@ const nextMonth = () => {
   );
 };
 </script>
+
+<template>
+  <div
+    @click.stop=""
+    class="font-xs bg-white w-[55%] py-5 shadow-lg -mt-15 rounded-2xl select-none"
+  >
+    <div class="flex flex-row justify-end gap-3 py-2 px-5">
+      <div>
+        <button
+          @click="handleType('depart')"
+          class="hover:bg-gray-300 px-5 py-2"
+        >
+          <p>Depart</p>
+          <p>
+            {{
+              selectionStart.toLocaleString("default", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })
+            }}
+          </p>
+        </button>
+      </div>
+
+      <div v-if="props.typeFlight === 'round-trip'">
+        <button
+          @click="handleType('return')"
+          class="hover:bg-gray-300 px-5 py-2"
+        >
+          <p>Return</p>
+          <p v-if="props.typeFlight !== 'one-way'">
+            {{
+              selectionEnd.toLocaleString("default", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })
+            }}
+          </p>
+        </button>
+      </div>
+    </div>
+    <div class="flex flex-row justify-between px-10">
+      <button @click="previousMonth">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <h3 class="text-center text-[13px] font-semibold">
+        {{
+          new Date(currentYear, currentMonth).toLocaleString("default", {
+            month: "long",
+          })
+        }}
+        {{ currentYear }}
+      </h3>
+      <div class="px-8"></div>
+      <h3 class="text-center text-[13px] font-semibold">
+        {{
+          new Date(currentYear, currentMonth + 1).toLocaleString("default", {
+            month: "long",
+          })
+        }}
+        {{ currentMonth === 11 ? currentYear + 1 : currentYear }}
+      </h3>
+      <button @click="nextMonth">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="grid grid-cols-2 py-5 justify-items-center px-10 gap-10">
+      <div class="w-[100%]">
+        <div class="grid grid-cols-7 gap-0.5 justify-items-center">
+          <div
+            v-for="(day, index) in shortWeekdays"
+            :key="index"
+            class="w-12 h-12 text-[12px] flex items-center justify-center"
+          >
+            {{ day }}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-7 gap-0.5 justify-items-center">
+          <div
+            v-for="(day, index) in currentMonthDays"
+            :key="index"
+            :class="[
+              'w-12 h-12 text-[15px] font-semibold flex items-center justify-center rounded-lg',
+              day.day ? 'cursor-pointer' : '',
+              day.isSelectionStart || day.isSelectionEnd
+                ? 'bg-blue-600 text-white'
+                : day.isInRange
+                ? 'bg-blue-100'
+                : 'hover:bg-blue-100',
+            ]"
+            @mousedown="day.date && handleMouseDown(day.date)"
+            @mousemove="day.date && handleMouseMove(day.date)"
+            @mouseup="day.date && handleMouseUp(day.date)"
+          >
+            {{ day.day }}
+          </div>
+        </div>
+      </div>
+      <div class="w-[100%]">
+        <div class="grid grid-cols-7 gap-0.5 text-center justify-items-center">
+          <div
+            v-for="(day, index) in shortWeekdays"
+            :key="index"
+            class="w-12 h-12 text-[12px] flex items-center justify-center"
+          >
+            {{ day }}
+          </div>
+        </div>
+        <div class="grid grid-cols-7 gap-0.5 justify-items-center">
+          <div
+            v-for="(day, index) in nextMonthDays"
+            :key="index"
+            :class="[
+              'w-12 h-12 flex text-[15px] font-semibold items-center justify-center rounded-lg',
+              day.day ? 'cursor-pointer' : '',
+              day.isSelectionStart || (day.isSelectionEnd && typeFlight !== 'one-way')
+                ? 'bg-blue-600 text-white'
+                : day.isInRange
+                ? 'bg-blue-100'
+                : 'hover:bg-blue-100',
+            ]"
+            @mousedown="day.date && handleMouseDown(day.date)"
+            @mousemove="day.date && handleMouseMove(day.date)"
+            @mouseup="day.date && handleMouseUp(day.date)"
+          >
+            {{ day.day }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="selectionStart || selectionEnd" class="mt-6 px-10 text-center">
+      <p class="text-gray-600">
+        Selected Range: {{ selectionStart?.toLocaleDateString() }}
+        {{ selectionEnd ? `- ${selectionEnd?.toLocaleDateString()}` : "" }}
+      </p>
+    </div>
+  </div>
+</template>

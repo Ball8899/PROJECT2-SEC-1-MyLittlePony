@@ -1,60 +1,67 @@
 <script setup>
-import { ref, watch, defineProps } from 'vue'
+import { ref, watch, defineProps, defineEmits } from "vue";
+import { getItems } from "@/utils/fetchUtil";
 
-const destination = ref({})
-const selected = ref(localStorage.getItem('selected') || '')
+const props = defineProps({
+    type: {
+      type: String,
+      require: true,
+    },
+});
+
+const emit = defineEmits(["destination-selected"]);
+
+const destinations = ref([]);
+const selected = ref(localStorage.getItem("") || "");
 
 async function fetchContents() {
   try {
-    const response = await fetch('http://localhost:9090/api/continents/')
-    if (!response.ok) {
-      console.error(response.body)
-    }
-
-    const data = await response.json()
-     destination.value = data;
+    destinations.value = await getItems(
+      `${import.meta.env.VITE_APP_URL}/continents`
+    );
+    console.log(destinations.value);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
-fetchContents()
-
-// fetch('http://localhost:8080/api/continents/')
-//     .then(response => {
-//         if (!response.ok) {
-//             console.error(response.body)
-//         }
-//         return response.json()
-//     })
-//     .then(data => {
-//         destination.value = data
-//         console.log(data)
-//     })
-//     .catch(error => {
-//         console.error('There was a problem with the fetch operation:', error)
-//     })
+fetchContents();
 
 watch(selected, (newDestination) => {
-    localStorage.setItem('selected', newDestination)
-})
+  emit("destination-selected", {
+    type: props.type,
+    value: newDestination,
+  });
+  localStorage.setItem("selected", newDestination);
+});
 </script>
 
 <template>
-  <div @click.stop class="bg-white max-h-[700px] text-gray-500 w-[40%] overflow-auto">
-    <div class="text-lg p-5 mt-2 bg-gray-300 w-fit ml-10"> {{ selected }}</div>
-    <div class="text-lg p-5 mb-1.5" v-for="(continent, index) in destination" :key="continent.id">
-      {{ continent.continentName }}
-
-      <div class="grid grid-cols-3 gap-2">
-        <button 
-          v-for="(country, index) in continent.countries" 
-           @click="selected = country.countryName"
-          :key="country.id" 
-          class="text-black text-lg font-normal m-1 p-2 hover:bg-gray-200 rounded-sm transition"
-        >
-          {{ country.countryName }}
-        </button>
+  <div
+  
+    class="font-xs bg-white max-h-[600px] text-gray-500 w-[40%] overflow-auto"
+  >
+    <div
+      class="p-5 mb-1.5"
+      v-for="(continent, index) in destinations"
+      :key="continent.id"
+    >
+      <div
+        v-for="(country, countryIndex) in continent.countries"
+        :key="country.id"
+        class="mt-2"
+      >
+        <div class="text-sm py-1">{{ country.countryName }}</div>
+        <div class="grid grid-cols-3">
+          <button
+            v-for="(province, provinceIndex) in country.provinces"
+            :key="provinceIndex"
+            @click.="selected = province"
+            class="text-black font-light flex justify-start items-start text-sm py-2.5 px-1 hover:bg-blue-100 rounded-sm transition"
+          >
+            {{ province }}
+          </button>
+        </div>
       </div>
     </div>
   </div>

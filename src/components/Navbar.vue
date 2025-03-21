@@ -3,19 +3,19 @@
 </script>
 
 <template>
-  <div class="flex flex-row px-5 py-3 justify-between">
+  <div class="flex flex-row px-5 py-1 justify-between">
     <div class="text-xl flex flex-row items-center">
       <button class="w-[100%] px-4.5 py-2.5 flex flex-row gap-6">
         <i class="fa-solid fa-bars"></i>
       </button>
       <div class="ml-3 flex flex-row">
-        <h1 class="text-blue-700 text-4xl font-bold">JET</h1>
-        <h1 class="text-amber-400 font-bold text-3xl">.</h1>
-        <h1 class="text-amber-400 font-bold text-3xl">GO</h1>
+        <h1 class="text-blue-700 text-3xl font-bold">JET</h1>
+        <h1 class="text-amber-400 font-bold text-2xl">.</h1>
+        <h1 class="text-amber-400 font-bold text-2xl">GO</h1>
       </div>
       <div class="pl-10 relative mx-auto text-gray-600">
         <input class="border-1 border-gray-300 bg-white h-10 px-5 pr-19 rounded-lg text-sm focus:outline-none"
-          type="search" name="search" placeholder="Destinations">
+          type="search"  name="search" placeholder="Destinations">
         <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
           <svg class="text-blue-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="flex flex-row justify-center items-center text-lg gap-5 text-gray-600 mr-5">
+    <div class="text-sm flex flex-row justify-center items-center gap-5 text-md text-gray-600 mr-5">
       <button class="hover:bg-gray-100 px-4 py-2 rounded-lg">
         List Your Property
       </button>
