@@ -1,35 +1,38 @@
 <script setup>
-import { ref, onMounted, computed } from "vue";
-import CardModel from "./CardModel.vue";
-import { getHotels } from "./HotelfetchUtils";
-
+import { ref, onMounted, defineEmits } from "vue";
+import CardModel from "../CardModel.vue";
+import { getHotels } from "../../utils/fetchUtil";
 import ListModelofHotel from "./ListModelofHotel.vue";
 
-import Hotel from "../../../data/Hotels.json";
 
+defineEmits(["sendRoomId"])
 const hotels = ref([]);
+const receivedRoomId = ref(null)
 
-// onMounted(async () => {
-//   try {
-//     hotels.value = await getHotels(`${import.meta.env.VITE_APP_URL}/hotels`);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+onMounted(async () => {
+  try {
+    hotels.value = await getHotels(`http://localhost:3000/hotels`);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
-
+const validateRoomId = ((roomId) => {
+  receivedRoomId.value = roomId
+})
 
 </script>
 
 <template>
-  <div class="">
-    <ListModelofHotel :items="Hotel">
+  <div v-if="$route.name === '' && !receivedRoomId" @sendRoomId="validateRoomId"    class="">
+    <ListModelofHotel :items="hotels">
       <template #header class="hidden"> Name </template>
       <template #Topics>Name</template>
       <template #List="{ Item }">
-        <CardModel>
+        <router-link  :to="{ name: 'hotelDetail', params: { hotelId: Item.id } }">
+          <CardModel>
           <template #image>
-            <img src="https://picsum.photos/300/200" alt="" />
+            <img :src="Item.image" alt="" />
           </template>
           <template #hotelRating>
             {{ Item.rating }}
@@ -44,57 +47,9 @@ const hotels = ref([]);
             {{ Item.price }}
           </template>
         </CardModel>
-      </template>
-    </ListModelofHotel>
-
-    <ListModelofHotel :items="Hotel">
-      <template #header> Name </template>
-      <template #filterName> </template>
-
-      <template v-slot:List="{ Item }">
-        <CardModel>
-          <template #image>
-            <img src="https://picsum.photos/300/200" alt="" />
-          </template>
-          <template #hotelRating>
-            {{ Item.rating }}
-          </template>
-          <template #hotelName>
-            {{ Item.name }}
-          </template>
-          <template #hoteladdress>
-            {{ Item.address }}
-          </template>
-          <template #hotelPrice>
-            {{ Item.price }}
-          </template>
-        </CardModel>
-      </template>
-    </ListModelofHotel>
-
-    <ListModelofHotel :items="Hotel">
-      <template #header> Name </template>
-      <template #filterName> </template>
-
-      <template v-slot:List="{ Item }">
-        <CardModel>
-          <template #image>
-            <img src="https://picsum.photos/300/200" alt="" />
-          </template>
-          <template #hotelRating>
-            {{ Item.rating }}
-          </template>
-          <template #hotelName>
-            {{ Item.name }}
-          </template>
-          <template #hoteladdress>
-            {{ Item.address }}
-          </template>
-          <template #hotelPrice>
-            {{ Item.price }}
-          </template>
-        </CardModel>
+        </router-link>
       </template>
     </ListModelofHotel>
   </div>
-</template>
+  </template>
+
