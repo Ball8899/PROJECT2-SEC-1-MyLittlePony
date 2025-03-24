@@ -1,7 +1,7 @@
-{  
+{
   "continents": [
     {
-      "id": 1,
+      "id": "1",
       "continentName": "Asia",
       "countries": [
         {
@@ -10,7 +10,7 @@
           "provinces": [
             "Bangkok",
             "Chiang Mai",
-             "Nakhon Si Thammarat",
+            "Nakhon Si Thammarat",
             "Phuket",
             "Ayutthaya",
             "Khon Kaen",
@@ -67,1838 +67,2417 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "continentName": "Europe",
       "countries": []
     }
   ],
-    "flights": [
-        {
-            "id": 1,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "09:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "10:15",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai Lion Air",
-                "flightNumber": "DD550",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1450,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1450
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2000
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 2,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "08:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "09:15",
-                "airport": {
-                    "code": "NST",
-                    "name": "Nakhon Si Thammarat Airport",
-                    "city": "Nakhon Si Thammarat"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD550",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1500,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1500
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2000
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 3,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "11:15",
-                "airport": {
-                    "code": "NST",
-                    "name": "Nakhon Si Thammarat Airport",
-                    "city": "Nakhon Si Thammarat"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "12:30",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD551",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1500,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1500
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2000
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 4,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "09:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "10:20",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3435",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 20m"
-            },
-            "pricing": {
-                "basePrice": 1800,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1800
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2400
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 5,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "12:30",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "13:50",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3436",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 20m"
-            },
-            "pricing": {
-                "basePrice": 1800,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1800
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2400
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 6,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "07:30",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "09:00",
-                "airport": {
-                    "code": "HKT",
-                    "name": "Phuket International Airport",
-                    "city": "Phuket"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai Lion Air",
-                "flightNumber": "SL750",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 30m"
-            },
-            "pricing": {
-                "basePrice": 2000,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 2000
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 700,
-                        "totalPrice": 2700
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 7,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "10:30",
-                "airport": {
-                    "code": "HKT",
-                    "name": "Phuket International Airport",
-                    "city": "Phuket"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "12:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai Lion Air",
-                "flightNumber": "SL751",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 30m"
-            },
-            "pricing": {
-                "basePrice": 2000,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 2000
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 700,
-                        "totalPrice": 2700
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 8,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "13:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "14:15",
-                "airport": {
-                    "code": "UTH",
-                    "name": "Udon Thani International Airport",
-                    "city": "Udon Thani"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD306",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1600,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1600
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2100
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 9,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "16:15",
-                "airport": {
-                    "code": "UTH",
-                    "name": "Udon Thani International Airport",
-                    "city": "Udon Thani"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "17:30",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD307",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1600,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1600
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2100
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 10,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "15:00",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "16:30",
-                "airport": {
-                    "code": "HKT",
-                    "name": "Phuket International Airport",
-                    "city": "Phuket"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3160",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 30m"
-            },
-            "pricing": {
-                "basePrice": 2200,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 2200
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2800
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 11,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "18:00",
-                "airport": {
-                    "code": "HKT",
-                    "name": "Phuket International Airport",
-                    "city": "Phuket"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "19:30",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3161",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 30m"
-            },
-            "pricing": {
-                "basePrice": 2200,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 2200
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2800
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 12,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "08:30",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "09:45",
-                "airport": {
-                    "code": "KBV",
-                    "name": "Krabi Airport",
-                    "city": "Krabi"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai Lion Air",
-                "flightNumber": "SL806",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1900,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1900
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 700,
-                        "totalPrice": 2600
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 13,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "11:45",
-                "airport": {
-                    "code": "KBV",
-                    "name": "Krabi Airport",
-                    "city": "Krabi"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "13:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai Lion Air",
-                "flightNumber": "SL807",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1900,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1900
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 700,
-                        "totalPrice": 2600
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 14,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "10:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "11:20",
-                "airport": {
-                    "code": "CEI",
-                    "name": "Chiang Rai International Airport",
-                    "city": "Chiang Rai"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD102",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 20m"
-            },
-            "pricing": {
-                "basePrice": 1800,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1800
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2300
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 15,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "13:20",
-                "airport": {
-                    "code": "CEI",
-                    "name": "Chiang Rai International Airport",
-                    "city": "Chiang Rai"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "14:40",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD103",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 20m"
-            },
-            "pricing": {
-                "basePrice": 1800,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1800
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2300
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 16,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "15:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "16:15",
-                "airport": {
-                    "code": "NST",
-                    "name": "Nakhon Si Thammarat Airport",
-                    "city": "Nakhon Si Thammarat"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3188",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1500,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1500
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2100
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 17,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "18:15",
-                "airport": {
-                    "code": "NST",
-                    "name": "Nakhon Si Thammarat Airport",
-                    "city": "Nakhon Si Thammarat"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "19:30",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3189",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1500,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1500
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2100
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 18,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "16:00",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "17:20",
-                "airport": {
-                    "code": "UTH",
-                    "name": "Udon Thani International Airport",
-                    "city": "Udon Thani"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD710",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 20m"
-            },
-            "pricing": {
-                "basePrice": 2000,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 2000
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2500
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 19,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "19:20",
-                "airport": {
-                    "code": "UTH",
-                    "name": "Udon Thani International Airport",
-                    "city": "Udon Thani"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "20:40",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD711",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 20m"
-            },
-            "pricing": {
-                "basePrice": 2000,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 2000
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2500
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 20,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "17:00",
-                "airport": {
-                    "code": "HKT",
-                    "name": "Phuket International Airport",
-                    "city": "Phuket"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "18:15",
-                "airport": {
-                    "code": "KBV",
-                    "name": "Krabi Airport",
-                    "city": "Krabi"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3210",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1700,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1700
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2300
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 21,
-            "departure": {
-                "date": "2025-04-21",
-                "time": "07:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-21",
-                "time": "08:20",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3437",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 20m"
-            },
-            "pricing": {
-                "basePrice": 1800,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1800
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2400
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 22,
-            "departure": {
-                "date": "2025-04-21",
-                "time": "10:20",
-                "airport": {
-                    "code": "CNX",
-                    "name": "Chiang Mai International Airport",
-                    "city": "Chiang Mai"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-21",
-                "time": "11:40",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai AirAsia",
-                "flightNumber": "FD3438",
-                "aircraft": "A320",
-                "class": "Economy",
-                "duration": "1h 20m"
-            },
-            "pricing": {
-                "basePrice": 1800,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1800
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 600,
-                        "totalPrice": 2400
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 23,
-            "departure": {
-                "date": "2025-04-21",
-                "time": "08:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-21",
-                "time": "09:15",
-                "airport": {
-                    "code": "NST",
-                    "name": "Nakhon Si Thammarat Airport",
-                    "city": "Nakhon Si Thammarat"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD552",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1500,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1500
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2000
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 24,
-            "departure": {
-                "date": "2025-04-21",
-                "time": "11:15",
-                "airport": {
-                    "code": "NST",
-                    "name": "Nakhon Si Thammarat Airport",
-                    "city": "Nakhon Si Thammarat"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-21",
-                "time": "12:30",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD553",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1500,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1500
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2000
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 25,
-            "departure": {
-                "date": "2025-04-21",
-                "time": "09:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-21",
-                "time": "10:30",
-                "airport": {
-                    "code": "HKT",
-                    "name": "Phuket International Airport",
-                    "city": "Phuket"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai Lion Air",
-                "flightNumber": "SL752",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 30m"
-            },
-            "pricing": {
-                "basePrice": 2000,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 2000
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 700,
-                        "totalPrice": 2700
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 26,
-            "departure": {
-                "date": "2025-04-21",
-                "time": "12:30",
-                "airport": {
-                    "code": "HKT",
-                    "name": "Phuket International Airport",
-                    "city": "Phuket"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-21",
-                "time": "14:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Thai Lion Air",
-                "flightNumber": "SL753",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 30m"
-            },
-            "pricing": {
-                "basePrice": 2000,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 2000
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 700,
-                        "totalPrice": 2700
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 27,
-            "departure": {
-                "date": "2025-04-21",
-                "time": "10:00",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-21",
-                "time": "11:15",
-                "airport": {
-                    "code": "UTH",
-                    "name": "Udon Thani International Airport",
-                    "city": "Udon Thani"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD308",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1600,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1600
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2100
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 28,
-            "departure": {
-                "date": "2025-04-21",
-                "time": "13:15",
-                "airport": {
-                    "code": "UTH",
-                    "name": "Udon Thani International Airport",
-                    "city": "Udon Thani"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-21",
-                "time": "14:30",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD309",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1600,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1600
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2100
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
-        },
-        {
-            "id": 28,
-            "departure": {
-                "date": "2025-04-20",
-                "time": "08:00",
-                "airport": {
-                    "code": "NST",
-                    "name": "Nakhon Si Thammarat Airport",
-                    "city": "Nakhon Si Thammarat"
-                }
-            },
-            "arrival": {
-                "date": "2025-04-20",
-                "time": "09:15",
-                "airport": {
-                    "code": "DMK",
-                    "name": "Don Mueang International Airport",
-                    "city": "Bangkok"
-                }
-            },
-            "flightDetails": {
-                "type": "One Way",
-                "nonstop": "Non Stop",
-                "airline": "Nok Air",
-                "flightNumber": "DD550",
-                "aircraft": "Boeing 737",
-                "class": "Economy",
-                "duration": "1h 15m"
-            },
-            "pricing": {
-                "basePrice": 1900,
-                "currency": "THB",
-                "baggageOptions": [
-                    {
-                        "checkedWeight": 15,
-                        "additionalCost": 0,
-                        "totalPrice": 1900
-                    },
-                    {
-                        "checkedWeight": 20,
-                        "additionalCost": 500,
-                        "totalPrice": 2500
-                    }
-                ]
-            },
-            "baggageAllowance": {
-                "carryOn": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "checked": {
-                    "pieces": 1,
-                    "included": true
-                },
-                "personalItem": {
-                    "included": true
-                }
-            },
-            "policies": {
-                "refundable": false,
-                "changesPermitted": true
-            }
+  "flights": [
+    {
+      "id": "1",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "09:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
         }
-    ]
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "10:15",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "DD550",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1450,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1450
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2000
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "2",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "08:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "09:15",
+        "airport": {
+          "code": "NST",
+          "name": "Nakhon Si Thammarat Airport",
+          "city": "Nakhon Si Thammarat"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD550",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1500,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1500
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2000
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "3",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "11:15",
+        "airport": {
+          "code": "NST",
+          "name": "Nakhon Si Thammarat Airport",
+          "city": "Nakhon Si Thammarat"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "12:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD551",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1500,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1500
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2000
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "4",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "09:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "10:20",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3435",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 1800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2400
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "5",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "12:30",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "13:50",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3436",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "pricing": {
+        "basePrice": 1800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2400
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "6",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "07:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "09:00",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "SL750",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 30m"
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "pricing": {
+        "basePrice": 2000,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2000
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 700,
+            "totalPrice": 2700
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "7",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "10:30",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "12:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "SL751",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 30m"
+      },
+      "pricing": {
+        "basePrice": 2000,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2000
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 700,
+            "totalPrice": 2700
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "8",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "13:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "14:15",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD306",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1600,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1600
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2100
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "9",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "16:15",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "17:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD307",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1600,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1600
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2100
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "10",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "15:00",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "16:30",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3160",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 30m"
+      },
+      "pricing": {
+        "basePrice": 2200,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2200
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2800
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "11",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "18:00",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "19:30",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3161",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 30m"
+      },
+      "pricing": {
+        "basePrice": 2200,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2200
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2800
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "12",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "08:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "09:45",
+        "airport": {
+          "code": "KBV",
+          "name": "Krabi Airport",
+          "city": "Krabi"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "SL806",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1900,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1900
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 700,
+            "totalPrice": 2600
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "13",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "11:45",
+        "airport": {
+          "code": "KBV",
+          "name": "Krabi Airport",
+          "city": "Krabi"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "13:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "SL807",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1900,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1900
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 700,
+            "totalPrice": 2600
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "14",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "10:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "11:20",
+        "airport": {
+          "code": "CEI",
+          "name": "Chiang Rai International Airport",
+          "city": "Chiang Rai"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD102",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 1800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2300
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "15",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "13:20",
+        "airport": {
+          "code": "CEI",
+          "name": "Chiang Rai International Airport",
+          "city": "Chiang Rai"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "14:40",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD103",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 1800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2300
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "16",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "15:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "16:15",
+        "airport": {
+          "code": "NST",
+          "name": "Nakhon Si Thammarat Airport",
+          "city": "Nakhon Si Thammarat"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3188",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1500,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1500
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2100
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "17",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "18:15",
+        "airport": {
+          "code": "NST",
+          "name": "Nakhon Si Thammarat Airport",
+          "city": "Nakhon Si Thammarat"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "19:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3189",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1500,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1500
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2100
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "18",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "16:00",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "17:20",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD710",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 2000,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2000
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2500
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "19",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "19:20",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "20:40",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD711",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 2000,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2000
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2500
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "20",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "17:00",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "18:15",
+        "airport": {
+          "code": "KBV",
+          "name": "Krabi Airport",
+          "city": "Krabi"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3210",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1700,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1700
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2300
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "21",
+      "departure": {
+        "date": "2025-04-21",
+        "time": "07:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-21",
+        "time": "08:20",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3437",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 1800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2400
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "22",
+      "departure": {
+        "date": "2025-04-21",
+        "time": "10:20",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-21",
+        "time": "11:40",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3438",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 1800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 600,
+            "totalPrice": 2400
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "23",
+      "departure": {
+        "date": "2025-04-21",
+        "time": "08:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-21",
+        "time": "09:15",
+        "airport": {
+          "code": "NST",
+          "name": "Nakhon Si Thammarat Airport",
+          "city": "Nakhon Si Thammarat"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD552",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1500,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1500
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2000
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "24",
+      "departure": {
+        "date": "2025-04-21",
+        "time": "11:15",
+        "airport": {
+          "code": "NST",
+          "name": "Nakhon Si Thammarat Airport",
+          "city": "Nakhon Si Thammarat"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-21",
+        "time": "12:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD553",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1500,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1500
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2000
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "25",
+      "departure": {
+        "date": "2025-04-21",
+        "time": "09:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-21",
+        "time": "10:30",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "SL752",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 30m"
+      },
+      "pricing": {
+        "basePrice": 2000,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2000
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 700,
+            "totalPrice": 2700
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "26",
+      "departure": {
+        "date": "2025-04-21",
+        "time": "12:30",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-21",
+        "time": "14:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "SL753",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 30m"
+      },
+      "pricing": {
+        "basePrice": 2000,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2000
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 700,
+            "totalPrice": 2700
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "27",
+      "departure": {
+        "date": "2025-04-21",
+        "time": "10:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-21",
+        "time": "11:15",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "returnDeparture": null,
+      "returnArrival": null,
+      "flightDetails": {
+        "type": "One Way",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD308",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 1600,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 1600
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 500,
+            "totalPrice": 2100
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "28",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "08:00",
+        "airport": {
+          "code": "NST",
+          "name": "Nakhon Si Thammarat Airport",
+          "city": "Nakhon Si Thammarat"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "09:15",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnDeparture": {
+        "date": "2025-04-27",
+        "time": "09:15",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "returnArrival": {
+        "date": "2025-04-27",
+        "time": "10:30",
+        "airport": {
+          "code": "NST",
+          "name": "Nakhon Si Thammarat Airport",
+          "city": "Nakhon Si Thammarat"
+        }
+      },
+      "flightDetails": {
+        "type": "Round Trip",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD550",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 3500,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 3500
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 1000,
+            "totalPrice": 4500
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "29",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "09:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "10:15",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "returnDeparture": {
+        "date": "2025-04-27",
+        "time": "12:30",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "returnArrival": {
+        "date": "2025-04-27",
+        "time": "13:50",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "flightDetails": {
+        "type": "Round Trip",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "DD550",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 2800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 2800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 1000,
+            "totalPrice": 3800
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "30",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "07:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "09:00",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "returnDeparture": {
+        "date": "2025-04-27",
+        "time": "10:30",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "returnArrival": {
+        "date": "2025-04-27",
+        "time": "12:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "flightDetails": {
+        "type": "Round Trip",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "SL750",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 30m"
+      },
+      "pricing": {
+        "basePrice": 3800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 3800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 1400,
+            "totalPrice": 5200
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "31",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "13:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "14:15",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "returnDeparture": {
+        "date": "2025-04-27",
+        "time": "16:15",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "returnArrival": {
+        "date": "2025-04-27",
+        "time": "17:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "flightDetails": {
+        "type": "Round Trip",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD306",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 3000,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 3000
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 1000,
+            "totalPrice": 4000
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "32",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "08:30",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "09:45",
+        "airport": {
+          "code": "KBV",
+          "name": "Krabi Airport",
+          "city": "Krabi"
+        }
+      },
+      "returnDeparture": {
+        "date": "2025-04-27",
+        "time": "11:45",
+        "airport": {
+          "code": "KBV",
+          "name": "Krabi Airport",
+          "city": "Krabi"
+        }
+      },
+      "returnArrival": {
+        "date": "2025-04-27",
+        "time": "13:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "flightDetails": {
+        "type": "Round Trip",
+        "nonstop": "Non Stop",
+        "airline": "Thai Lion Air",
+        "flightNumber": "SL806",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 15m"
+      },
+      "pricing": {
+        "basePrice": 3600,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 3600
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 1400,
+            "totalPrice": 5000
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "33",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "10:00",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "11:20",
+        "airport": {
+          "code": "CEI",
+          "name": "Chiang Rai International Airport",
+          "city": "Chiang Rai"
+        }
+      },
+      "returnDeparture": {
+        "date": "2025-04-27",
+        "time": "13:20",
+        "airport": {
+          "code": "CEI",
+          "name": "Chiang Rai International Airport",
+          "city": "Chiang Rai"
+        }
+      },
+      "returnArrival": {
+        "date": "2025-04-27",
+        "time": "14:40",
+        "airport": {
+          "code": "DMK",
+          "name": "Don Mueang International Airport",
+          "city": "Bangkok"
+        }
+      },
+      "flightDetails": {
+        "type": "Round Trip",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD102",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 3400,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 3400
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 1000,
+            "totalPrice": 4400
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "34",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "15:00",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "16:30",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "returnDeparture": {
+        "date": "2025-04-27",
+        "time": "18:00",
+        "airport": {
+          "code": "HKT",
+          "name": "Phuket International Airport",
+          "city": "Phuket"
+        }
+      },
+      "returnArrival": {
+        "date": "2025-04-27",
+        "time": "19:30",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "flightDetails": {
+        "type": "Round Trip",
+        "nonstop": "Non Stop",
+        "airline": "Thai AirAsia",
+        "flightNumber": "FD3160",
+        "aircraft": "A320",
+        "class": "Economy",
+        "duration": "1h 30m"
+      },
+      "pricing": {
+        "basePrice": 4200,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 4200
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 1200,
+            "totalPrice": 5400
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    },
+    {
+      "id": "35",
+      "departure": {
+        "date": "2025-04-20",
+        "time": "16:00",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "arrival": {
+        "date": "2025-04-20",
+        "time": "17:20",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "returnDeparture": {
+        "date": "2025-04-27",
+        "time": "19:20",
+        "airport": {
+          "code": "UTH",
+          "name": "Udon Thani International Airport",
+          "city": "Udon Thani"
+        }
+      },
+      "returnArrival": {
+        "date": "2025-04-27",
+        "time": "20:40",
+        "airport": {
+          "code": "CNX",
+          "name": "Chiang Mai International Airport",
+          "city": "Chiang Mai"
+        }
+      },
+      "flightDetails": {
+        "type": "Round Trip",
+        "nonstop": "Non Stop",
+        "airline": "Nok Air",
+        "flightNumber": "DD710",
+        "aircraft": "Boeing 737",
+        "class": "Economy",
+        "duration": "1h 20m"
+      },
+      "pricing": {
+        "basePrice": 3800,
+        "currency": "THB",
+        "baggageOptions": [
+          {
+            "checkedWeight": 15,
+            "additionalCost": 0,
+            "totalPrice": 3800
+          },
+          {
+            "checkedWeight": 20,
+            "additionalCost": 1000,
+            "totalPrice": 4800
+          }
+        ]
+      },
+      "baggageAllowance": {
+        "carryOn": {
+          "pieces": 1,
+          "included": true
+        },
+        "checked": {
+          "pieces": 1,
+          "included": true
+        },
+        "personalItem": {
+          "included": true
+        }
+      },
+      "policies": {
+        "refundable": false,
+        "changesPermitted": true
+      }
+    }
+  ],
+  "flightBooking": [
+
+  ]
 }
