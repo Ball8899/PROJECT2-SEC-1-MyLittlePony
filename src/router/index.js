@@ -2,6 +2,9 @@ import { createWebHistory, createRouter } from 'vue-router'
 import Booking from '../components/Booking.vue'
 import FlightList from '../components/FlightList/FlightList.vue'
 import FlightBookingForm from '../components/FlightList/FlightBookingForm.vue'
+import HotelDetailPage from '../views/HotelDetailPage.vue'
+import BookingHotels from '../views/BookingHotels.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +18,16 @@ const router = createRouter({
       path: '/flight-booking-form',
       name: 'flightBookingForm',
       component: FlightBookingForm
+    },
+    {
+      path: '/hotelDetail/:hotelId',
+      name: 'hotelDetail',
+      component:HotelDetailPage
+    },
+    {
+      path: '/BookingHotels/:roomId/:hotelId/:optionId',
+      name: 'BookingHotels',
+      component:BookingHotels
     }
     
   ],

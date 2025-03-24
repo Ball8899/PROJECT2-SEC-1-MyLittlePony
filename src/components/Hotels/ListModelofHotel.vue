@@ -47,7 +47,7 @@ const filteredItems = computed(() => {
     <h1 class="text-3xl py-8">
       <slot name="Topics">NAME</slot>
     </h1>
-    <div class="text-lg text-center gap-2 flex   
+    <div class="text-lg text-center gap-4 flex   
       ">
       <slot name="FilterButton">
         <h1
@@ -63,28 +63,28 @@ const filteredItems = computed(() => {
           BANGKOK
         </h1>
         <h1
-          @click="setFilterValue('BANGKOK')"
-          class="bg-white shadow-lg px-4 max-w-32 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
+          @click="setFilterValue('CHIANG MAI')"
+          class="bg-white shadow-lg px-4 max-w-38 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
         >
-          BANGKOK
+        CHIANG MAI
         </h1>
         <h1
-          @click="setFilterValue('BANGKOK')"
+          @click="setFilterValue('PHUKET')"
           class="bg-white shadow-lg px-4 max-w-32 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
         >
-          BANGKOK
+        PHUKET
         </h1>
         <h1
-          @click="setFilterValue('BANGKOK')"
-          class="bg-white shadow-lg px-4 max-w-32 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
+          @click="setFilterValue('SURAT THANI')"
+          class="bg-white shadow-lg px-4 max-w-38 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
         >
-          BANGKOK
+        SURAT THANI
         </h1>
         <h1
-          @click="setFilterValue('BANGKOK')"
+          @click="setFilterValue('AYUTTHAYA')"
           class="bg-white shadow-lg px-4 max-w-32 cursor-pointer hover:text-white hover:bg-blue-600 py-1 rounded-sm"
         >
-          BANGKOK
+        AYUTTHAYA
         </h1>
         
       </slot>
