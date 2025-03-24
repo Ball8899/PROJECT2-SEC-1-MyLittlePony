@@ -173,7 +173,7 @@ const toggle = (nameDialog) => {
                 month: "short",
                 year: "numeric",
               }) }}</p>
-            <p v-if="returnFlight !== null && typeOfFlight !== 'one-way'">{{ returnFlight.toLocaleString("default", {
+            <p v-if="returnFlight !== null && typeOfFlight !== 'One Way'">{{ returnFlight.toLocaleString("default", {
                 day: "numeric",
                 month: "short",
                 year: "numeric",
