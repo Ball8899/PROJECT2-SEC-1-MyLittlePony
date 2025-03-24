@@ -224,7 +224,7 @@ const nextMonth = () => {
           class="hover:bg-gray-300 px-5 py-2"
         >
           <p>Return</p>
-          <p v-if="props.typeFlight !== 'one-way'">
+          <p v-if="props.typeFlight !== 'One Way'">
             {{
               selectionEnd.toLocaleString("default", {
                 day: "numeric",
@@ -312,7 +312,7 @@ const nextMonth = () => {
             :class="[
               'w-12 h-12 flex text-[15px] font-semibold items-center justify-center rounded-lg',
               day.day ? 'cursor-pointer' : '',
-              day.isSelectionStart || (day.isSelectionEnd && typeFlight !== 'one-way')
+              day.isSelectionStart || (day.isSelectionEnd && typeFlight !== 'One Way')
                 ? 'bg-blue-600 text-white'
                 : day.isInRange
                 ? 'bg-blue-100'

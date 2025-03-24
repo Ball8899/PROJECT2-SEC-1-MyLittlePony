@@ -95,4 +95,4 @@ async function postItem (url, data) {
   }
 }
 
-export {getItems, getItemById, postItem, getItems, getHotelById, getHotels, createBooking};
+export {getItems, getItemById, postItem, getHotelById, getHotels, createBooking};
