@@ -100,7 +100,7 @@ const toggleShowOption = (id) => {
             <p>All Airlines</p>
           </div>
           <div v-for="(airline, index) in uniqueAirline">
-             <input v-model="filterAirline[airline]" type="checkbox" name="" id="" />
+             <input type="checkbox" name="" id="" />
             <p>{{ airline }}</p>
           </div>
         </div>
