@@ -4,6 +4,7 @@ import FlightList from '../components/FlightList/FlightList.vue'
 import FlightBookingForm from '../components/FlightList/FlightBookingForm.vue'
 import HotelDetailPage from '../views/HotelDetailPage.vue'
 import BookingHotels from '../views/BookingHotels.vue'
+import PaymentForm from '../components/form/PaymentForm.vue'
 
 
 const router = createRouter({
@@ -15,9 +16,14 @@ const router = createRouter({
       component: FlightList
     },
     {
-      path: '/flight-booking-form',
+      path: '/flight-booking-form/:flightId/:passenger',
       name: 'flightBookingForm',
       component: FlightBookingForm
+    },
+    {
+      path: '/payment',
+      name: 'paymentForm',
+      component: PaymentForm
     },
     {
       path: '/hotelDetail/:hotelId',

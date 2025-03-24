@@ -2478,9 +2478,23 @@
     }
   ],
   "flightBooking": [
-
-    ],
-    "hotels": [
+    {
+      "id": 1742810726226,
+      "flight": "1",
+      "passenger": [
+        {
+          "firstName": "Napat ",
+          "lastName": "Chumtham",
+          "gender": "female",
+          "dob": "0004-05-02",
+          "nationality": "us"
+        }
+      ],
+      "bookingDate": "2025-03-24T10:05:26.226Z",
+      "approve": false
+    }
+  ],
+  "hotels": [
     {
       "id": "1",
       "name": "MANDARIN ORIENTAL BANGKOK",
@@ -3704,7 +3718,5 @@
       "region": "Central"
     }
   ],
-  "bookingHotel": [
-   
-  ]
+  "bookingHotel": []
 }

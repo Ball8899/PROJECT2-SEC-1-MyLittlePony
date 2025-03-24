@@ -17,7 +17,7 @@ const resetShow = ref(false)
     <div>
       <div><Navbar></Navbar></div>
       <router-view></router-view>
-          <div v-if="!['/list-flight','/flight-booking-form'].includes(route.path)"  class="flex flex-row">
+          <div v-if="['','/'].includes(route.path)"  class="flex flex-row">
             <Menu class="w-[20%]"></Menu>
             <MainContent @update="resetShow = false" :show-toggle="resetShow" class="w-[80%]"></MainContent>
           </div> 

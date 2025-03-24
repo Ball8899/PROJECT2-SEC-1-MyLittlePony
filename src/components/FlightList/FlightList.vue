@@ -57,14 +57,6 @@ const bookingFlight = (id, total) => {
   });
 };
 
-const handleDestination = (data) => {
-  if (data.type === "leaving") {
-    leavingDestination.value = data.value;
-  } else if (data.type === "going") {
-    goingDestination.value = data.value;
-  }
-};
-
 const toggleShowOption = (id) => {
   if (flightOption.value.includes(id)) {
     flightOption.value = flightOption.value.filter(
