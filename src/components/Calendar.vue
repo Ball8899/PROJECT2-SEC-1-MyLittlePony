@@ -81,7 +81,7 @@ const isDateInRange = (date) => {
 const handleMouseDown = (date) => {
   if (!date) return;
 
-  if (props.typeFlight === "one-way") {
+  if (props.typeFlight === "One Way") {
     selectionStart.value = date;
     selectionEnd.value = null;
     isDragging.value = false;
@@ -106,7 +106,7 @@ const handleMouseDown = (date) => {
 
 
 const handleMouseMove = (date) => {
-  if (!date || props.typeFlight === "one-way") return;
+  if (!date || props.typeFlight === "One Way") return;
 
   hoverDate.value = date;
   if (isDragging.value && selectionStart.value) {
@@ -115,7 +115,7 @@ const handleMouseMove = (date) => {
 };
 
 const handleMouseUp = (date) => {
-  if (!date || !selectionStart.value || props.typeFlight === "one-way") return;
+  if (!date || !selectionStart.value || props.typeFlight === "One Way") return;
 
   isDragging.value = false;
 
@@ -218,7 +218,7 @@ const nextMonth = () => {
         </button>
       </div>
 
-      <div v-if="props.typeFlight === 'round-trip'">
+      <div v-if="props.typeFlight === 'Round Trip'">
         <button
           @click="handleType('return')"
           class="hover:bg-gray-300 px-5 py-2"

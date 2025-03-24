@@ -1,11 +1,15 @@
-async function getItems(url) {
-    try {
-        const data = await fetch(url)
-        const finalData = await data.json()
-        return finalData
-    } catch (error) {
-        console.error(error)
+async function getItems (url) {
+  try {
+    const response = await fetch (url);
+    if (!response.ok) {
+      throw new Error (`Error: ${response.statusText}`);
     }
+
+    const finalData = await response.json ();
+    return finalData;
+  } catch (error) {
+    console.error (error);
+  }
 }
 
 async function getHotels(url) {
@@ -56,5 +60,39 @@ async function createBooking(url, Booking) {
     }
 }
 
+async function getItemById (url, id) {
+  try {
+    const response = await fetch (`${url}/${id}`);
+    if (!response.ok) {
+      throw new Error (`Error: ${response.statusText}`);
+    }
 
-export {getItems,getHotelById,getHotels,createBooking}
+    const finalData = await response.json ();
+    return finalData;
+  } catch (error) {
+    console.error (error);
+  }
+}
+
+async function postItem (url, data) {
+  try {
+    const response = await fetch (url, {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify (data),
+    });
+
+    if (!response.ok) {
+      throw new Error (`Error: ${response.statusText}`);
+    }
+
+    const finalData = await response.json (); 
+    return finalData; 
+  } catch (error) {
+    console.error (error); 
+  }
+}
+
+export {getItems, getItemById, postItem, getItems, getHotelById, getHotels, createBooking};
