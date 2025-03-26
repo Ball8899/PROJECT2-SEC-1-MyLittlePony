@@ -1,33 +1,28 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps, defineEmits } from "vue";
 
-const emits = defineEmits(['update-feedback'])
+const emits = defineEmits(["update-feedback", "reset-feedback"]);
 
 const selectedRating = ref(null);
 const selectedOptions = ref([]);
 const feedback = ref("");
 const submitted = ref(false);
 
-const improvementOptions = [
-    "Flight Information",
-    "Customer Support",
-    "Baggage",
-    "Booking Process",
-    "Price/Promotion",
-    "Ticket Issuing",
-    "Payment Status",
-    "Payment Methods",
-    "Changes/Refunds",
-    "Insurance",
-    "Check-in",
-    "Seat Selection",
-    "Features",
-    "Add-ons",
-    "Receipts",
-    "Interface",
-    "Travel Policies",
-    "Airline Services",
-];
+defineProps({
+  title: {
+    type: String,
+    default: "How likely are you to recommend booking flights on JET.GO to a friend or colleague?"
+  },
+  improvementOptions: {
+    type: Array,
+    default: () => [
+      "Flight Information", "Customer Support", "Baggage", "Booking Process",
+      "Price/Promotion", "Ticket Issuing", "Payment Status", "Payment Methods",
+      "Changes/Refunds", "Insurance", "Check-in", "Seat Selection", "Features",
+      "Add-ons", "Receipts", "Interface", "Travel Policies", "Airline Services"
+    ]
+  }
+});
 
 const toggleOption = (option) => {
     if (selectedOptions.value.includes(option)) {
@@ -41,9 +36,14 @@ const toggleOption = (option) => {
 };
 
 const setRating = (rating) => {
-    selectedRating.value = rating
-    updateFeedback();
-}
+    if (selectedRating.value === rating) {
+        selectedRating.value = null;
+    }else{
+        selectedRating.value = rating;
+    }
+     updateFeedback();
+};
+
 
 const updateFeedback = () => {
     emits("update-feedback", { rating: selectedRating.value, options: selectedOptions.value, feedback: feedback.value });
@@ -58,10 +58,12 @@ const submitFeedback = () => {
 
     emits("reset-feedback");
 }
+
+
 </script>
 
 <template>
-    <div class="bg-white p-7 sm:p-7  shadow-md w-full max-w-3xl mt-4 mx-auto sm:ml-24">
+    <div class="bg-white p-7 sm:p-7  shadow-md w-full max-w-3xl mt-4 mx-auto sm:ml-24 rounded-xl">
 
         <div v-if="submitted" class="flex flex-col sm:flex-row items-center sm:space-x-4 text-center sm:text-left">
             <div class="w-10 h-10 flex items-center justify-center bg-teal-400  rounded-full">
@@ -74,8 +76,7 @@ const submitFeedback = () => {
 
         <div v-else>
             <h2 class="text-base sm:text-lg font-bold">
-                <slot name="likely">How likely are you to recommend booking flights on JET.GO to a friend or colleague?
-                </slot>
+             {{ title }}
             </h2>
             <div class="flex flex-col sm:flex-row items-center mt-4 space-y-2 sm:space-y-0 sm:space-x-2">
                 <div class="flex items-center space-x-1 sm:space-x-2 mb-2 sm:mb-0">
@@ -98,7 +99,6 @@ const submitFeedback = () => {
             <div v-if="selectedRating !== null" class="mt-6">
                 <h3 class="font-semibold text-sm">What could JET.GO improve?</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-                    <slot name="improvement-options">
                         <button v-for="option in improvementOptions" :key="option" @click="toggleOption(option)"
                             class="relative flex items-center justify-center px-3 sm:px-4 py-2 border-2 rounded-lg text-xs sm:text-sm transition duration-200"
                             :class="{ 'bg-blue-100 border-blue-500 text-blue-600': selectedOptions.includes(option), 'bg-white border-gray-300 hover:bg-gray-100': !selectedOptions.includes(option) }">
@@ -112,7 +112,6 @@ const submitFeedback = () => {
                                 </svg>
                             </div>
                         </button>
-                    </slot>
                 </div>
                 <textarea v-model="feedback" @input="updateFeedback"
                     class="w-full mt-4 p-2 border rounded-md bg-gray-100 text-xs sm:text-sm"
@@ -127,3 +126,6 @@ const submitFeedback = () => {
         </div>
     </div>
 </template>
+
+
+

@@ -24,7 +24,7 @@ const closeDetails = () => {
 </script>
 
 <template>
-    <div class="bg-white p-7 shadow-md w-full max-w-3xl mt-4 mx-auto sm:ml-24">
+    <div class="bg-white p-7 shadow-md w-full max-w-3xl mt-4 mx-auto sm:ml-24 ">
 
         <h2 class="text-xl font-bold">Flight Details</h2>
         <p class="text-gray-600 text-sm mt-1">All times are in local time</p>

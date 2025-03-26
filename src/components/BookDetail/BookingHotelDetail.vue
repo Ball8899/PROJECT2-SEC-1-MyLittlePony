@@ -1,0 +1,289 @@
+<script setup>
+import Navbar from '../Navbar.vue';
+import Likely from './Likely.vue';
+import PaymentStatus from './PaymentStatus.vue';
+import TotalAmount from './TotalAmount.vue';
+import PromoCode from './PromoCode.vue';
+
+import { ref, computed, onMounted, onUnmounted } from "vue";
+
+
+
+const status = ref('awaiting');
+const countdown = ref(5 * 60);
+const showMore = ref(false)
+const showModal = ref(false);
+const emits = defineEmits(['closeAll']);
+
+
+let timer = ref(null);
+const startCountdown = () => {
+    if (countdown.value <= 0) {
+        status.value = "canceled";
+        return;
+    }
+
+    timer.value = setTimeout(() => {
+        countdown.value--;
+        startCountdown();
+    }, 1000);
+};
+
+const formattedTime = computed(() => {
+    const minutes = Math.floor(countdown.value / 60);
+    const seconds = countdown.value % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+});
+
+onMounted(startCountdown);
+onUnmounted(() => clearTimeout(timer.value));
+
+const cancelBooking = () => {
+    status.value = "canceled";
+};
+
+
+const toggleShowMore = () => {
+    showMore.value = !showMore.value;
+};
+
+const openModal = () => {
+    showModal.value = true;
+}
+const closeModal = () => {
+    emits('closeAll');
+    showModal.value = false;
+};
+
+
+
+</script>
+
+
+<template>
+
+    <div>
+        <Navbar />
+    </div>
+
+
+    <div class="bg-gray-200 min-h-screen p-2 sm:p-4">
+        <div class="text-xs sm:text-sm text-gray-700 flex flex-wrap space-x-2 mx-4 sm:ml-24 mb-4">
+            <a href="" class="text-blue-600 hover:underline">All Bookings</a>
+            <span> > </span>
+            <a href="" class="text-blue-600 hover:underline">Flight Bookings</a>
+            <span> > </span>
+            <span class="text-gray-900">Booking Details</span>
+        </div>
+
+
+        <PaymentStatus v-if="status === 'awaiting'" :status="status"
+            reason="Bookings that are not paid for in time will be canceled" bookingNo="1622918183214445">
+            <template #action>
+                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-2 sm:mt-0">
+                    <button v-if="countdown > 0"
+                        class="bg-orange-500 text-white px-3 sm:px-4 py-2 rounded-lg shadow-md w-full sm:w-auto text-sm">
+                        Pay {{ formattedTime }}
+                    </button>
+                    <button v-else
+                        class="bg-gray-400 text-white px-3 sm:px-4 py-2 rounded-lg shadow-md w-full sm:w-auto text-sm">
+                        Payment Expired
+                    </button>
+                    <button @click="cancelBooking"
+                        class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 w-full sm:w-auto text-sm">
+                        Cancel
+                    </button>
+                </div>
+            </template>
+        </PaymentStatus>
+
+        <PaymentStatus v-else :status="status" bookingNo="77777777235" pin="405">
+            <template #action>
+                <button
+                    class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">
+                    Book Again
+                </button>
+            </template>
+        </PaymentStatus>
+
+        <TotalAmount :totalAmount="3500" bookingTime="17:26, March 8, 2025" />
+
+        <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 flex items-center space-x-4 rounded-xl">
+            <img src="https://picsum.photos/300/200" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg">
+            <div class="flex-1 mt-[-16px] pl-2 ">
+                <h2 class="text-xl font-bold text-gray-800">NASA BANGKOK <span
+                        class="text-yellow-500 text-sm pl-1">★★★★</span>
+                </h2>
+                <p class="text-gray-500 text-sm mt-2">นาซ่า กรุงเทพฯ</p>
+                <div class="text-gray-600 flex items-center mt-3 text-sm">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="pl-2">
+                        44 Sukhumvit 71 Rd, Suan Luang, Bangkok, 10250, Thailand
+                    </p>
+                </div>
+                <div class="text-gray-600 flex items-center mt-1 text-sm">
+                    <i class="fa-solid fa-phone"></i>
+                    <p class="pl-2">
+                        +66-27199988
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 rounded-xl">
+            <div class="flex justify-between items-start">
+                <div>
+                    <p class="text-gray-500 text-sm">Check-in</p>
+                    <p class="text-lg font-bold text-gray-800 mt-1">Fri, Mar 14, 2025</p>
+                    <p class="text-gray-600 text-sm">14:00–00:00</p>
+                </div>
+                <div class="flex items-center justify-center text-gray-700 mt-5 space-x-1">
+                    <p class="text-sm">1 Night</p>
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+
+                <div class="text-right">
+                    <p class="text-gray-500 text-sm">Check-out</p>
+                    <p class="text-lg font-bold text-gray-800 mt-1">Sat, Mar 15, 2025</p>
+                    <p class="text-gray-600 text-sm">Before 12:00</p>
+                </div>
+            </div>
+            <p class="text-gray-500 text-sm mt-4">• All times are in the hotel's local time</p>
+        </div>
+
+        <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 rounded-xl">
+            <h2 class="text-lg font-bold text-gray-900">Standard Double Or Twin Room · 1 Room</h2>
+            <div class="flex items-center gap-x-4 text-gray-600 mt-2 text-sm">
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-bed"></i>
+                    <p>1 double bed or 2 single beds</p>
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-ban-smoking"></i>
+                    <p>Non-smoking</p>
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-user"></i>
+                    <p>adults</p>
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-solid fa-house"></i>
+                    <p>22m²</p>
+                </div>
+            </div>
+            <hr class="my-4 border-gray-300">
+
+            <div class="grid grid-cols-[150px_1fr] gap-4">
+                <p class="font-bold text-sm">Meals</p>
+                <div class="space-y-2">
+                    <p class="text-sm">No meals</p>
+                    <p class="text-sm">Extra breakfast available for purchase</p>
+                    <div v-if="showMore">
+                        <p class="text-sm">Extra breakfast: ฿ 180.00 per person</p>
+                        <p class="text-sm">Style: Buffet</p>
+                    </div>
+                    <button @click="toggleShowMore"
+                        class="flex items-center text-blue-500 mt-2 text-sm hover:underline">
+                        {{ showMore ? 'Show Less ▲' : 'Show More ▼' }}
+                    </button>
+                </div>
+            </div>
+            <hr class="my-4 border-gray-300">
+
+            <div class="py-2">
+                <div class="grid grid-cols-[150px_1fr] gap-4">
+                    <p class="font-bold text-sm">Purchased & Complimentary Services</p>
+                    <div class="space-y-1">
+                        <p class="text-sm">Free upgrade to Deluxe Double or Twin Room (1)</p>
+                        <button @click="openModal" class="text-blue-500 hover:underline block text-sm">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div v-if="showModal" @click.self="closeModal"
+                class="fixed inset-0 flex items-center justify-center bg-black/40 p-4 z-50">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-base sm:text-xl font-bold">Travel Insurance</h3>
+                        <button @click="closeModal" class="text-gray-500 hover:text-gray-700">
+                            ✖
+                        </button>
+                    </div>
+
+                    <div class="mt-4">
+                        <p class="text-sm mt-4 font-bold">
+                            1. Free upgrade to Deluxe Double or Twin Room (1)
+                        </p>
+                        <div class="mt-3 space-y-2 text-gray-500 text-sm">
+                            <div class="flex">
+                                <p class="font-bold w-40">Reservation policy:</p>
+                                <p class="flex-1">Advance booking not required</p>
+                            </div>
+                            <div class="flex">
+                                <p class="font-bold w-40">Contact number:</p>
+                                <p class="flex-1">+66-2-7199888</p>
+                            </div>
+                            <div class="flex">
+                                <p class="font-bold w-40">Validity period:</p>
+                                <p class="flex-1">Can be enjoyed once per room during your stay</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 rounded-xl">
+            <h2 class="text-lg font-bold text-gray-900">Guest Info</h2>
+            <div class="grid grid-cols-[150px_1fr] gap-8 mt-3">
+                <p class="font-bold text-sm">Names</p>
+                <p class="text-sm">GHGGG SADSADSSAD</p>
+            </div>
+            <hr class="my-4 border-gray-300">
+            <div class="grid grid-cols-[150px_1fr] gap-8 mt-3">
+                <p class="font-bold text-sm">Contact Info</p>
+                <div class="text-sm flex items-center space-x-2">
+                    <p>66-095****880</p>
+                    <span class="text-gray-400">|</span>
+                    <p>ax***22@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 rounded-xl">
+            <h2 class="text-xl sm:text-xl font-bold">Your Add-ons</h2>
+            <PromoCode :promoCodes="[
+                { id: 1, icon: 'fa-solid fa-hotel', description: '฿300 off Hotel', discount: 300 },
+                { id: 2, icon: 'fa-solid fa-hotel', description: '฿150 Off Hotel', discount: 150 }
+            ]">
+            </PromoCode>
+        </div>
+
+        <Likely :improvementOptions="[
+            'Reviews weren\'t helpful',
+            'Too expensive',
+            'Unsatisfactory JET.GO customer support',
+            'Hard to pay',
+            'Proof for reimbursement',
+            'Unsatisfactory hotel stay',
+            'Member Rewards & Trip Coins',
+            'Room not available/price changed',
+            'Complicated booking process',
+            'Inaccurate hotel info',
+            'Too few hotels to choose from',
+            'Slow booking confirmation',
+        ]" />
+        
+
+
+
+    </div>
+
+
+</template>
