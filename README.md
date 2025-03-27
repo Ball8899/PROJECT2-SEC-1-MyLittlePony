@@ -50,5 +50,5 @@
 |---|---|---|---|---|---|
 | 66130500013   | Meeting & Design | Upload CardHotelList.vue , ListModelOfHotel.vue , CardModel.vue and Upload Hotel.json for test | create Fetch data of Hotels and fix Responsive|    add view-router and create BookingHotel , create List Room , add Hotels data to db.json|
 | 66130500027 | Meeting & Design  | Upload project and create homepage and component for booking |  update FlightList for display fights and update booking for send data to fetch for query flights | update fucntion process post flight booking to backend| 
-| 66130500036  | Meeting & Design |  Upload create componet BookingDetail,Likely,PaymentStatus,TotalAmount  |  Upload  BookDetail and add FligthDetail,function BookingDetail and Likely create component Advert
+| 66130500036  | Meeting & Design |  Upload create componet BookingDetail,Likely,PaymentStatus,TotalAmount  |  Upload  BookDetail and add FligthDetail,function BookingDetail and Likely create component Advert   |   Upload BookingHotelDetail  and update function BookingDetail , PromoCode, TotalAmount
 | 66130500041  | Meeting & Design | Upload Component listHotel function to loop hotel details in file.json and hotelList for scoped slot hotel detail on All booking page  | 
