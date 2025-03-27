@@ -1,5 +1,6 @@
 <script setup>
 import {ref , computed} from 'vue';
+import { getItems } from "../utils/fetchUtil.js";
 const filterValue = ref('All')
 const props = defineProps({
   items: {
@@ -16,7 +17,7 @@ const filteredItems = computed(() => {
   if (filterValue.value === 'All') {
     return props.items;
   }
-  return props.items.filter(item => item.status.toLowerCase() === filterValue.value.toLowerCase());
+  return props.items.filter(item => item.approve.toLowerCase() === filterValue.value.toLowerCase());
 });
 
 </script>
@@ -45,7 +46,7 @@ const filteredItems = computed(() => {
     </button>
 </div>
 
-  <ul>
+  <ul class="max-h-91.5 overflow-y-auto">
   <li v-for="(item, index) in filteredItems" :key="index">
     <slot :booked="item"> Booked </slot>
   </li>
