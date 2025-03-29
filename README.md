@@ -2,12 +2,12 @@
 
 #### Team Member MyLittlePony
 
-| Student ID  | Full Name | Github User  | 
-|---|---|---|
-| 66130500013   | Jakkapong Suksomboon   | Ball8899  |  
-| 66130500027 | Napat Chumtham   |  napatzzz |  
-| 66130500036  | Thattaphol Seelong   |  Turbo9922 |  
-| 66130500041  |  Thammasorn Chatchayanusorn  | Thammasornn |  
+| Student ID  | Full Name | Github User  | Task Load(%) |
+|---|---|---|---|
+| 66130500013   | Jakkapong Suksomboon   | Ball8899  |  25 |
+| 66130500027 | Napat Chumtham   |  napatzzz |  25 |
+| 66130500036  | Thattaphol Seelong   |  Turbo9922 | 25 |
+| 66130500041  |  Thammasorn Chatchayanusorn  | Thammasornn |  25 |
 
 #### Component Diagram
 <img width="802" alt="image" src="https://github.com/user-attachments/assets/2a9d8b1b-16aa-476c-9773-d48f6f65e3d8" />
