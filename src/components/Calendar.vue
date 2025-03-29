@@ -62,7 +62,7 @@ const isDateSelectionEnd = (date) => {
 };
 
 const isDateInRange = (date) => {
-  if (!date || !selectionStart.value || props.typeFlight === "one-way")
+  if (!date || !selectionStart.value || props.typeFlight === "One Way")
     return false;
 
   const end = selectionEnd.value || hoverDate.value;
@@ -192,21 +192,34 @@ const nextMonth = () => {
     1
   );
 };
+
+
+
+const handleClick = (event) => {
+  if (selectionType.value === 'depart' && props.typeFlight === 'One Way') {
+    return
+  } 
+   else if (selectionType.value === 'depart' || selectionType.value === 'return') {
+    event.stopPropagation();
+  }
+
+};
+
 </script>
 
 <template>
   <div
-    @click.stop=""
-    class="font-xs bg-white w-[55%] py-5 shadow-lg -mt-15 rounded-2xl select-none"
+    @click="handleClick"
+    class="font-xs bg-white w-[75%] py-0 shadow-lg -mt-15 rounded-2xl select-none"
   >
-    <div class="flex flex-row justify-end gap-3 py-2 px-5">
-      <div>
+    <div class="flex flex-row justify-end gap-15 py px-5">
+      <div :class="selectionType === 'depart' ? 'border-b-5 border-b-blue-500 text-black' : ''">
         <button
           @click="handleType('depart')"
-          class="hover:bg-gray-300 px-5 py-2"
+          class="py-2"
         >
-          <p>Depart</p>
-          <p>
+          <p class="text-gray-500 text-sm font-light text-right mb-1">Depart</p>
+          <p class="font-light text-sm">
             {{
               selectionStart.toLocaleString("default", {
                 day: "numeric",
@@ -218,13 +231,13 @@ const nextMonth = () => {
         </button>
       </div>
 
-      <div v-if="props.typeFlight === 'Round Trip'">
+      <div :class="selectionType === 'return' ? 'border-b-5 border-b-blue-500 text-black' : ''" v-if="props.typeFlight === 'Round Trip'">
         <button
           @click="handleType('return')"
-          class="hover:bg-gray-300 px-5 py-2"
+          class=" py-2"
         >
-          <p>Return</p>
-          <p v-if="props.typeFlight !== 'One Way'">
+          <p class="text-gray-500  text-sm font-light text-right mb-1">Return</p>
+          <p class="font-light text-sm" v-if="props.typeFlight !== 'One Way'">
             {{
               selectionEnd.toLocaleString("default", {
                 day: "numeric",
@@ -236,12 +249,13 @@ const nextMonth = () => {
         </button>
       </div>
     </div>
+    <hr class="text-gray-200 mb-6">
     <div class="flex flex-row justify-between px-10">
       <button @click="previousMonth">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
 
-      <h3 class="text-center text-[13px] font-semibold">
+      <h3 class="text-center text-[16px] font-semibold">
         {{
           new Date(currentYear, currentMonth).toLocaleString("default", {
             month: "long",
@@ -250,7 +264,7 @@ const nextMonth = () => {
         {{ currentYear }}
       </h3>
       <div class="px-8"></div>
-      <h3 class="text-center text-[13px] font-semibold">
+      <h3 class="text-center text-[16px] font-semibold">
         {{
           new Date(currentYear, currentMonth + 1).toLocaleString("default", {
             month: "long",
@@ -279,7 +293,7 @@ const nextMonth = () => {
             v-for="(day, index) in currentMonthDays"
             :key="index"
             :class="[
-              'w-12 h-12 text-[15px] font-semibold flex items-center justify-center rounded-lg',
+              'w-11 h-11 text-[14.5px] font-meduim flex items-center justify-center rounded-xs',
               day.day ? 'cursor-pointer' : '',
               day.isSelectionStart || day.isSelectionEnd
                 ? 'bg-blue-600 text-white'
@@ -306,11 +320,11 @@ const nextMonth = () => {
           </div>
         </div>
         <div class="grid grid-cols-7 gap-0.5 justify-items-center">
-          <div
+          <div 
             v-for="(day, index) in nextMonthDays"
             :key="index"
             :class="[
-              'w-12 h-12 flex text-[15px] font-semibold items-center justify-center rounded-lg',
+              'w-11 h-11 flex text-[14.5px] font-medium items-center justify-center rounded-xs',
               day.day ? 'cursor-pointer' : '',
               day.isSelectionStart || (day.isSelectionEnd && typeFlight !== 'One Way')
                 ? 'bg-blue-600 text-white'
@@ -326,13 +340,6 @@ const nextMonth = () => {
           </div>
         </div>
       </div>
-    </div>
-
-    <div v-if="selectionStart || selectionEnd" class="mt-6 px-10 text-center">
-      <p class="text-gray-600">
-        Selected Range: {{ selectionStart?.toLocaleDateString() }}
-        {{ selectionEnd ? `- ${selectionEnd?.toLocaleDateString()}` : "" }}
-      </p>
     </div>
   </div>
 </template>

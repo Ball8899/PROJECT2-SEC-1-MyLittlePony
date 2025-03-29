@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps, computed, ref, defineEmits, watch } from "vue";
 
-const emit = defineEmits(['sendUserForm'])
+const emit = defineEmits(["sendUserForm"]);
 
 const props = defineProps({
   passenger: {
@@ -39,7 +39,7 @@ const form = (index) => {
 const saveForm = () => {
   formData.value[uptodateIndex.value] = { ...tempFormData.value };
   openForm.value = false;
-  emit('sendUserForm', formData.value)
+  emit("sendUserForm", formData.value);
 };
 
 const passengers = computed(() => {
@@ -49,6 +49,16 @@ const passengers = computed(() => {
   }
   return list;
 });
+
+const clearInput = () => {
+  tempFormData.value = {
+    firstName: "",
+    lastName: "",
+    gender: "",
+    dob: "",
+    nationality: "",
+  };
+};
 </script>
 
 <template>
@@ -63,7 +73,9 @@ const passengers = computed(() => {
         <div class="flex justify-between items-center mb-6">
           <h1 class="text-xl font-bold text-gray-800">Passenger</h1>
           <div class="flex items-center gap-2">
-            <button class="text-blue-500 font-medium">Clear</button>
+            <button @click="clearInput" class="text-blue-500 font-medium">
+              Clear
+            </button>
             <button class="text-gray-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -325,11 +337,18 @@ const passengers = computed(() => {
       <div
         class="my-2 bg-white rounded-xl shadow-xs px-6 py-5 transition-all hover:shadow-md"
       >
-        <h1 v-if="!(formData[index].firstName &&
-            formData[index].lastName &&
-            formData[index].dob &&
-            formData[index].nationality &&
-            formData[index].gender)" class="text-lg font-semibold text-gray-800 mb-4">
+        <h1
+          v-if="
+            !(
+              formData[index].firstName &&
+              formData[index].lastName &&
+              formData[index].dob &&
+              formData[index].nationality &&
+              formData[index].gender
+            )
+          "
+          class="text-lg font-semibold text-gray-800 mb-4"
+        >
           Passenger {{ index + 1 }}
         </h1>
         <div
@@ -362,7 +381,7 @@ const passengers = computed(() => {
               </svg>
               <span class="font-bold">Boarding Pass</span>
             </div>
-            <div  class="text-xs bg-white/20 px-2 py-1 rounded-full">
+            <div class="text-xs bg-white/20 px-2 py-1 rounded-full">
               Passenger {{ index + 1 }}
             </div>
           </div>

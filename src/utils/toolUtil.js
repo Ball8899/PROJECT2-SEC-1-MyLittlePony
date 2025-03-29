@@ -7,4 +7,21 @@ const getAirlineLogo = airline => {
   }
 };
 
-export {getAirlineLogo}
+const notFilledInto = (data) => {
+  if (data.length === 0) {
+    return true;
+  }
+  for (const element of data) {
+    if (element) {
+      for (const key in element) {
+        if (element[key] === '') {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+};
+
+
+export {getAirlineLogo, notFilledInto}

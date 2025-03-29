@@ -1,6 +1,7 @@
 <script setup>
 import { ref, defineProps, defineEmits } from "vue";
 import Booking from "./Booking.vue";
+import Advert from "./Advert.vue";
 const typeBooking = ref('flight')
 
 const emits = defineEmits(["update"]);
@@ -32,9 +33,9 @@ const updateEmits = () => {
           <p>|</p>
           <p>🏕 Custom your trip now!</p>
         </div>
-        <div class="flex justify-center py-10">
+        <div class="flex justify-center py-10 ">
           <div
-            class="flex flex-row backdrop-blur-xl justify-between bg-black/50 w-[80%] rounded-full px-1 py-1"
+            class="relative z-100 flex flex-row backdrop-blur-xl justify-between bg-black/50 w-[80%] rounded-full px-1 py-1"
           >
               <button
                 @click="typeBooking = 'hotel'"
@@ -92,11 +93,12 @@ const updateEmits = () => {
               </button>
           </div>
         </div>
-        <div class="w-[90%] m-auto -mt-14 rounded-xl" >
+        <div class="relative z-10 w-[90%] m-auto -mt-14 rounded-xl" >
           <Booking @update="updateEmits" :show-toggle="toggle.showToggle" />
         </div>
       </div>
     </div>
+    <Advert class="relative z-0"></Advert>
   </div>
 </template>
 

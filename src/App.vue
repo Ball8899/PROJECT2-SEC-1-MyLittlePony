@@ -5,6 +5,7 @@ import MainContent from "./components/MainContent.vue";
 import FlightList from './components/FlightList/FlightList.vue'
 import { ref, watch } from 'vue'
 import { useRoute } from "vue-router";
+import FooterComp from "./components/FooterComp.vue";
 const route = useRoute()
 console.log(route);
 
