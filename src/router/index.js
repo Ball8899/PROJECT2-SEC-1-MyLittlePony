@@ -15,10 +15,12 @@ import ListHotelSearch from '../components/Hotels/ListHotelSearch.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+
     {
       path: "/list-flight",
       name: "listFlight",
       component: FlightList,
+      meta: { title: 'เลือกเส้นทางของคุณ' }
     },
     {
       path: "/flight-booking-form/:flightId/:passenger",
@@ -62,5 +64,15 @@ const router = createRouter({
     }
   ],
 });
+
+router.beforeEach ((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  } else {
+    document.title = 'Vite App'; 
+  }
+  next ();
+});
+
 
 export default router

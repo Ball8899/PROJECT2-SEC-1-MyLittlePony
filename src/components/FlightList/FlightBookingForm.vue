@@ -2,9 +2,8 @@
 import { onMounted, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { getItemById } from "../../utils/fetchUtil.js";
-import { getAirlineLogo } from "../../utils/toolUtil.js";
+import { getAirlineLogo, notFilledInto } from "../../utils/toolUtil.js";
 import { useRouter } from "vue-router";
-import { notFilledInto } from "../../utils/toolUtil.js";
 import UserFrom from "../form/UserFrom.vue";
 const router = useRouter();
 const { params, query } = useRoute();
