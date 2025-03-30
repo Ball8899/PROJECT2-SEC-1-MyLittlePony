@@ -1,5 +1,9 @@
 <script setup>
 
+import router from '@/router';
+const routerTo = () => {
+  router.push({ name: "flightBookedContent"});
+};
 </script>
 
 <template>
@@ -45,7 +49,7 @@
       <button class="hover:bg-gray-100 px-4 py-2 rounded-lg">
         Customer Support
       </button>
-      <button class="hover:bg-gray-100 px-4 py-2 rounded-lg">Search Booking</button>
+      <button class="hover:bg-gray-100 px-4 py-2 rounded-lg" @click="routerTo">My Booking</button>
       <button class="hover:bg-amber-400 hover:text-black duration-500 px-4 py-2 rounded-lg bg-blue-600/90 text-white">
         Sign in / Register
       </button>
