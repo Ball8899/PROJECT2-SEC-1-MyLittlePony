@@ -23,22 +23,36 @@ async function getHotels(url) {
     }
 }
 
-async function getHotelById(url,id) {
-    try {
-        const data = await fetch(`${url}/${id}`)
-        if(data.status === 404){
-            return "Item not found"
-        }
-        if (!data.ok) {
-            throw new Error(`HTTP error! status: ${data.status}`);
-        }
-        const hotels = await data.json()
-        return hotels
-    }
-    catch (error){
-        console.error(`Error fetching hotel with ID ${id}:`, error);
-        throw error;
-    }
+async function getHotelById(url, id) {
+  try {
+      if (!Array.isArray(id)) {
+          const response = await fetch(`${url}/${id}`);
+          if (response.status === 404) {
+              console.warn(`Hotel ID ${id} not found`);
+              return [];
+    
+          }
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return await response.json();
+      } else {
+          const response = await fetch(url);
+          if (!response.ok) {
+              console.warn("Hotel list not found");
+              return [];
+          }
+          const data = await response.json();
+          if (!Array.isArray(data)) {
+              console.error("Data is not an array:", data);
+              return [];
+          }
+          return data.filter(hotel => id.includes(Number(hotel.id)));
+      }
+  } catch (error) {
+      console.error("Error fetching hotels:", error);
+      return [];
+  }
 }
 
 async function createBooking(url, Booking) {

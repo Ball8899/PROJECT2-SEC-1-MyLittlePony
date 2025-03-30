@@ -11,12 +11,12 @@
       <div class="grid px-3 gap-2">
         <img
           class="w-50 rounded-lg h-28"
-          src="https://picsum.photos/300/200"
+          src="../../assets/hotels/room1.jpg"
           alt=""
         />
         <div class="w-50 g gap-2 grid grid-cols-2">
-          <img class="rounded-lg" src="https://picsum.photos/300/200" alt="" />
-          <img class="rounded-lg" src="https://picsum.photos/300/200" alt="" />
+          <img class="rounded-lg" src="../../assets/hotels/room2.jpg" alt="" />
+          <img class="rounded-lg" src="../../assets/hotels/room2.jpg" alt="" />
         </div>
         <div class="">
           <ul class="text-gray-800">

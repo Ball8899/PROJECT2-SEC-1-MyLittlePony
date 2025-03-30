@@ -2661,29 +2661,8 @@
       "rating": 4.9,
       "reviews": "12,543",
       "description": "Experience unparalleled luxury at the iconic Mandarin Oriental Bangkok, nestled along the Chao Phraya River. This legendary hotel combines traditional Thai elegance with world-class service, offering a serene sanctuary in the heart of Bangkok.",
-      "price": 15900,
-      "image": "https://picsum.photos/300/200",
+      "price": 1500,
       "provinces": "BANGKOK",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
       "rooms": [
         {
           "id": 101,
@@ -2703,11 +2682,6 @@
               "price": 300,
               "payment": "Prepay offline"
             }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=1",
-            "https://picsum.photos/300/200?random=2",
-            "https://picsum.photos/300/200?random=3"
           ],
           "capacity": 2
         },
@@ -2730,215 +2704,181 @@
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=4",
-            "https://picsum.photos/300/200?random=5",
-            "https://picsum.photos/300/200?random=6"
-          ],
           "capacity": 3
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "name": "PENINSULA BANGKOK",
-      "address": "333 Charoennakorn Road | Riverside",
-      "rating": 4.8,
-      "reviews": "10,234",
-      "description": "The Peninsula Bangkok offers a luxurious riverside retreat with stunning views of the Chao Phraya River and Bangkok skyline. Known for its distinctive wave-shaped design, this five-star hotel provides spacious rooms, exceptional dining, and the legendary Peninsula service.",
-      "price": 14500,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "BANGKOK",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
-      "rooms": [
-        {
-          "id": 201,
-          "name": "Deluxe Room",
-          "options": [
-            {
-              "id": 2011,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 3800,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 2012,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 3500,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=7",
-            "https://picsum.photos/300/200?random=8",
-            "https://picsum.photos/300/200?random=9"
-          ],
-          "capacity": 2
-        },
-        {
-          "id": 202,
-          "name": "Grand Deluxe Suite",
-          "options": [
-            {
-              "id": 2021,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 6200,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 2022,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 5800,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=10",
-            "https://picsum.photos/300/200?random=11",
-            "https://picsum.photos/300/200?random=12"
-          ],
-          "capacity": 4
         }
       ]
     },
     {
       "id": "3",
-      "name": "ANANTARA CHIANG MAI RESORT",
-      "address": "123/1 Charoen Prathet Road | Night Bazaar",
-      "rating": 4.7,
-      "reviews": "7,654",
-      "description": "Anantara Chiang Mai Resort is a peaceful sanctuary on the banks of the Mae Ping River, just a short walk from the famous Night Bazaar. This contemporary resort blends modern design with traditional Thai influences, offering a tranquil escape in the cultural heart of northern Thailand.",
-      "price": 12900,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "CHIANG MAI",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
+      "name": "SIAM KEMPINSKI HOTEL BANGKOK",
+      "address": "991/9 Rama I Road | Pathumwan",
+      "rating": 4.8,
+      "reviews": "8,765",
+      "description": "Siam Kempinski Hotel Bangkok is a luxury five-star hotel centrally located in the heart of Bangkok's premier shopping and entertainment district. With direct access to Siam Paragon shopping mall, this elegant property offers contemporary rooms, lush gardens, and multiple swimming pools creating a resort-like atmosphere in the city center.",
+      "price": 7500,
+      "provinces": "BANGKOK",
       "rooms": [
         {
-          "id": 301,
-          "name": "Deluxe River View Room",
+          "id": 20701,
+          "name": "Deluxe Room",
           "options": [
             {
-              "id": 3011,
+              "id": 2070111,
               "type": "Online",
               "description": "Book via website or mobile app",
-              "price": 4200,
+              "price": 9000,
               "payment": "Prepay online"
             },
             {
-              "id": 3012,
+              "id": 2070112,
               "type": "Offline",
               "description": "Book at hotel reception or via phone",
-              "price": 3900,
+              "price": 8250,
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=13",
-            "https://picsum.photos/300/200?random=14",
-            "https://picsum.photos/300/200?random=15"
-          ],
-          "capacity": 3
+          "capacity": 2
         },
         {
-          "id": 302,
-          "name": "Kasara Suite",
+          "id": 20702,
+          "name": "Suite Room",
           "options": [
             {
-              "id": 3021,
+              "id": 2070121,
               "type": "Online",
               "description": "Book via website or mobile app",
-              "price": 7500,
+              "price": 11250,
               "payment": "Prepay online"
             },
             {
-              "id": 3022,
+              "id": 2070122,
               "type": "Offline",
               "description": "Book at hotel reception or via phone",
-              "price": 7000,
+              "price": 10500,
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=16",
-            "https://picsum.photos/300/200?random=17",
-            "https://picsum.photos/300/200?random=18"
-          ],
-          "capacity": 4
+          "capacity": 3
         }
       ]
     },
     {
       "id": "4",
+      "name": "THE PENINSULA BANGKOK",
+      "address": "333 Charoennakorn Road | Riverside",
+      "rating": 4.9,
+      "reviews": "7,654",
+      "description": "The Peninsula Bangkok is a stunning riverside hotel offering unparalleled elegance and luxury. This iconic property features spacious rooms with panoramic river views, exquisite dining options, a three-tiered swimming pool, and the legendary Peninsula service, providing a sophisticated retreat in the bustling Thai capital.",
+      "price": 9000,
+      "provinces": "BANGKOK",
+      "rooms": [
+        {
+          "id": 20801,
+          "name": "Deluxe Room",
+          "options": [
+            {
+              "id": 2080111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 10800,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 2080112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 9900,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 20802,
+          "name": "Suite Room",
+          "options": [
+            {
+              "id": 2080121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 13500,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 2080122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 12600,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "LEBUA AT STATE TOWER",
+      "address": "1055/111 Silom Road | Bangrak",
+      "rating": 4.7,
+      "reviews": "9,876",
+      "description": "Lebua at State Tower is a luxury all-suite hotel known for its stunning rooftop venues, including the famous Sky Bar featured in 'The Hangover Part II'. This elegant property offers spacious suites with balconies, multiple award-winning restaurants and bars, and breathtaking views of Bangkok and the Chao Phraya River.",
+      "price": 6500,
+      "provinces": "BANGKOK",
+      "rooms": [
+        {
+          "id": 20901,
+          "name": "Deluxe Room",
+          "options": [
+            {
+              "id": 2090111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 7800,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 2090112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 7150,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 20902,
+          "name": "Suite Room",
+          "options": [
+            {
+              "id": 2090121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 9750,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 2090122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 9100,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "6",
       "name": "TRISARA PHUKET",
       "address": "60/1 Moo 6, Srisoonthorn Road | Cherngtalay",
       "rating": 4.9,
       "reviews": "5,432",
       "description": "Trisara, meaning 'Third Garden in Heaven' in Sanskrit, is a tropical paradise nestled on a private bay on Phuket's northwestern coast. This exclusive resort features private pool villas and residences set amidst lush tropical gardens, offering breathtaking views of the Andaman Sea.",
-      "price": 42900,
-      "image": "https://picsum.photos/300/200",
+      "price": 8000,
       "provinces": "PHUKET",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
       "rooms": [
         {
           "id": 401,
@@ -2958,11 +2898,6 @@
               "price": 14000,
               "payment": "Prepay offline"
             }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=19",
-            "https://picsum.photos/300/200?random=20",
-            "https://picsum.photos/300/200?random=21"
           ],
           "capacity": 2
         },
@@ -2985,45 +2920,181 @@
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=22",
-            "https://picsum.photos/300/200?random=23",
-            "https://picsum.photos/300/200?random=24"
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "BANYAN TREE PHUKET",
+      "address": "33, 33/27 Moo 4, Srisoonthorn Road | Cherngtalay",
+      "rating": 4.8,
+      "reviews": "4,876",
+      "description": "Banyan Tree Phuket is a sanctuary for the senses, offering luxurious all-pool villas nestled around a saltwater lagoon and surrounded by lush tropical gardens. This award-winning resort features world-class dining, a renowned spa, and an 18-hole golf course, providing an idyllic retreat in paradise.",
+      "price": 7500,
+      "provinces": "PHUKET",
+      "rooms": [
+        {
+          "id": 20101,
+          "name": "Deluxe Pool Villa",
+          "options": [
+            {
+              "id": 2010101,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 12000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 2010102,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 11500,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 20102,
+          "name": "Serenity Pool Villa",
+          "options": [
+            {
+              "id": 2010201,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 16000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 2010202,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 15500,
+              "payment": "Prepay offline"
+            }
           ],
           "capacity": 3
         }
       ]
     },
     {
-      "id": "5",
+      "id": "8",
+      "name": "AMANPURI PHUKET",
+      "address": "Pansea Beach, Cherngtalay | Surin Beach",
+      "rating": 4.9,
+      "reviews": "3,245",
+      "description": "Amanpuri, meaning 'place of peace' in Sanskrit, was the first Aman resort. Set on a secluded coconut grove overlooking the Andaman Sea, this timeless retreat offers pavilions and villas with private pools, exceptional dining experiences, and a holistic wellness center, embodying the essence of Thai luxury.",
+      "price": 15000,
+      "provinces": "PHUKET",
+      "rooms": [
+        {
+          "id": 20201,
+          "name": "Garden Pavilion",
+          "options": [
+            {
+              "id": 2020101,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 20000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 2020102,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 19500,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 20202,
+          "name": "Ocean Pavilion",
+          "options": [
+            {
+              "id": 2020201,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 25000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 2020202,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 24000,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "name": "AMANPURI PHUKET",
+      "address": "Pansea Beach, Cherngtalay | Surin Beach",
+      "rating": 4.9,
+      "reviews": "3,245",
+      "description": "Amanpuri, meaning 'place of peace' in Sanskrit, was the first Aman resort. Set on a secluded coconut grove overlooking the Andaman Sea, this timeless retreat offers pavilions and villas with private pools, exceptional dining experiences, and a holistic wellness center, embodying the essence of Thai luxury.",
+      "price": 15000,
+      "provinces": "PHUKET",
+      "rooms": [
+        {
+          "id": 1501,
+          "name": "Garden Pavilion",
+          "options": [
+            {
+              "id": 150111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 20000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 150112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 19500,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 1502,
+          "name": "Ocean Pavilion",
+          "options": [
+            {
+              "id": 150121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 25000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 150122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 24000,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "9",
       "name": "CONRAD KOH SAMUI",
       "address": "49/8-9 Moo 4, Hillcrest Road | Taling Ngam",
       "rating": 4.8,
       "reviews": "4,567",
       "description": "Conrad Koh Samui is a luxury pool villa resort perched on a hillside overlooking the stunning Gulf of Thailand. Each villa features a private infinity pool with panoramic ocean views, offering an exclusive and secluded retreat on the magical island of Koh Samui.",
-      "price": 38900,
-      "image": "https://picsum.photos/300/200",
+      "price": 900,
       "provinces": "SURAT THANI",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
       "rooms": [
         {
           "id": 501,
@@ -3043,11 +3114,6 @@
               "price": 11800,
               "payment": "Prepay offline"
             }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=25",
-            "https://picsum.photos/300/200?random=26",
-            "https://picsum.photos/300/200?random=27"
           ],
           "capacity": 2
         },
@@ -3070,45 +3136,181 @@
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=28",
-            "https://picsum.photos/300/200?random=29",
-            "https://picsum.photos/300/200?random=30"
+          "capacity": 4
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "name": "CONRAD KOH SAMUI",
+      "address": "49/8-9 Moo 4, Hillcrest Road | Taling Ngam",
+      "rating": 4.8,
+      "reviews": "4,567",
+      "description": "Conrad Koh Samui is a luxury pool villa resort perched on a hillside overlooking the stunning Gulf of Thailand. Each villa features a private infinity pool with panoramic ocean views, offering an exclusive and secluded retreat on the magical island of Koh Samui.",
+      "price": 900,
+      "provinces": "SURAT THANI",
+      "rooms": [
+        {
+          "id": 1601,
+          "name": "Oceanview Pool Villa",
+          "options": [
+            {
+              "id": 160111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 12500,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 160112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 11800,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 1602,
+          "name": "Conrad Royal Oceanview Pool Villa",
+          "options": [
+            {
+              "id": 160121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 16500,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 160122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 15800,
+              "payment": "Prepay offline"
+            }
           ],
           "capacity": 4
         }
       ]
     },
     {
-      "id": "6",
+      "id": "17",
+      "name": "CONRAD KOH SAMUI",
+      "address": "49/8-9 Moo 4, Hillcrest Road | Taling Ngam",
+      "rating": 4.8,
+      "reviews": "4,567",
+      "description": "Conrad Koh Samui is a luxury pool villa resort perched on a hillside overlooking the stunning Gulf of Thailand. Each villa features a private infinity pool with panoramic ocean views, offering an exclusive and secluded retreat on the magical island of Koh Samui.",
+      "price": 900,
+      "provinces": "SURAT THANI",
+      "rooms": [
+        {
+          "id": 1701,
+          "name": "Oceanview Pool Villa",
+          "options": [
+            {
+              "id": 170111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 12500,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 170112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 11800,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 1702,
+          "name": "Conrad Royal Oceanview Pool Villa",
+          "options": [
+            {
+              "id": 170121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 16500,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 170122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 15800,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 4
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "name": "CONRAD KOH SAMUI",
+      "address": "49/8-9 Moo 4, Hillcrest Road | Taling Ngam",
+      "rating": 4.8,
+      "reviews": "4,567",
+      "description": "Conrad Koh Samui is a luxury pool villa resort perched on a hillside overlooking the stunning Gulf of Thailand. Each villa features a private infinity pool with panoramic ocean views, offering an exclusive and secluded retreat on the magical island of Koh Samui.",
+      "price": 900,
+      "provinces": "SURAT THANI",
+      "rooms": [
+        {
+          "id": 1801,
+          "name": "Oceanview Pool Villa",
+          "options": [
+            {
+              "id": 180111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 12500,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 180112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 11800,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 1802,
+          "name": "Conrad Royal Oceanview Pool Villa",
+          "options": [
+            {
+              "id": 180121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 16500,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 180122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 15800,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 4
+        }
+      ]
+    },
+    {
+      "id": "10",
       "name": "CLASSIC KAMEO AYUTTHAYA",
       "address": "1 Moo 13, Rojana Road | City Center",
       "rating": 4.5,
       "reviews": "2,345",
       "description": "Classic Kameo Ayutthaya offers comfortable accommodation in the historic city of Ayutthaya, a UNESCO World Heritage Site. This modern hotel provides a convenient base for exploring ancient temples and ruins, with well-appointed rooms and excellent facilities for both business and leisure travelers.",
-      "price": 3900,
-      "image": "https://picsum.photos/300/200",
+      "price": 6000,
       "provinces": "AYUTTHAYA",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
       "rooms": [
         {
           "id": 601,
@@ -3128,11 +3330,6 @@
               "price": 2000,
               "payment": "Prepay offline"
             }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=31",
-            "https://picsum.photos/300/200?random=32",
-            "https://picsum.photos/300/200?random=33"
           ],
           "capacity": 1
         },
@@ -3155,692 +3352,385 @@
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=34",
-            "https://picsum.photos/300/200?random=35",
-            "https://picsum.photos/300/200?random=36"
-          ],
           "capacity": 3
         }
       ]
     },
     {
-      "id": "100",
-      "name": "SHANGRI-LA BANGKOK",
-      "address": "89 Soi Wat Suan Plu, New Road | Bangrak",
-      "rating": 4.8,
-      "reviews": "5,234",
-      "description": "Shangri-La Bangkok is a luxurious riverside retreat in the heart of the city. With elegant rooms offering panoramic river views, multiple dining options, and a world-class spa, this hotel provides a perfect blend of Thai hospitality and international standards of service.",
-      "price": 12900,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "BANGKOK",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
+      "id": "19",
+      "name": "CLASSIC KAMEO AYUTTHAYA",
+      "address": "1 Moo 13, Rojana Road | City Center",
+      "rating": 4.5,
+      "reviews": "2,345",
+      "description": "Classic Kameo Ayutthaya offers comfortable accommodation in the historic city of Ayutthaya, a UNESCO World Heritage Site. This modern hotel provides a convenient base for exploring ancient temples and ruins, with well-appointed rooms and excellent facilities for both business and leisure travelers.",
+      "price": 6000,
+      "provinces": "AYUTTHAYA",
       "rooms": [
         {
-          "id": 10001,
+          "id": 1901,
           "name": "Deluxe Room",
           "options": [
             {
-              "id": 100011,
+              "id": 190111,
               "type": "Online",
               "description": "Book via website or mobile app",
-              "price": 5200,
+              "price": 2200,
               "payment": "Prepay online"
             },
             {
-              "id": 100012,
+              "id": 190112,
               "type": "Offline",
               "description": "Book at hotel reception or via phone",
-              "price": 4800,
+              "price": 2000,
               "payment": "Prepay offline"
             }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=37",
-            "https://picsum.photos/300/200?random=38",
-            "https://picsum.photos/300/200?random=39"
-          ],
-          "capacity": 2
-        },
-        {
-          "id": 10002,
-          "name": "Horizon Club Room",
-          "options": [
-            {
-              "id": 100021,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 7800,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 100022,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 7200,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=40",
-            "https://picsum.photos/300/200?random=41",
-            "https://picsum.photos/300/200?random=42"
-          ],
-          "capacity": 3
-        }
-      ]
-    },
-    {
-      "id": "101",
-      "name": "SO/ BANGKOK",
-      "address": "2 North Sathorn Road | Bangrak",
-      "rating": 4.7,
-      "reviews": "3,421",
-      "description": "SO/ Bangkok is a stylish urban hotel located in the central business district. This design-forward property features rooms conceptualized by famous designers, a stunning rooftop pool with city views, and innovative dining experiences that blend French and Thai influences.",
-      "price": 9900,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "BANGKOK",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
-      "rooms": [
-        {
-          "id": 10101,
-          "name": "Deluxe Room",
-          "options": [
-            {
-              "id": 101011,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 4500,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 101012,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 4200,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=43",
-            "https://picsum.photos/300/200?random=44",
-            "https://picsum.photos/300/200?random=45"
           ],
           "capacity": 1
         },
         {
-          "id": 10102,
-          "name": "SO Studio",
-          "options": [
-            {
-              "id": 101021,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 6800,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 101022,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 6300,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=46",
-            "https://picsum.photos/300/200?random=47",
-            "https://picsum.photos/300/200?random=48"
-          ],
-          "capacity": 2
-        }
-      ]
-    },
-    {
-      "id": "102",
-      "name": "THE SUKHOTHAI BANGKOK",
-      "address": "13/3 South Sathorn Road | Sathorn",
-      "rating": 4.8,
-      "reviews": "4,872",
-      "description": "The Sukhothai Bangkok is an oasis of tranquility in the bustling city. This elegant hotel features traditional Thai architecture with modern comforts, surrounded by six acres of lotus ponds and gardens. The award-winning restaurants and serene spa make it a favorite among discerning travelers.",
-      "price": 11500,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "BANGKOK",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
-      "rooms": [
-        {
-          "id": 10201,
-          "name": "Deluxe Room",
-          "options": [
-            {
-              "id": 102011,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 5500,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 102012,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 5100,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=49",
-            "https://picsum.photos/300/200?random=50",
-            "https://picsum.photos/300/200?random=51"
-          ],
-          "capacity": 2
-        },
-        {
-          "id": 10202,
+          "id": 1902,
           "name": "Executive Suite",
           "options": [
             {
-              "id": 102021,
+              "id": 190121,
               "type": "Online",
               "description": "Book via website or mobile app",
-              "price": 8200,
+              "price": 3500,
               "payment": "Prepay online"
             },
             {
-              "id": 102022,
+              "id": 190122,
               "type": "Offline",
               "description": "Book at hotel reception or via phone",
-              "price": 7800,
+              "price": 3200,
               "payment": "Prepay offline"
             }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=52",
-            "https://picsum.photos/300/200?random=53",
-            "https://picsum.photos/300/200?random=54"
           ],
           "capacity": 3
         }
       ]
     },
     {
-      "id": "103",
-      "name": "FOUR SEASONS RESORT CHIANG MAI",
-      "address": "502 Moo 1, Mae Rim-Samoeng Old Road | Mae Rim",
-      "rating": 4.9,
-      "reviews": "3,245",
-      "description": "Four Seasons Resort Chiang Mai is nestled among terraced rice fields and mountains in the Mae Rim Valley. This luxurious resort offers pavilion-style accommodations with private pavilions, immersive cultural experiences, and world-class dining featuring ingredients from the resort's own gardens.",
-      "price": 25900,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "CHIANG MAI",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
+      "id": "20",
+      "name": "CLASSIC KAMEO AYUTTHAYA",
+      "address": "1 Moo 13, Rojana Road | City Center",
+      "rating": 4.5,
+      "reviews": "2,345",
+      "description": "Classic Kameo Ayutthaya offers comfortable accommodation in the historic city of Ayutthaya, a UNESCO World Heritage Site. This modern hotel provides a convenient base for exploring ancient temples and ruins, with well-appointed rooms and excellent facilities for both business and leisure travelers.",
+      "price": 6000,
+      "provinces": "AYUTTHAYA",
       "rooms": [
         {
-          "id": 10301,
+          "id": 2001,
           "name": "Deluxe Room",
           "options": [
             {
-              "id": 103011,
+              "id": 200111,
               "type": "Online",
               "description": "Book via website or mobile app",
-              "price": 9800,
+              "price": 2200,
               "payment": "Prepay online"
             },
             {
-              "id": 103012,
+              "id": 200112,
               "type": "Offline",
               "description": "Book at hotel reception or via phone",
-              "price": 9200,
+              "price": 2000,
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=55",
-            "https://picsum.photos/300/200?random=56",
-            "https://picsum.photos/300/200?random=57"
-          ],
-          "capacity": 2
+          "capacity": 1
         },
         {
-          "id": 10302,
-          "name": "Pool Villa",
+          "id": 2002,
+          "name": "Executive Suite",
           "options": [
             {
-              "id": 103021,
+              "id": 200121,
               "type": "Online",
               "description": "Book via website or mobile app",
-              "price": 14500,
+              "price": 3500,
               "payment": "Prepay online"
             },
             {
-              "id": 103022,
+              "id": 200122,
               "type": "Offline",
               "description": "Book at hotel reception or via phone",
-              "price": 13800,
+              "price": 3200,
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=58",
-            "https://picsum.photos/300/200?random=59",
-            "https://picsum.photos/300/200?random=60"
-          ],
-          "capacity": 4
+          "capacity": 3
         }
       ]
     },
     {
-      "id": "104",
-      "name": "137 PILLARS HOUSE",
-      "address": "2 Soi 1, Nawatgate Road | Wat Gate",
+      "id": "21",
+      "name": "CLASSIC KAMEO AYUTTHAYA",
+      "address": "1 Moo 13, Rojana Road | City Center",
+      "rating": 4.5,
+      "reviews": "2,345",
+      "description": "Classic Kameo Ayutthaya offers comfortable accommodation in the historic city of Ayutthaya, a UNESCO World Heritage Site. This modern hotel provides a convenient base for exploring ancient temples and ruins, with well-appointed rooms and excellent facilities for both business and leisure travelers.",
+      "price": 6000,
+      "provinces": "AYUTTHAYA",
+      "rooms": [
+        {
+          "id": 2101,
+          "name": "Deluxe Room",
+          "options": [
+            {
+              "id": 210111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 2200,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 210112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 2000,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 1
+        },
+        {
+          "id": 2102,
+          "name": "Executive Suite",
+          "options": [
+            {
+              "id": 210121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 3500,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 210122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 3200,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "SIAM KEMPINSKI HOTEL BANGKOK",
+      "address": "991/9 Rama I Road | Pathumwan",
       "rating": 4.8,
-      "reviews": "2,876",
-      "description": "137 Pillars House is a boutique luxury hotel built around a historic teak homestead dating back to the 1800s. This exquisite property offers spacious suites with verandas, a stunning swimming pool, and personalized service that celebrates the region's rich cultural heritage.",
-      "price": 18500,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "CHIANG MAI",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
-      "rooms": [
-        {
-          "id": 10401,
-          "name": "Deluxe Room",
-          "options": [
-            {
-              "id": 104011,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 7200,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 104012,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 6800,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=61",
-            "https://picsum.photos/300/200?random=62",
-            "https://picsum.photos/300/200?random=63"
-          ],
-          "capacity": 1
-        },
-        {
-          "id": 10402,
-          "name": "Rajah Brooke Suite",
-          "options": [
-            {
-              "id": 104021,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 10500,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 104022,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 9800,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=64",
-            "https://picsum.photos/300/200?random=65",
-            "https://picsum.photos/300/200?random=66"
-          ],
-          "capacity": 3
-        }
-      ]
-    },
-    {
-      "id": "105",
-      "name": "DHARA DHEVI CHIANG MAI",
-      "address": "51/4 Moo 1, Chiang Mai-Sankampaeng Road | Tasala",
-      "rating": 4.9,
-      "reviews": "3,654",
-      "description": "Dhara Dhevi Chiang Mai is an architectural masterpiece designed to resemble an ancient Lanna Kingdom. This sprawling resort features ornate villas and colonial-style residences, extensive wellness facilities, cooking schools, and craft villages that showcase northern Thailand's rich cultural traditions.",
-      "price": 29900,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "CHIANG MAI",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
-      "rooms": [
-        {
-          "id": 10501,
-          "name": "Deluxe Room",
-          "options": [
-            {
-              "id": 105011,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 11200,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 105012,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 10500,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=67",
-            "https://picsum.photos/300/200?random=68",
-            "https://picsum.photos/300/200?random=69"
-          ],
-          "capacity": 2
-        },
-        {
-          "id": 10502,
-          "name": "Colonial Suite",
-          "options": [
-            {
-              "id": 105021,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 15800,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 105022,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 14900,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=70",
-            "https://picsum.photos/300/200?random=71",
-            "https://picsum.photos/300/200?random=72"
-          ],
-          "capacity": 4
-        }
-      ]
-    },
-    {
-      "id": "115",
-      "name": "GRAND HYATT ERAWAN BANGKOK",
-      "address": "494 Ratchadamri Road | Pathumwan",
-      "rating": 4.7,
-      "reviews": "4,128",
-      "description": "Grand Hyatt Erawan Bangkok is a luxury hotel located in the heart of Bangkok's business and shopping district. The hotel offers elegant rooms, multiple dining options, a world-class spa, and direct access to the BTS Skytrain, making it an ideal choice for both business and leisure travelers.",
-      "price": 8900,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "BANGKOK",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
-      "rooms": [
-        {
-          "id": 11501,
-          "name": "Grand King Room",
-          "options": [
-            {
-              "id": 115011,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 4800,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 115012,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 4500,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=127",
-            "https://picsum.photos/300/200?random=128",
-            "https://picsum.photos/300/200?random=129"
-          ],
-          "capacity": 2
-        },
-        {
-          "id": 11502,
-          "name": "Grand Executive Suite",
-          "options": [
-            {
-              "id": 115021,
-              "type": "Online",
-              "description": "Book via website or mobile app",
-              "price": 7200,
-              "payment": "Prepay online"
-            },
-            {
-              "id": 115022,
-              "type": "Offline",
-              "description": "Book at hotel reception or via phone",
-              "price": 6800,
-              "payment": "Prepay offline"
-            }
-          ],
-          "images": [
-            "https://picsum.photos/300/200?random=130",
-            "https://picsum.photos/300/200?random=131",
-            "https://picsum.photos/300/200?random=132"
-          ],
-          "capacity": 3
-        }
-      ]
-    },
-    {
-      "id": "116",
-      "name": "INTERCONTINENTAL HUA HIN RESORT",
-      "address": "33/33 Petchkasem Road | Hua Hin",
-      "rating": 4.6,
-      "reviews": "3,215",
-      "description": "InterContinental Hua Hin Resort combines luxury with Thai charm in a beachfront setting. The resort features elegant rooms and villas, multiple swimming pools, a spa, and several dining options, all just a short distance from Hua Hin's attractions and golf courses.",
+      "reviews": "8,765",
+      "description": "Siam Kempinski Hotel Bangkok is a luxury five-star hotel centrally located in the heart of Bangkok's premier shopping and entertainment district. With direct access to Siam Paragon shopping mall, this elegant property offers contemporary rooms, lush gardens, and multiple swimming pools creating a resort-like atmosphere in the city center.",
       "price": 7500,
-      "image": "https://picsum.photos/300/200",
-      "provinces": "PRACHUAP KHIRI KHAN",
-      "checkInTimes": [
-        {
-          "id": 1,
-          "time": "14:00"
-        },
-        {
-          "id": 2,
-          "time": "15:00"
-        }
-      ],
-      "checkOutTimes": [
-        {
-          "id": 1,
-          "time": "12:00"
-        },
-        {
-          "id": 2,
-          "time": "13:00"
-        }
-      ],
+      "provinces": "CHIANG MAI",
       "rooms": [
         {
-          "id": 11601,
-          "name": "Resort Classic Room",
+          "id": 20701,
+          "name": "Deluxe Room",
           "options": [
             {
-              "id": 116011,
+              "id": 2070111,
               "type": "Online",
               "description": "Book via website or mobile app",
-              "price": 3900,
+              "price": 9000,
               "payment": "Prepay online"
             },
             {
-              "id": 116012,
+              "id": 2070112,
               "type": "Offline",
               "description": "Book at hotel reception or via phone",
-              "price": 3600,
+              "price": 8250,
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=133",
-            "https://picsum.photos/300/200?random=134",
-            "https://picsum.photos/300/200?random=135"
-          ],
-          "capacity": 1
+          "capacity": 2
         },
         {
-          "id": 11602,
-          "name": "Beach Villa",
+          "id": 20702,
+          "name": "Suite Room",
           "options": [
             {
-              "id": 116021,
+              "id": 2070121,
               "type": "Online",
               "description": "Book via website or mobile app",
-              "price": 8500,
+              "price": 11250,
               "payment": "Prepay online"
             },
             {
-              "id": 116022,
+              "id": 2070122,
               "type": "Offline",
               "description": "Book at hotel reception or via phone",
-              "price": 8000,
+              "price": 10500,
               "payment": "Prepay offline"
             }
           ],
-          "images": [
-            "https://picsum.photos/300/200?random=136",
-            "https://picsum.photos/300/200?random=137",
-            "https://picsum.photos/300/200?random=138"
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "name": "SIAM KEMPINSKI HOTEL BANGKOK",
+      "address": "991/9 Rama I Road | Pathumwan",
+      "rating": 4.8,
+      "reviews": "8,765",
+      "description": "Siam Kempinski Hotel Bangkok is a luxury five-star hotel centrally located in the heart of Bangkok's premier shopping and entertainment district. With direct access to Siam Paragon shopping mall, this elegant property offers contemporary rooms, lush gardens, and multiple swimming pools creating a resort-like atmosphere in the city center.",
+      "price": 7500,
+      "provinces": "CHIANG MAI",
+      "rooms": [
+        {
+          "id": 1201,
+          "name": "Deluxe Room",
+          "options": [
+            {
+              "id": 120111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 9000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 120112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 8250,
+              "payment": "Prepay offline"
+            }
           ],
-          "capacity": 4
+          "capacity": 2
+        },
+        {
+          "id": 1202,
+          "name": "Suite Room",
+          "options": [
+            {
+              "id": 120121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 11250,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 120122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 10500,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "name": "SIAM KEMPINSKI HOTEL BANGKOK",
+      "address": "991/9 Rama I Road | Pathumwan",
+      "rating": 4.8,
+      "reviews": "8,765",
+      "description": "Siam Kempinski Hotel Bangkok is a luxury five-star hotel centrally located in the heart of Bangkok's premier shopping and entertainment district. With direct access to Siam Paragon shopping mall, this elegant property offers contemporary rooms, lush gardens, and multiple swimming pools creating a resort-like atmosphere in the city center.",
+      "price": 7500,
+      "provinces": "CHIANG MAI",
+      "rooms": [
+        {
+          "id": 1301,
+          "name": "Deluxe Room",
+          "options": [
+            {
+              "id": 130111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 9000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 130112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 8250,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 1302,
+          "name": "Suite Room",
+          "options": [
+            {
+              "id": 130121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 11250,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 130122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 10500,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 3
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "name": "SIAM KEMPINSKI HOTEL BANGKOK",
+      "address": "991/9 Rama I Road | Pathumwan",
+      "rating": 4.8,
+      "reviews": "8,765",
+      "description": "Siam Kempinski Hotel Bangkok is a luxury five-star hotel centrally located in the heart of Bangkok's premier shopping and entertainment district. With direct access to Siam Paragon shopping mall, this elegant property offers contemporary rooms, lush gardens, and multiple swimming pools creating a resort-like atmosphere in the city center.",
+      "price": 7500,
+      "provinces": "CHIANG MAI",
+      "rooms": [
+        {
+          "id": 1401,
+          "name": "Deluxe Room",
+          "options": [
+            {
+              "id": 140111,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 9000,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 140112,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 8250,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 2
+        },
+        {
+          "id": 1402,
+          "name": "Suite Room",
+          "options": [
+            {
+              "id": 140121,
+              "type": "Online",
+              "description": "Book via website or mobile app",
+              "price": 11250,
+              "payment": "Prepay online"
+            },
+            {
+              "id": 140122,
+              "type": "Offline",
+              "description": "Book at hotel reception or via phone",
+              "price": 10500,
+              "payment": "Prepay offline"
+            }
+          ],
+          "capacity": 3
         }
       ]
     }
@@ -3877,5 +3767,38 @@
       "region": "Central"
     }
   ],
-  "bookingHotel": []
+  "bookingHotel": [
+    {
+      "id": "d957",
+      "fName": "ball",
+      "lName": "ball",
+      "email": "ball@gmail.com",
+      "phoneNumber": "2430982438",
+      "hotelId": "1",
+      "roomId": "102",
+      "hotelName": "MANDARIN ORIENTAL BANGKOK",
+      "price": 7500,
+      "dateBooking": "31/3/2568 02:11:09",
+      "roomAmount": 2,
+      "nightAmount": 2,
+      "checkInTime": "1/4/2568 16:00:00",
+      "checkOutTime": "3/4/2568 15:00:00"
+    },
+    {
+      "id": "f456",
+      "fName": "peak",
+      "lName": "peak",
+      "email": "jack@gmail.com",
+      "phoneNumber": "9082340984",
+      "hotelId": "1",
+      "roomId": "102",
+      "hotelName": "MANDARIN ORIENTAL BANGKOK",
+      "price": 6900,
+      "dateBooking": "31/3/2568 02:14:09",
+      "roomAmount": 1,
+      "nightAmount": 2,
+      "checkInTime": "1/4/2568 16:00:00",
+      "checkOutTime": "3/4/2568 15:00:00"
+    }
+  ]
 }

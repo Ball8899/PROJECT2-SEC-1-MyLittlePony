@@ -3,6 +3,7 @@ import { ref, defineProps, defineEmits } from "vue";
 import Booking from "./Booking.vue";
 import Advert from "./Advert.vue";
 const typeBooking = ref('flight')
+import SearchHotel from "./Hotels/SearchHotel.vue";
 
 const emits = defineEmits(["update"]);
 
@@ -94,7 +95,9 @@ const updateEmits = () => {
           </div>
         </div>
         <div class="relative z-10 w-[90%] m-auto -mt-14 rounded-xl" >
-          <Booking @update="updateEmits" :show-toggle="toggle.showToggle" />
+          <Booking v-if="typeBooking === 'flight'" @update="updateEmits" :show-toggle="toggle.showToggle" />
+          <SearchHotel v-else-if="typeBooking === 'hotel'" @update="updateEmits" :show-toggle="toggle.showToggle">
+          </SearchHotel>
         </div>
       </div>
     </div>

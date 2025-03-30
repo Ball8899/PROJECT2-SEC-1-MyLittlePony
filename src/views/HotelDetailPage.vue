@@ -9,7 +9,7 @@ const route = useRoute();
 const router = useRouter();
 const hotels = ref({});
 const emit = defineEmits(["sendRoomId"]);
-const selectedRoomId = ref(null);
+const selectedRoomId = ref("");
 const rooms = ref([]);
 
 const hotelID = computed(() => {
@@ -25,9 +25,9 @@ onMounted(async () => {
   try {
     if (!hotelID.value) {
       console.log("not Number");
+      return
     }
-    hotels.value = await getHotelById(
-      `http://localhost:3000/hotels`,
+    hotels.value = await getHotelById(`${import.meta.env.VITE_APP_URL}/hotels`,
       hotelID.value
     );
     if (hotels.value && hotels.value.rooms) {
@@ -38,17 +38,22 @@ onMounted(async () => {
   }
 });
 
-const selectPayment = (roomId, hotelId,optionId) => {
-  if (!roomId || !hotelId) {
-    console.log("'not found room ID or not found Hotel ID'");
+const selectPayment = (roomId, hotelId, optionId) => {
+  if (!roomId || !hotelId || optionId === null) {
+    console.log("'not found room ID or not found Hotel ID or optionId is null'");
     return;
   }
-  selectedRoomId.value = roomId;
-  router.push({
-    name: "BookingHotels",
-    params: { roomId: roomId, hotelId: hotelId ,optionId:optionId},
-  });
+  try {
+    selectedRoomId.value = roomId;
+    router.push({
+      name: "BookingHotels",
+      params: { roomId, hotelId, optionId }
+    });
+  } catch (error) {
+    console.error("Navigation error:", error);
+  }
 };
+
 
 const sendRoomId = () => {
   if (selectedRoomId.value) {
@@ -59,8 +64,13 @@ const sendRoomId = () => {
 };
 
 const activeReserve = (roomId, hotelId,optionId) => {
-  selectPayment(roomId, hotelId,optionId);
-  sendRoomId();
+  if(roomId && hotelID.value){
+    selectPayment(roomId, hotelId,optionId);
+    sendRoomId();
+  }
+  else{
+    return "Invalid roomId or hotelID"
+  }
 };
 </script>
 
@@ -114,34 +124,34 @@ const activeReserve = (roomId, hotelId,optionId) => {
       <div class="flex">
         <slot name="MainPhotoOfHeader">
           <img
-            src="https://picsum.photos/300/200"
+            src="../assets/hotels/hotel2.jpg"
             class="w-md h-78 ml-5 mt-3 m-2 rounded-sm"
           />
         </slot>
         <div class="mt-3 grid grid-cols-3 grid-rows-2 gap-2">
           <slot name="SubPhotoOfHeader">
             <img
-              src="https://picsum.photos/300/200"
+              src="../assets/hotels/hotel.jpg"
               class="w-64 ml-0 h-37 rounded-sm"
             />
             <img
-              src="https://picsum.photos/300/200"
+              src="../assets/hotels/hotel.jpg"
               class="w-64 ml-0 h-37 rounded-sm"
             />
             <img
-              src="https://picsum.photos/300/200"
+            src="../assets/hotels/hotel.jpg"
+            class="w-64 ml-0 h-37 rounded-sm"
+            />
+            <img
+            src="../assets/hotels/hotel.jpg"
               class="w-64 ml-0 h-37 rounded-sm"
             />
             <img
-              src="https://picsum.photos/300/200"
+            src="../assets/hotels/hotel.jpg"
               class="w-64 ml-0 h-37 rounded-sm"
             />
             <img
-              src="https://picsum.photos/300/200"
-              class="w-64 ml-0 h-37 rounded-sm"
-            />
-            <img
-              src="https://picsum.photos/300/200"
+            src="../assets/hotels/hotel.jpg"
               class="w-64 ml-0 h-37 rounded-sm"
             />
           </slot>

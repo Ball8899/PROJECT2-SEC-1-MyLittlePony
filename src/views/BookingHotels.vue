@@ -1,13 +1,15 @@
 <script setup>
+let modalTimeout = null;
 import { computed, onMounted, reactive, ref, watchEffect } from "vue";
-import {
-  getHotelById,
-  createBooking,
-} from "../utils/fetchUtil";
+import { Teleport } from "vue";
+import { defineProps } from "vue";
+import { getHotelById, createBooking } from "../utils/fetchUtil";
 import { useRoute } from "vue-router";
 
-const date = new Date()
+const date = new Date();
 const route = useRoute();
+defineProps(["closeModal"]);
+
 const hotels = ref({});
 const fName = ref("");
 const lName = ref("");
@@ -17,8 +19,6 @@ const roomId = route.params.roomId;
 const hotelId = route.params.hotelId;
 const optionId = route.params.optionId;
 const rooms = ref([]);
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phonePattern = /^[0-9]{10}$/;
 const fromSubmit = ref(false);
 const selectedRoom = ref(null);
 const selectedOption = ref(null);
@@ -26,39 +26,64 @@ const selectedNight = ref(false);
 const selectRoomValue = ref(false);
 const numberNight = ref(1);
 const numberRoom = ref(1);
-const checkInTime  = ref("")
-const checkOutTime = ref("")
+const checkInTime = ref("");
+const errorMessage = ref("Please Enter Again");
+const bookingSuccess = ref(false);
 
-
-
+onMounted(async () => {
+  try {
+    if (!hotelId || !roomId || !optionId) {
+      console.log("not found room ID or not found Hotel ID");
+      return;
+    }
+    hotels.value = await getHotelById(
+      `${import.meta.env.VITE_APP_URL}/hotels`,
+      hotelId
+    );
+    if (hotels.value && hotels.value.rooms) {
+      rooms.value = hotels.value.rooms;
+      newBookingHotel.hotelName = hotels.value.name;
+    }
+  } catch (error) {
+    console.error("Error fetching hotels:", error);
+  }
+});
 
 watchEffect(() => {
-  if (hotels.value.name) {
+  if (hotels.value && hotels.value.name) {
     newBookingHotel.hotelName = hotels.value.name;
   }
 });
 
 watchEffect(() => {
-  selectedRoom.value = rooms.value.find((room) => room.id === parseInt(roomId));
+  if (rooms.value && rooms.value.length > 0) {
+    selectedRoom.value = rooms.value.find(
+      (room) => room.id === parseInt(roomId)
+    );
+  } else {
+    selectedRoom.value = "";
+  }
 });
 
 watchEffect(() => {
-  if (selectedRoom.value) {
+  if (selectedRoom.value && selectedRoom.value.options) {
     selectedOption.value = selectedRoom.value.options.find(
       (option) => option.id === parseInt(optionId)
     );
   }
 });
 
-
-
-
-
+const minDate = computed(() => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return { day, month, year };
+});
 
 const toggleSelectNight = () => {
   selectedNight.value = !selectedNight.value;
-  selectRoomValue.value = false
-
+  selectRoomValue.value = false;
 };
 const closeToggleSelectNight = () => {
   selectedNight.value = false;
@@ -67,59 +92,49 @@ const closeToggleSelectNight = () => {
 
 const toggleSelectRoom = () => {
   selectRoomValue.value = !selectRoomValue.value;
-
+  selectedNight.value = false
 };
 
 const totalPrice = computed(() => {
   const pricePerNight = 400;
   const pricePerRoom = 600;
-  if (numberNight.value > 1 || numberRoom.value > 1) {
-    return (numberNight.value * pricePerNight + numberRoom.value * pricePerRoom)  + selectedOption.value.price;
-  } else {
-    return (numberNight.value * pricePerNight + numberRoom.value * pricePerRoom)  + selectedOption.value.price;
-  }
-  
+  const optionPrice = selectedOption.value ? selectedOption.value.price : 0;
+
+  return (
+    numberNight.value * pricePerNight +
+    numberRoom.value * pricePerRoom +
+    optionPrice
+  );
 });
 
+const calculateCheckIn = computed(() => {
+  if (!checkInTime.value) return null;
+  const date = new Date(checkInTime.value);
+  date.setHours(16, 0, 0, 0);
+  return date;
+});
 
+const calculateCheckOut = computed(() => {
+  if (!checkInTime.value) return null;
+  const checkInDate = new Date(checkInTime.value);
+  checkInDate.setDate(checkInDate.getDate() + numberNight.value);
+  checkInDate.setHours(15, 0, 0, 0);
+  return checkInDate;
+});
 
-const calculateCheckOutTime = computed(() => {
-  const date = new Date();
-  date.setDate(date.getDate() + numberNight.value + 1)
-  date.setHours(15,0,0,0)
-  return date.toLocaleString("th-TH")
-  
-})
-
-
-const calculateCheckInTime = computed(() => {
-  const date = new Date();
-  date.setDate(date.getDate()  + 1)
-  date.setHours(16,0,0,0)
-  return date.toLocaleString("th-TH")
-})
-
-
-const increaseOrDecreaseNight = ((value) => {
+const increaseOrDecreaseNight = (value) => {
   if (value === "increase") {
     numberNight.value++;
-  } else if (value === "decrease") {
+  } else if (value === "decrease" && numberNight.value > 1) {
     numberNight.value--;
-    if (numberNight.value === 0) {
-      numberNight.value = 1;
-    }
   }
-  
-});
+};
 
 const increaseOrDecreaseRoom = (value) => {
   if (value === "increase") {
     numberRoom.value++;
-  } else if (value === "decrease") {
+  } else if (value === "decrease" && numberRoom.value > 1) {
     numberRoom.value--;
-    if (numberRoom.value === 0) {
-      numberRoom.value = 1;
-    }
   }
 };
 
@@ -130,80 +145,139 @@ const newBookingHotel = reactive({
   phoneNumber: "",
   hotelId: hotelId,
   roomId: roomId,
-  hotelName: hotels.name,
-  price:totalPrice,
+  hotelName: hotels.value.name,
+  price: totalPrice.value,
   dateBooking: date.toLocaleString("th-TH"),
-  roomAmount:1,
-  nightAmount:1,
-  checkInTime : "",
-  checkOutTime:""
+  roomAmount: 1,
+  nightAmount: 1,
+  checkInTime: "",
+  checkOutTime: "",
 });
 
 watchEffect(() => {
-  newBookingHotel.roomAmount = numberRoom.value
-  newBookingHotel.nightAmount = numberNight.value
-  newBookingHotel.checkOutTime = calculateCheckOutTime.value
-  newBookingHotel.checkInTime = calculateCheckInTime.value
+  newBookingHotel.roomAmount = numberRoom.value;
+  newBookingHotel.nightAmount = numberNight.value;
+  newBookingHotel.price = totalPrice.value;
 
-})
-
-
-
-
-const submitBooking = () => {
-  if (validFrom()) {
-    addBooking();
+  if (calculateCheckIn.value) {
+    (newBookingHotel.checkInTime =
+      calculateCheckIn.value.toLocaleString("th-TH")),
+      (newBookingHotel.checkOutTime =
+        calculateCheckOut.value.toLocaleString("th-TH"));
   } else {
-    console.log("Invalid input, please check your information.");
-  }
-};
-
-onMounted(async () => {
-  try {
-    if (!hotelId || !roomId) {
-      console.log("not found room ID or not found Hotel ID");
-    }
-    hotels.value = await getHotelById(`http://localhost:3000/hotels`, hotelId);
-    if (hotels.value && hotels.value.rooms) {
-      rooms.value = hotels.value.rooms;
-      newBookingHotel.hotelName = hotels.value.name;
-    }
-  } catch (error) {
-    console.error("Error fetching hotels:", error);
+    newBookingHotel.checkInTime = "";
+    newBookingHotel.checkOutTime = "";
   }
 });
 
+const submitBooking = async () => {
+  if (!validFrom()) {
+    fromSubmit.value = true;
+    return false;
+  }
+  bookingSuccess.value = true;
+
+  newBookingHotel.fName = fName.value;
+  newBookingHotel.lName = lName.value;
+  newBookingHotel.email = email.value;
+  newBookingHotel.phoneNumber = phoneNumber.value;
+  newBookingHotel.price = totalPrice.value;
+
+  modalTimeout = setTimeout(async () => {
+    try {
+      await addBooking();
+    } catch (error) {
+      console.error("Booking is not correct", error);
+    }
+  }, 300000);
+};
+
+const closeModal = async () => {
+  if (!validFrom()) {
+    fromSubmit.value = true;
+    return false;
+  }
+  if (modalTimeout) {
+    clearTimeout(modalTimeout);
+    modalTimeout = null;
+  }
+  if (validFrom()) {
+    try {
+      await addBooking();
+    } catch (error) {
+      console.error("Booking is not correct", error);
+    }
+  }
+  bookingSuccess.value = false;
+};
+
 const addBooking = async () => {
+  if (!calculateCheckIn.value || isNaN(calculateCheckIn.value.getTime())) {
+    return false;
+  }
   try {
-    await createBooking(`http://localhost:3000/bookingHotel`, newBookingHotel);
+    await createBooking(
+      `${import.meta.env.VITE_APP_URL}/bookingHotel`,
+      newBookingHotel
+    );
+    return true;
   } catch (err) {
-    console.error("Error fetching hotels:", err);
+    console.log("not Create");
+    return false;
   }
 };
 
 const validFrom = () => {
-  fromSubmit.value = true;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phonePattern = /^[0-9]{10}$/;
+
   const checkFname = fName.value.trim().length > 0;
   const checkLname = lName.value.trim().length > 0;
   const checkEmail = emailPattern.test(email.value);
   const checkPhoneNumber = phonePattern.test(phoneNumber.value);
 
-  if (checkFname && checkLname && checkEmail && checkPhoneNumber) {
-    newBookingHotel.fName = fName.value;
-    newBookingHotel.lName = lName.value;
-    newBookingHotel.email = email.value;
-    newBookingHotel.phoneNumber = phoneNumber.value;
-    return true;
+  if (
+    checkFname === "" ||
+    checkLname === "" ||
+    checkEmail === "" ||
+    checkPhoneNumber === ""
+  ) {
+    return false;
   }
-  return false;
+
+  if (!checkFname || !checkLname || !checkEmail || !checkPhoneNumber) {
+    return false;
+  }
+
+  if (!checkFname || !checkLname) {
+    return false;
+  }
+  if (!checkEmail) {
+    return false;
+  }
+  if (!checkPhoneNumber) {
+    return false;
+  }
+
+  if (!checkInTime.value) {
+    return false;
+  }
+  if (!calculateCheckIn.value) {
+    return false;
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (calculateCheckIn.value < today) {
+    return false;
+  }
+  return true;
 };
-
-
-
 </script>
 <template>
   <div>
-    <div class="bg-blue-600 py-4">
+    <div @click="closeToggleSelectNight" class="bg-blue-600 py-4">
       <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
         <div class="flex items-center">
           <div class="text-2xl font-bold text-white mr-8">JET.com</div>
@@ -291,12 +365,13 @@ const validFrom = () => {
               </p>
 
               <form class="space-y-6">
-                
-
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">
                       First name <span class="text-red-500">*</span>
+                      <span v-if="fromSubmit" class="ml-3 text-red-500">{{
+                        errorMessage
+                      }}</span>
                     </label>
                     <input
                       type="text"
@@ -310,6 +385,9 @@ const validFrom = () => {
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">
                       Last name <span class="text-red-500">*</span>
+                      <span v-if="fromSubmit" class="ml-3 text-red-500">{{
+                        errorMessage
+                      }}</span>
                     </label>
                     <input
                       type="text"
@@ -322,10 +400,12 @@ const validFrom = () => {
                   </div>
                 </div>
 
-
-                <div>
+                <div @click="closeToggleSelectNight">
                   <label class="block text-sm font-medium text-gray-700 mb-1">
                     Email <span class="text-red-500">*</span>
+                    <span v-if="fromSubmit" class="ml-3 text-red-500">{{
+                      errorMessage
+                    }}</span>
                   </label>
                   <input
                     type="email"
@@ -339,9 +419,31 @@ const validFrom = () => {
                   </p>
                 </div>
 
-                <div>
+                <div @click="closeToggleSelectNight" class="flex gap-5">
+                  <div class="grid">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                      Check In Date <span class="text-red-500">*</span>
+                      <span v-if="fromSubmit" class="ml-3 text-red-500">{{
+                        errorMessage
+                      }}</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      v-model="checkInTime"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                      :placeholder="`${minDate.year}/${minDate.month}/${minDate.day}`"
+                      :class="{ 'border-red-500': fromSubmit, '': !fromSubmit }"
+                    />
+                  </div>
+                </div>
+
+                <div @click="closeToggleSelectNight">
                   <label class="block text-sm font-medium text-gray-700 mb-1">
                     Phone number <span class="text-red-500">*</span>
+                    <span v-if="fromSubmit" class="ml-3 text-red-500">{{
+                      errorMessage
+                    }}</span>
                   </label>
                   <div class="flex">
                     <div class="relative w-24">
@@ -379,7 +481,7 @@ const validFrom = () => {
             </div>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm mb-6">
+          <div @click="closeToggleSelectNight" class="bg-white rounded-lg shadow-sm mb-6">
             <div class="p-6">
               <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold text-gray-800">
@@ -388,18 +490,19 @@ const validFrom = () => {
                     >(Optional)</span
                   >
                 </h2>
-                
               </div>
               <p class="text-gray-600 mb-4">
                 The property will do its best, but cannot guarantee to fulfill
                 all requests.
               </p>
-            <input class="w-full px-4 py-2 border border-gray-300  rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" 
-            placeholder="Please enter your request here (optional)">
+              <input
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                placeholder="Please enter your request here (optional)"
+              />
             </div>
           </div>
 
-          <div class="bg-white rounded-lg shadow-sm mb-6">
+          <div @click="closeToggleSelectNight" class="bg-white rounded-lg shadow-sm mb-6">
             <div class="p-6">
               <h2 class="text-xl font-semibold text-gray-800 mb-4">
                 Available for This Booking
@@ -425,7 +528,7 @@ const validFrom = () => {
                 class="flex gap-4 mb-4"
               >
                 <img
-                  src="https://picsum.photos/300/200"
+                  src="../assets/hotels/room1.jpg"
                   alt="Hotel exterior"
                   class="w-24 h-24 object-cover rounded-lg"
                 />
@@ -449,7 +552,7 @@ const validFrom = () => {
               </div>
 
               <div v-if="selectedOption">
-                <div class="border-t border-gray-200 pt-4 mb-4">
+                <div @click="closeToggleSelectNight" class="border-t border-gray-200 pt-4 mb-4">
                   <h3 class="font-bold text-navy-900 mb-2">
                     Lisheng Selected Standard Double Bed Room
                   </h3>
@@ -554,19 +657,6 @@ const validFrom = () => {
                 </div>
 
                 <div class="border-t border-gray-200 py-4">
-                  <div class="flex justify-between mb-4">
-                    <div>
-                      <div class="font-medium">Fri, Mar 21</div>
-                      <div class="text-sm text-gray-600">14:00-06:00</div>
-                    </div>
-                    <div
-                      class="border-b border-gray-300 w-16 self-center"
-                    ></div>
-                    <div>
-                      <div class="font-medium">Sat, Mar 22</div>
-                      <div class="text-sm text-gray-600">Before 12:00</div>
-                    </div>
-                  </div>
                   <div class="flex justify-between mb-2">
                     <div class="flex items-center">
                       <svg
@@ -590,10 +680,10 @@ const validFrom = () => {
                       v-if="selectedNight"
                     >
                       <button
-                        @click="increaseOrDecreaseNight('increase')"
+                        @click="increaseOrDecreaseNight('decrease')"
                         class="absolute left-14 font-semibold px-1 text-blue-600 rounded-md cursor-pointer shadow-lg"
                       >
-                        +
+                        -
                       </button>
                       <p class="font-semibold">
                         night
@@ -604,10 +694,10 @@ const validFrom = () => {
                       </p>
 
                       <button
-                        @click="increaseOrDecreaseNight('decrease')"
+                        @click="increaseOrDecreaseNight('increase')"
                         class="absolute right-4 font-semibold px-1 text-blue-600 rounded-md cursor-pointer 0 shadow-lg"
                       >
-                        -
+                        +
                       </button>
                     </div>
 
@@ -641,17 +731,17 @@ const validFrom = () => {
                           d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
                         />
                       </svg>
-                      1 room
+                      {{ numberRoom }} room
                     </div>
                     <div
                       class="flex items-center absolute text-black right-29 mt-4 h-15 justify-between w-45 pl-2 p-5 pt-0 bg-white rounded-lg shadow-sm transition-colors"
                       v-if="selectRoomValue"
                     >
                       <button
-                        @click="increaseOrDecreaseRoom('increase')"
+                        @click="increaseOrDecreaseRoom('decrease')"
                         class="absolute left-14 font-semibold px-1 text-blue-600 rounded-md cursor-pointer shadow-lg"
                       >
-                        +
+                        -
                       </button>
                       <p class="font-semibold">
                         room
@@ -662,10 +752,11 @@ const validFrom = () => {
                       </p>
 
                       <button
-                        @click="increaseOrDecreaseRoom('decrease')"
+                        @click="increaseOrDecreaseRoom('increase')"
+                        increase
                         class="absolute right-4 font-semibold px-1 text-blue-600 rounded-md cursor-pointer 0 shadow-lg"
                       >
-                        -
+                        +
                       </button>
                     </div>
                     <svg
@@ -696,7 +787,7 @@ const validFrom = () => {
                       <span class="text-gray-600">1 room × 1 night</span>
                       <span class="font-medium">฿ {{ totalPrice }}</span>
                     </div>
-        
+
                     <div class="pl-4 border-l-2 border-gray-200">
                       <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Service charge</span>
@@ -746,14 +837,55 @@ const validFrom = () => {
       </div>
     </div>
   </div>
+
+  <Teleport to="body">
+    <div
+      v-if="bookingSuccess"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+    >
+      <div
+        class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center"
+      >
+        <div
+          class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4"
+        >
+          <svg
+            class="h-6 w-6 text-green-600"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+
+        <h3 class="text-lg font-medium text-gray-900 mb-2">
+          Booked Successful
+        </h3>
+        <p class="text-sm text-gray-600 mb-4">Thank you !</p>
+
+        <div class="flex gap-5">
+          <button
+            @click="closeModal"
+            class="w-1/2 bg-red-600 text-white py-2  px-3 hover:bg-red-700 rounded-md transition font-medium"
+          >
+            Close
+          </button>
+
+          <button
+            class="w-1/2 bg-blue-600 text-white py-2  px-3 rounded-md hover:bg-blue-700 transition font-medium"
+            @click="closeModal"
+          >
+            Your Booked
+          </button>
+        </div>
+      </div>
+    </div>
+  </Teleport>
 </template>
-
-<style scoped>
-.text-navy-900 {
-  color: #1a237e;
-}
-
-.text-navy-800 {
-  color: #283593;
-}
-</style>

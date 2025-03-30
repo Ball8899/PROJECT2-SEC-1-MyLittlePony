@@ -44,7 +44,7 @@ const filteredItems = computed(() => {
 
 <template>
   <div class=" relative sm:px-23 md:px-60 lg:px-15 xl:px-45 ">
-    <h1 class="text-3xl py-8">
+    <h1 class="text-3xl font-semibold text-blue-600 py-8">
       <slot name="Topics">NAME</slot>
     </h1>
     <div class="text-lg text-center gap-4 flex   
@@ -126,12 +126,12 @@ const filteredItems = computed(() => {
 
     <div
       ref="scrollContainer"
-      class="flex flex-nowrap gap-4 overflow-hidden py-4 relative scroll-smooth"
+      class="flex flex-nowrap gap-4  overflow-hidden py-4 relative scroll-smooth"
     >
       <div
         v-for="(item, index) in filteredItems"
         :key="index"
-        class="flex-shrink-0 w-64"
+        class="flex-shrink-0  w-64"
       >
         <slot name="List" :Item="item"> Enter your List </slot>
       </div>

@@ -3,12 +3,12 @@ import { ref, onMounted, defineEmits } from "vue";
 import CardModel from "../CardModel.vue";
 import { getHotels } from "../../utils/fetchUtil";
 import ListModelofHotel from "./ListModelofHotel.vue";
-
+import { useRoute } from "vue-router";
 
 defineEmits(["sendRoomId"])
 const hotels = ref([]);
 const receivedRoomId = ref(null)
-
+const route = useRoute()
 onMounted(async () => {
   try {
     hotels.value = await getHotels(`http://localhost:3000/hotels`);
@@ -24,15 +24,15 @@ const validateRoomId = ((roomId) => {
 </script>
 
 <template>
-  <div v-if="$route.name === '' && !receivedRoomId" @sendRoomId="validateRoomId"    class="">
+  <div v-if="['','/'].includes(route.path) && !receivedRoomId" @sendRoomId="validateRoomId"    class="ml-40">
     <ListModelofHotel :items="hotels">
       <template #header class="hidden"> Name </template>
-      <template #Topics>Name</template>
+      <template #Topics>Featured Properties </template>
       <template #List="{ Item }">
         <router-link  :to="{ name: 'hotelDetail', params: { hotelId: Item.id } }">
           <CardModel>
           <template #image>
-            <img :src="Item.image" alt="" />
+            <img src="../../assets/hotels/hotel2.jpg" alt="">
           </template>
           <template #hotelRating>
             {{ Item.rating }}

@@ -8,6 +8,8 @@ import PaymentForm from '../components/form/PaymentForm.vue'
 import TotalAmount from '../components/BookDetail/TotalAmount.vue'
 import BookingDetail from '@/components/BookDetail/BookingDetail.vue'
 import flightBookedContent from "../components/flightBookedContent.vue"
+import ListHotelSearch from '../components/Hotels/ListHotelSearch.vue'
+
 
 
 const router = createRouter({
@@ -53,6 +55,11 @@ const router = createRouter({
       name: "flightBookedContent",
       component: flightBookedContent,
     },
+    {
+      path:'/pageHotelList',
+      name:'pageHotelList',
+      component:ListHotelSearch
+    }
   ],
 });
 
