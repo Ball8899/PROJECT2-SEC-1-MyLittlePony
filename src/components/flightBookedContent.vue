@@ -1,12 +1,18 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { getItems, getItemById, deleteItemById } from "@/utils/fetchUtil";
+import { getItems, getItemById,deleteItemById } from "../utils/fetchUtil";
 import filterFlightBooked from "./filterFlightBooked.vue";
-import Menu from "./Menu.vue";
 import FooterComp from "./FooterComp.vue";
 import flightBookedMenu from "./flightBookedMenu.vue";
+import { storeToRefs } from "pinia";
+import { useBooking } from '../store/booking.js'
+import { useRouter } from "vue-router";
 
-const flightsBooking = ref([]);
+const bookingStore = useBooking();
+const { flightsBookings } = storeToRefs(bookingStore);
+const { getBooking } = bookingStore;
+const router = useRouter();
+const bookingId = ref("")
 
 const getFlights = async (flightId, booking) => {
   try {
@@ -14,7 +20,8 @@ const getFlights = async (flightId, booking) => {
       `${import.meta.env.VITE_APP_URL}/flights`,
       flightId
     );
-    flightsBooking.value.push({ ...booking, flight });
+    bookingId.value = booking.id
+    getBooking(flight, booking);
   } catch (error) {
     console.log(error);
   }
@@ -25,7 +32,7 @@ const getFlightsBooking = async () => {
     const bookings = await getItems(
       `${import.meta.env.VITE_APP_URL}/flightBooking`
     );
-    flightsBooking.value = [];
+    flightsBookings.value = []; 
     for (const booking of bookings) {
       await getFlights(booking.flight, booking);
     }
@@ -37,13 +44,18 @@ const getFlightsBooking = async () => {
 onMounted(async () => {
   await getFlightsBooking();
 });
+
+const routerTo = (id) => {
+  router.push({ name: "BookingDetail", params: { id } });
+};
+
 const deleteCancelledBooking = async (bookingId) => {
   try {
     await deleteItemById(
       `${import.meta.env.VITE_APP_URL}/flightBooking`,
       bookingId
     );
-    flightsBooking.value = flightsBooking.value.filter(
+    flightsBookings.value = flightsBookings.value.filter(
       (booking) => booking.id !== bookingId
     );
 
@@ -55,17 +67,21 @@ const deleteCancelledBooking = async (bookingId) => {
 </script>
 
 <template>
-  <div class="flex flex-row p-6">
+  
+  <div  class="flex flex-row p-6">
     <flightBookedMenu class="w-1/4 mr-6" />
     <div class="flex flex-col bg-white p-6 rounded-lg shadow-md w-3/4">
-      <filterFlightBooked :items="flightsBooking" v-slot="{ booked }">
+      <filterFlightBooked :items="flightsBookings" v-slot="{ booked }">
+        
         <div
           class="border border-gray-200 rounded-lg p-4 mb-4 shadow max-h-178 overflow-y-auto"
         >
           <div class="flex justify-between items-center border-b pb-2">
             <div>
               <span class="text-sm text-gray-500">Booking ID:</span>
-              <a href="#" class="text-blue-500 ml-2">{{ booked.id }}</a>
+              <p @click="routerTo(booked.id)" class="text-blue-500 ml-2 cursor-pointer">
+  {{ booked.id }}
+</p>
             </div>
             <span class="text-sm text-gray-500"
               >Booking Date:
@@ -89,9 +105,9 @@ const deleteCancelledBooking = async (bookingId) => {
                 <span>-</span>
                 <span>{{ booked.flight.arrival.time }}</span>
                 <span class="text-blue-500 font-medium">{{
-                  booked.flight.flightNumber
+                  booked.flight.flightDetails.flightNumber
                 }}</span>
-                <span>{{ booked.flight.airline }}</span>
+                <span>{{ booked.flight.flightDetails.airline }}</span>
               </div>
               <p class="text-gray-600 mt-2">
                 Passenger: {{ booked.passenger[0].firstName }}
@@ -122,6 +138,7 @@ const deleteCancelledBooking = async (bookingId) => {
     </div>
   </div>
   <FooterComp></FooterComp>
+  
 </template>
 
 <style scoped></style>

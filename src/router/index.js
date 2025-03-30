@@ -7,6 +7,7 @@ import BookingHotels from '../views/BookingHotels.vue'
 import PaymentForm from '../components/form/PaymentForm.vue'
 import TotalAmount from '../components/BookDetail/TotalAmount.vue'
 import BookingDetail from '@/components/BookDetail/BookingDetail.vue'
+import flightBookedContent from "../components/flightBookedContent.vue"
 
 
 const router = createRouter({
@@ -46,6 +47,11 @@ const router = createRouter({
       path: "/BookingDetail/:id",
       name: "BookingDetail",
       component: BookingDetail,
+    },
+    {
+      path: "/flightBookedContent",
+      name: "flightBookedContent",
+      component: flightBookedContent,
     },
   ],
 });

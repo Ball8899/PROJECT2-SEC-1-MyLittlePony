@@ -1,10 +1,9 @@
 <script setup>
 import {ref , computed} from 'vue';
-import { getItems } from "../utils/fetchUtil.js";
 const filterValue = ref('All')
 const props = defineProps({
   items: {
-    type: Object,
+    type: Array,
     required: true,
   },
 });
@@ -34,7 +33,7 @@ const filteredItems = computed(() => {
         :class="['px-5 py-2 w-50 h-10 border-r-gray-300 border-r-1', filterValue === 'Waiting' ? 'bg-blue-900 text-white' : 'bg-white hover:text-blue-600']">
         Waiting Payment
     </button>
-    
+
     <button 
         @click="getFilterValue('Cancelled')" 
         :class="['px-5 py-2 w-50 h-10  rounded-r-xl', filterValue === 'Cancelled' ? 'bg-blue-900 text-white' : 'bg-white hover:text-blue-600']">

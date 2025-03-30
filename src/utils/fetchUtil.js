@@ -95,4 +95,15 @@ async function postItem (url, data) {
   }
 }
 
-export {getItems, getItemById, postItem, getHotelById, getHotels, createBooking};
+async function deleteItemById(url, id) {
+  try {
+    const res = await fetch(`${url}/${id}`, {
+      method: 'DELETE'
+    })
+    return res.status
+  } catch (error) {
+    throw new Error('can not delete your item')
+  }
+}
+
+export {getItems, getItemById, postItem, getHotelById, getHotels, createBooking,deleteItemById};
