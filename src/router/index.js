@@ -9,18 +9,18 @@ import TotalAmount from '../components/BookDetail/TotalAmount.vue'
 import BookingDetail from '@/components/BookDetail/BookingDetail.vue'
 import flightBookedContent from "../components/flightBookedContent.vue"
 import ListHotelSearch from '../components/Hotels/ListHotelSearch.vue'
+import BookingHotelDetail from '@/components/BookDetail/BookingHotelDetail.vue'
 
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-
     {
       path: "/list-flight",
       name: "listFlight",
       component: FlightList,
-      meta: { title: 'เลือกเส้นทางของคุณ' }
+      meta: { title: "เลือกเส้นทางของคุณ" },
     },
     {
       path: "/flight-booking-form/:flightId/:passenger",
@@ -58,10 +58,15 @@ const router = createRouter({
       component: flightBookedContent,
     },
     {
-      path:'/pageHotelList',
-      name:'pageHotelList',
-      component:ListHotelSearch
-    }
+      path: "/pageHotelList",
+      name: "pageHotelList",
+      component: ListHotelSearch,
+    },
+    {
+      path: "/BookingHotelDetail",
+      name: "BookingHotelDetail",
+      component: BookingHotelDetail,
+    },
   ],
 });
 

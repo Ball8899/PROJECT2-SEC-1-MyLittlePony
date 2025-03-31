@@ -1,5 +1,4 @@
 <script setup>
-import Navbar from '../Navbar.vue';
 import Likely from './Likely.vue';
 import PaymentStatus from './PaymentStatus.vue';
 import TotalAmount from './TotalAmount.vue';
@@ -55,6 +54,12 @@ const closeModal = () => {
     showModal.value = false;
 };
 
+const promoCodes = ref([
+    { id: 1, icon: 'fa-solid fa-hotel', description: '฿300 off Hotel', discount: 300 },
+    { id: 2, icon: 'fa-solid fa-hotel', description: '฿150 Off Hotel', discount: 150 }
+]);
+
+const selectedPromo = ref(null);
 
 
 </script>
@@ -62,14 +67,11 @@ const closeModal = () => {
 
 <template>
 
-    <div>
-        <Navbar />
-    </div>
 
 
     <div class="bg-gray-200 min-h-screen p-2 sm:p-4">
         <div class="text-xs sm:text-sm text-gray-700 flex flex-wrap space-x-2 mx-4 sm:ml-24 mb-4">
-            <a href="" class="text-blue-600 hover:underline">All Bookings</a>
+            <router-link to="/flightBookedContent" class="text-blue-600 hover:underline">All Bookings</router-link>
             <span> > </span>
             <a href="" class="text-blue-600 hover:underline">Flight Bookings</a>
             <span> > </span>
@@ -105,10 +107,12 @@ const closeModal = () => {
                 </button>
             </template>
         </PaymentStatus>
+        <!-- 
+        <TotalAmount :totalAmount="pricing.basePrice" :bookingTime="formattedBookingDate"
+        :selectedPromo="selectedPromo" /> -->
 
-        <TotalAmount :totalAmount="3500" bookingTime="17:26, March 8, 2025" />
-
-        <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 flex items-center space-x-4 rounded-xl">
+        <div
+            class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 flex items-center space-x-4 rounded-xl">
             <img src="https://picsum.photos/300/200" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg">
             <div class="flex-1 mt-[-16px] pl-2 ">
                 <h2 class="text-xl font-bold text-gray-800">NASA BANGKOK <span
@@ -255,15 +259,14 @@ const closeModal = () => {
                 </div>
             </div>
         </div>
-        
+
+
         <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 rounded-xl">
             <h2 class="text-xl sm:text-xl font-bold">Your Add-ons</h2>
-            <PromoCode :promoCodes="[
-                { id: 1, icon: 'fa-solid fa-hotel', description: '฿300 off Hotel', discount: 300 },
-                { id: 2, icon: 'fa-solid fa-hotel', description: '฿150 Off Hotel', discount: 150 }
-            ]">
-            </PromoCode>
+            <PromoCode v-model="selectedPromo" :promoCodes="promoCodes" :currentDiscount="selectedPromo" />
         </div>
+
+
 
         <Likely :improvementOptions="[
             'Reviews weren\'t helpful',
@@ -279,7 +282,7 @@ const closeModal = () => {
             'Too few hotels to choose from',
             'Slow booking confirmation',
         ]" />
-        
+
 
 
 
