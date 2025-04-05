@@ -22,7 +22,7 @@ const filteredItems = computed(() => {
 </script>
 
 <template>
-  <div class="flex bg-gray-50 py-5 px-50 rounded-tl-2xl rounded-tr-2xl">
+  <div class="flex bg-gray-50  py-5 px-50 rounded-2xl">
     <button 
         @click="getFilterValue('All')" 
         :class="['px-5 py-2 w-50 h-10 border-r-gray-300 border-r-1 rounded-l-xl', filterValue === 'All' ? 'bg-blue-900 text-white' : 'bg-white hover:text-blue-600']">
@@ -41,7 +41,7 @@ const filteredItems = computed(() => {
     </button>
 </div>
 
-  <ul class="max-h-134 overflow-y-auto">
+  <ul class="max-h-134 overflow-y-auto py-5">
   <li v-for="(item, index) in filteredItems" :key="index">
     <slot :booked="item"> Booked </slot>
   </li>
