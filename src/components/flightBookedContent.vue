@@ -7,6 +7,7 @@ import flightBookedMenu from "./flightBookedMenu.vue";
 import { storeToRefs } from "pinia";
 import { useBooking } from '../store/booking.js'
 import { useRouter } from "vue-router";
+import { getAirlineLogo } from "@/utils/toolUtil";
 
 const bookingStore = useBooking();
 const { flightsBookings } = storeToRefs(bookingStore);
@@ -76,6 +77,8 @@ const deleteCancelledBooking = async (bookingId) => {
         <div
           class="border border-gray-200 rounded-lg p-4 mb-4 shadow max-h-178 overflow-y-auto"
         >
+        
+    
           <div class="flex justify-between items-center border-b pb-2">
             <div>
               <span class="text-sm text-gray-500">Booking ID:</span>
@@ -104,10 +107,18 @@ const deleteCancelledBooking = async (bookingId) => {
                 <span>{{ booked.flight.departure.time }}</span>
                 <span>-</span>
                 <span>{{ booked.flight.arrival.time }}</span>
-                <span class="text-blue-500 font-medium">{{
-                  booked.flight.flightDetails.flightNumber
-                }}</span>
-                <span>{{ booked.flight.flightDetails.airline }}</span>
+                
+                <span class="flex items-center space-x-1">
+    <span class="text-blue-500 font-medium">
+      {{ booked.flight.flightDetails.flightNumber }}
+    </span>
+    <span>{{ booked.flight.flightDetails.airline }}</span>
+    <img
+      :src="getAirlineLogo(booked.flight.flightDetails.airline)"
+      alt="Airline Logo"
+      class="w-15 h-15 object-contain ml-1 "
+    />
+  </span>
               </div>
               <p class="text-gray-600 mt-2">
                 Passenger: {{ booked.passenger[0].firstName }}
