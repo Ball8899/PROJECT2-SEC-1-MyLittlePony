@@ -6,6 +6,7 @@ import PromoCode from "./PromoCode.vue";
 import { storeToRefs } from "pinia";
 import { useBooking } from "../../store/booking.js";
 import { useRoute } from "vue-router";
+import { updateItem, getItems } from "../../utils/fetchUtil.js";
 import {
     ref,
     computed,
@@ -19,12 +20,14 @@ const { flightsBookings } = storeToRefs(bookingStore);
 const { getBooking } = bookingStore;
 const route = useRoute();
 const bookId = route.params.id;
+const bookings = ref([])
 
 const currentBooking = computed(() => {
     return flightsBookings.value.find(
         (book) => String(book.id) === String(bookId)
     );
 });
+
 const flight = ref({});
 const arrival = ref({});
 const departure = ref({});
@@ -34,6 +37,7 @@ const airportArrival = ref({});
 const flightDetails = ref({});
 const contact = ref({});
 const passenger = ref({});
+const approve = ref({});
 
 watchEffect(() => {
     flight.value = currentBooking.value.flight;
@@ -45,6 +49,8 @@ watchEffect(() => {
     flightDetails.value = currentBooking.value.flight.flightDetails;
     contact.value = currentBooking.value.contact;
     passenger.value = currentBooking.value.passenger;
+    approve.value = currentBooking.value.approve;
+
 });
 
 const emit = defineEmits(["close"]);
@@ -61,7 +67,7 @@ const closeDetails = () => {
 };
 
 const status = ref("awaiting");
-const countdown = ref(Math.floor(2 * 60));
+const countdown = ref(Math.floor(1 * 60));
 const timer = ref(null);
 const startCountdown = () => {
     if (countdown.value <= 0) {
@@ -86,10 +92,43 @@ const formattedTime = computed(() => {
 onMounted(startCountdown);
 onUnmounted(() => clearTimeout(timer.value));
 
-const cancelBooking = () => {
+const getFlightsBooking = async () => {
+    try {
+        bookings.value = await getItems(
+            `${import.meta.env.VITE_APP_URL}/flightBooking`
+        );
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+const cancelBooking = async () => {
     clearTimeout(timer.value);
-    status.value = "canceled";
+    status.value = false;
+    try {
+        const simplifiedBooking = {
+            id: currentBooking.value.id,
+            flight: currentBooking.value.flight.id || currentBooking.value.flight,
+            passenger: currentBooking.value.passenger,
+            contact: currentBooking.value.contact,
+            bookingDate: currentBooking.value.bookingDate,
+            approve: "Cancelled"
+        };
+
+        await updateItem(
+            `${import.meta.env.VITE_APP_URL}/flightBooking`,
+            currentBooking.value.id,
+            simplifiedBooking
+        );
+
+
+    } catch (error) {
+        console.error("Error cancelling booking:", error);
+    }
 };
+
+
 
 const formattedBookingDate = computed(() => {
 
@@ -112,10 +151,12 @@ const promoCodes = ref([
 const selectedPromo = ref(null);
 
 onMounted(() => {
+    getFlightsBooking()
     if (!currentBooking.value) {
         getBooking();
     }
 });
+
 </script>
 
 <template>
@@ -129,8 +170,7 @@ onMounted(() => {
             <span class="text-gray-900">Booking Details</span>
         </div>
 
-        <PaymentStatus v-if="status === 'awaiting'" :status="status" :reason="formattedBookingDate"
-            :bookingNo="currentBooking.id">
+        <PaymentStatus v-if="status" :status="approve" :reason="formattedBookingDate" :bookingNo="currentBooking.id">
             <template #action>
                 <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-2 sm:mt-0">
                     <button v-if="countdown > 0"
@@ -149,7 +189,7 @@ onMounted(() => {
             </template>
         </PaymentStatus>
 
-        <PaymentStatus v-else :status="status" :bookingNo="currentBooking.id" pin="405">
+        <PaymentStatus v-else :bookingNo="currentBooking.id" pin="405">
             <template #action>
                 <button
                     class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">

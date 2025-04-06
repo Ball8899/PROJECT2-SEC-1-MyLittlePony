@@ -120,4 +120,36 @@ async function deleteItemById(url, id) {
   }
 }
 
-export {getItems, getItemById, postItem, getHotelById, getHotels, createBooking,deleteItemById};
+async function updateItem(url, id, updatedData) {
+  try {
+    const response = await fetch(`${url}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    });
+
+    if (!response.ok) {
+      console.error(`Server responded with status: ${response.status}`);
+      throw new Error(`Error: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Update error:", error);
+    throw error;
+  }
+}
+
+export {
+  getItems,
+  getItemById,
+  postItem,
+  getHotelById,
+  getHotels,
+  createBooking,
+  deleteItemById,
+  updateItem,
+};
