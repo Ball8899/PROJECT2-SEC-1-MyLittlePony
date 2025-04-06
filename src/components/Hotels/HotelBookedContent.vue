@@ -1,42 +1,112 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { getItems, getItemById,deleteItemById } from "../../utils/fetchUtil";
+import { getItems, getItemById, deleteItemById } from "../../utils/fetchUtil";
 import filterFlightBooked from "../filterFlightBooked.vue";
 import FooterComp from ".././FooterComp.vue";
 import flightBookedMenu from "../flightBookedMenu.vue";
-const bookings = ref([])
+import { useRouter } from "vue-router";
+const router = useRouter()
+const bookings = ref([]);
 
 const getHotelBooking = async () => {
   try {
-    const data = await getItems(
-      `${import.meta.env.VITE_APP_URL}/bookingHotel`
-    );
-    bookings.value = data; 
+    const data = await getItems(`${import.meta.env.VITE_APP_URL}/bookingHotel`);
+    bookings.value = data;
   } catch (error) {
     console.log(error);
   }
 };
 
+
+const deleteCancelledBooking = async (bookingId) => {
+  try {
+    await deleteItemById(
+      `${import.meta.env.VITE_APP_URL}/bookingHotel`,
+      bookingId
+    );
+    bookings.value = bookings.value.filter(
+      (booking) => booking.id !== bookingId
+    );
+
+
+    console.log(`Deleted booking ID: ${bookingId}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
 onMounted(async () => {
   await getHotelBooking();
 });
 
+const routerBookingDetail = (id) => {
+  router.push({ name: "BookingDetail", params: { id } });
+}
 </script>
 
 <template>
-  
   <div  class="flex flex-row p-6">
     <flightBookedMenu class="w-1/4 mr-6" />
     <div class="flex flex-col bg-white p-6 rounded-lg shadow-md w-3/4">
       <filterFlightBooked :items="bookings" v-slot="{ booked }">
-        
-        {{ booked.id }} 
-        {{ booked.fName }}
+        <div 
+          class="border border-gray-200 rounded-lg p-4 mb-4 shadow max-h-178 overflow-y-auto"
+           
+        >
+          <div class="flex justify-between items-center border-b pb-2">
+            <div>
+              <span class="text-sm text-gray-500"
+                >Booking ID: {{ booked.id }}</span
+              >
+            </div>
+            <span class="text-sm text-blue-500"
+              >Booking Date: {{ booked.dateBooking }}</span
+            >
+          </div>
+
+          <div class="flex  items-center">
+            <img class="w-48 mt-3 ml-3 rounded-md" src="../../assets/hotels/hotel2.jpg" alt="" />
+
+            <div class="ml-7">
+              <p class="text-lg font-semibold">{{ booked.hotelName }}</p>
+              <div
+                class=" items-center space-x-4 text-gray-500 text-sm mt-1"
+              >
+                <span class="text-green-500">
+                  Check In: {{ booked.checkInTime }}</span
+                >
+                <span class="inline-block mb-1 w-14 h-0.5 bg-gray-300 my-auto"></span>
+                <span class="text-red-500">
+                  Check Out: {{ booked.checkOutTime }}</span
+                >
+              </div>
+            </div>
+            <div class="ml-auto text-right">
+              <p class="text-xl font-bold text-gray-800" >
+                ฿ {{ booked.price }}
+              </p>
+              <button
+                class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
+                v-if="booked.approve !== 'Cancelled'"
+                @click="routerBookingDetail(booked.id)"
+              >
+                Payment
+              </button>
+              <button 
+                class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
+                v-if="booked.approve == 'Cancelled'"
+                @click="deleteCancelledBooking(booked.id)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
       </filterFlightBooked>
     </div>
   </div>
-  <FooterComp></FooterComp>
-  
 </template>
 
 <style scoped></style>

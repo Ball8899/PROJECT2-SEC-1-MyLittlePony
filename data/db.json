@@ -3769,36 +3769,22 @@
   ],
   "bookingHotel": [
     {
-      "id": "d957",
+      "id": "8e35",
       "fName": "ball",
       "lName": "ball",
       "email": "ball@gmail.com",
-      "phoneNumber": "2430982438",
-      "hotelId": "1",
-      "roomId": "102",
-      "hotelName": "MANDARIN ORIENTAL BANGKOK",
-      "price": 7500,
-      "dateBooking": "31/3/2568 02:11:09",
-      "roomAmount": 2,
-      "nightAmount": 2,
-      "checkInTime": "1/4/2568 16:00:00",
-      "checkOutTime": "3/4/2568 15:00:00"
-    },
-    {
-      "id": "f456",
-      "fName": "peak",
-      "lName": "peak",
-      "email": "jack@gmail.com",
-      "phoneNumber": "9082340984",
-      "hotelId": "1",
-      "roomId": "102",
-      "hotelName": "MANDARIN ORIENTAL BANGKOK",
-      "price": 6900,
-      "dateBooking": "31/3/2568 02:14:09",
+      "phoneNumber": "2348902348",
+      "hotelId": "3",
+      "roomId": "20701",
+      "hotelName": "SIAM KEMPINSKI HOTEL BANGKOK",
+      "price": 9250,
+      "dateBooking": "6/4/2568 13:11:39",
       "roomAmount": 1,
-      "nightAmount": 2,
-      "checkInTime": "1/4/2568 16:00:00",
-      "checkOutTime": "3/4/2568 15:00:00"
+      "nightAmount": 1,
+      "checkInTime": "9/4/2568 16:00:00",
+      "checkOutTime": "10/4/2568 15:00:00",
+      "approve": "waiting"
     }
+    
   ]
 }

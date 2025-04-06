@@ -10,7 +10,7 @@ import BookingDetail from '@/components/BookDetail/BookingDetail.vue'
 import flightBookedContent from "../components/flightBookedContent.vue"
 import ListHotelSearch from '../components/Hotels/ListHotelSearch.vue'
 import BookingHotelDetail from '@/components/BookDetail/BookingHotelDetail.vue'
-
+import HotelBookedContent from '@/components/Hotels/HotelBookedContent.vue'
 
 
 const router = createRouter({
@@ -67,6 +67,11 @@ const router = createRouter({
       name: "BookingHotelDetail",
       component: BookingHotelDetail,
     },
+    {
+      path:"/HotelBookedContent",
+      name: "HotelBookedContent",
+      component:HotelBookedContent
+    }
   ],
 });
 

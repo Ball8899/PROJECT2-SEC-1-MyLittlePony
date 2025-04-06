@@ -6,6 +6,8 @@ import FlightList from './components/FlightList/FlightList.vue'
 import { ref, watch } from 'vue'
 import { useRoute } from "vue-router";
 import FooterComp from "./components/FooterComp.vue";
+import MainCardHotelList from "./components/Hotels/MainCardHotelList.vue";
+
 const route = useRoute()
 console.log(route);
 
@@ -25,6 +27,7 @@ const resetShow = ref(false)
 
     </div>
   </div>
+  <MainCardHotelList/>
 </template>
 
 <style scoped>

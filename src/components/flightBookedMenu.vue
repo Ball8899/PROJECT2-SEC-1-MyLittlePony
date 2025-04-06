@@ -1,5 +1,7 @@
 <script setup>
-import router from '@/router';
+import { useRouter } from "vue-router";
+const router = useRouter()
+
 const routerToHotel = () => {
   router.push({ name: "HotelBookedContent"});
 };

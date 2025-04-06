@@ -11,7 +11,7 @@ const receivedRoomId = ref(null)
 const route = useRoute()
 onMounted(async () => {
   try {
-    hotels.value = await getHotels(`http://localhost:3000/hotels`);
+    hotels.value = await getHotels(`${import.meta.env.VITE_APP_URL}/hotels`);
   } catch (error) {
     console.log(error);
   }
