@@ -3,8 +3,25 @@ import Likely from './Likely.vue';
 import PaymentStatus from './PaymentStatus.vue';
 import TotalAmount from './TotalAmount.vue';
 import PromoCode from './PromoCode.vue';
-
+import { storeToRefs } from "pinia";
+import { useBooking } from "../../store/booking.js";
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useRoute , useRouter } from "vue-router";
+const bookingStore = useBooking();
+const { hotelBookings } = storeToRefs(bookingStore);
+const { getHotel } = bookingStore;
+const route = useRoute();
+const router = useRouter();
+const hotelId = route.params.id
+
+
+const currentHotel = computed(() => {
+    return hotelBookings.value.find(
+        (hotel) => String(hotel.id) === String(hotelId)
+    );
+});
+
+
 
 
 
@@ -18,7 +35,7 @@ const emits = defineEmits(['closeAll']);
 let timer = ref(null);
 const startCountdown = () => {
     if (countdown.value <= 0) {
-        status.value = "canceled";
+        status.value = "Cancelled";
         return;
     }
 
@@ -38,7 +55,9 @@ onMounted(startCountdown);
 onUnmounted(() => clearTimeout(timer.value));
 
 const cancelBooking = () => {
-    status.value = "canceled";
+    clearTimeout(timer.value);
+    status.value = false;
+    
 };
 
 
@@ -62,6 +81,12 @@ const promoCodes = ref([
 const selectedPromo = ref(null);
 
 
+onMounted(() => {
+     if (!currentHotel.value) {
+        getHotel();
+    }
+})
+
 </script>
 
 
@@ -73,14 +98,15 @@ const selectedPromo = ref(null);
         <div class="text-xs sm:text-sm text-gray-700 flex flex-wrap space-x-2 mx-4 sm:ml-24 mb-4">
             <router-link to="/flightBookedContent" class="text-blue-600 hover:underline">All Bookings</router-link>
             <span> > </span>
-            <a href="" class="text-blue-600 hover:underline">Flight Bookings</a>
+            <router-link to="/HotelBookedContent" class="text-blue-600 hover:underline">Hotel Bookings</router-link>
             <span> > </span>
             <span class="text-gray-900">Booking Details</span>
         </div>
 
 
-        <PaymentStatus v-if="status === 'awaiting'" :status="status"
-            reason="Bookings that are not paid for in time will be canceled" bookingNo="1622918183214445">
+
+        <PaymentStatus v-if="status" :status="currentHotel.hotel[0].approve"
+            reason="Pay before time runs out to keep your booking." :bookingNo="currentHotel.hotel[0].hotelId">
             <template #action>
                 <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-2 sm:mt-0">
                     <button v-if="countdown > 0"
@@ -99,7 +125,7 @@ const selectedPromo = ref(null);
             </template>
         </PaymentStatus>
 
-        <PaymentStatus v-else :status="status" bookingNo="77777777235" pin="405">
+        <PaymentStatus v-else :bookingNo="currentHotel.hotel[0].hotelId" pin="405">
             <template #action>
                 <button
                     class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">
