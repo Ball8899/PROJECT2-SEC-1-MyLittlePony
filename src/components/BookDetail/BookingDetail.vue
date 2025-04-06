@@ -67,12 +67,14 @@ const closeDetails = () => {
     emit("close");
 };
 
-const status = ref("awaiting");
+const status = computed(() => {
+    return currentBooking.value?.approve === "Waiting";
+});
 const countdown = ref(Math.floor(1 * 60));
 const timer = ref(null);
 const startCountdown = () => {
     if (countdown.value <= 0) {
-        status.value = "canceled";
+        status.value = "Cancelled";
         return;
     }
     timer.value = setTimeout(() => {
@@ -468,8 +470,5 @@ onMounted(() => {
             </div>
         </div>
 
-        <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 rounded-xl">
-            <h2 class="text-xl font-bold">Featured Properties</h2>
-        </div>
     </div>
 </template>

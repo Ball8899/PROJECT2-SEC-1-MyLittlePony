@@ -20,7 +20,7 @@ const finalAmount = computed(() => {
 </script>
 
 <template>
-  <div class="bg-white p-6 shadow-md w-full max-w-sm mx-auto sm:ml-10 sm:right-39 sm:top-29 sm:absolute rounded-xl">
+  <div class="bg-white p-4 sm:p-6 shadow-md w-full max-w-sm mx-auto rounded-xl sm:fixed sm:right-4 md:right-8 lg:right-16 xl:right-35 sm:top-32 md:top-36 lg:top-30">
     <div class="flex justify-between items-center">
       <h2 class="text-base sm:text-base font-bold text-gray-900">Total Amount</h2>
       <p class="text-blue-600 text-base font-semibold text-right">
