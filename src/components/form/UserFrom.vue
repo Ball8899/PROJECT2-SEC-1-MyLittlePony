@@ -1,5 +1,7 @@
 <script setup>
 import { defineProps, computed, ref, defineEmits, watch } from "vue";
+import { checkName, checkDay } from "../../utils/toolUtil.js";
+import NotiDialog from "../validate/NotiDialog.vue";
 
 const emit = defineEmits(["sendUserForm"]);
 
@@ -36,7 +38,29 @@ const form = (index) => {
   uptodateIndex.value = index;
 };
 
+const checkGender = ref(false)
+const checkNationality = ref(false)
+const checkPastDate = ref(false)
+const checkFirstName = ref(false)
+const checkLastName = ref(false)
+
 const saveForm = () => {
+  if (!checkName(tempFormData.value.firstName) || tempFormData.value.firstName == "") {
+    checkFirstName.value = true
+    return
+  } else if (!checkName(tempFormData.value.lastName) || tempFormData.value.lastName == "") {
+    checkLastName.value = true
+    return
+  } else if (tempFormData.value.gender == "") {
+    checkGender.value = true
+    return
+  } else if (!checkDay(tempFormData.value.dob) || tempFormData.value.dob == "") {
+    checkPastDate.value = true
+    return
+  } else if(tempFormData.value.nationality == "") {
+    checkNationality.value = true
+    return
+  }
   formData.value[uptodateIndex.value] = { ...tempFormData.value };
   openForm.value = false;
   emit("sendUserForm", formData.value);
@@ -68,7 +92,7 @@ const clearInput = () => {
       class="fixed inset-0 bg-gray-500/50 bg-opacity-75 z-40 overflow-y-auto h-full w-full flex items-center justify-center"
     >
       <div
-        class="bg-white rounded-xl shadow-md max-w-xl w-full mx-auto p-6 relative z-50"
+        class="bg-white rounded-xl shadow-md max-w-4xl w-full mx-auto p-6 relative z-50"
       >
         <div class="flex justify-between items-center mb-6">
           <h1 class="text-xl font-bold text-gray-800">Passenger</h1>
@@ -112,6 +136,7 @@ const clearInput = () => {
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div class="relative">
+            <NotiDialog v-show="!checkName(tempFormData.firstName) && checkFirstName"  message="(a-z, A-Z) and Thai letters, with a maximum length of 50 characters!" />
             <input
               v-model="tempFormData.firstName"
               type="text"
@@ -139,6 +164,7 @@ const clearInput = () => {
           </div>
 
           <div class="relative">
+            <NotiDialog v-show="!checkName(tempFormData.lastName) && checkLastName"  message="(a-z, A-Z) and Thai letters, with a maximum length of 50 characters!" />
             <input
               v-model="tempFormData.lastName"
               type="text"
@@ -180,6 +206,7 @@ const clearInput = () => {
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="relative">
+            <NotiDialog v-show="tempFormData.gender == '' && checkGender"  message="Please ensure that you enter a value in this field" />
             <select
               v-model="tempFormData.gender"
               class="appearance-none w-full px-4 py-3 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 text-gray-400"
@@ -187,7 +214,6 @@ const clearInput = () => {
               <option value="" disabled selected>Gender on ID</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
-              <option value="other">Other</option>
             </select>
             <div
               class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400"
@@ -210,6 +236,7 @@ const clearInput = () => {
           </div>
 
           <div class="relative">
+            <NotiDialog v-show="!checkDay(tempFormData.dob) && checkPastDate" message="Please enter a valid date of birth. The date should be in the past" />
             <input
               v-model="tempFormData.dob"
               type="text"
@@ -218,26 +245,10 @@ const clearInput = () => {
               onfocus="this.type='date'"
               onblur="if(!this.value) this.type='text'"
             />
-            <div
-              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
+            
           </div>
           <div class="relative">
+            <NotiDialog v-show="checkNationality"  message="Please ensure that you enter a value in this field" />
             <select
               v-model="tempFormData.nationality"
               class="appearance-none w-full px-4 py-3 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 text-gray-400"

@@ -6,27 +6,27 @@
       <button
         class="cursor-pointer w-[100%] hover:py-6 hover:bg-gray-100 duration-300 px-8 py-4 flex flex-row gap-6 items-center"
       >
-        <i class="text-xl fa-solid fa-bed"></i>Homes & Hotels
+        <i class="fa-solid fa-bed"></i>Homes & Hotels
       </button>
       <button
         class="cursor-pointer w-[100%] hover:py-6 hover:bg-gray-100 duration-300 px-8 py-4 flex flex-row gap-6 items-center"
       >
-        <i class="w-5 text-lg fa-solid fa-plane-departure"></i>Flight
+        <i class="w-5 fa-solid fa-plane-departure"></i>Flight
       </button>
       <button
         class="cursor-pointer w-[100%] hover:py-6 hover:bg-gray-100 duration-300 px-8 py-4 flex flex-row gap-6 items-center"
       >
-        <i class="w-5 text-lg fa-solid fa-train"></i>Trains
+        <i class="w-5 fa-solid fa-train"></i>Trains
       </button>
       <button
         class="cursor-pointer w-[100%] hover:py-6 hover:bg-gray-100 duration-300 px-8 py-4 flex flex-row gap-6 items-center"
       >
-        <i class="w-5 text-lg fa-solid fa-car"></i>Cars
+        <i class="w-5 fa-solid fa-car"></i>Cars
       </button>
       <button
         class="cursor-pointer w-[100%] hover:py-6 hover:bg-gray-100 duration-300 px-8 py-4 flex flex-row gap-6 items-center"
       >
-        <i class="w-5 text-lg fa-solid fa-passport"></i>Attractions & Tours
+        <i class="w-5 fa-solid fa-passport"></i>Attractions & Tours
       </button>
       <button
         class="cursor-pointer w-[100%] hover:py-6 hover:bg-gray-100 duration-300 px-8 py-4 flex flex-row gap-6 items-center"

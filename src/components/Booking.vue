@@ -11,8 +11,10 @@ import CalendarDialog from "./Calendar.vue";
 import DestinationDialog from "./DestinationDialog.vue";
 import PassengerDialog from "./PassengerDialog.vue";
 import { useRouter } from "vue-router";
+import NotiDialog from "./validate/NotiDialog.vue";
 
 const router = useRouter();
+const departureNotNull = ref(false)
 
 const formatDate = (date) => {
   if (!date) return null;
@@ -33,11 +35,17 @@ watch(() => {
   }
 });
 
+const desNotBlank = ref(false)
+
 const searchFlight = () => {
-  if (checkNotValidLocation() || (goingDestination.value == '' || leavingDestination.value == '')) {
+  if (goingDestination.value == '' || leavingDestination.value == '') {
+    desNotBlank.value = true
+    return 
+  }
+  else if (checkNotValidLocation()) {
     return
   }
-  if (typeOfFlight.value == 'Round Trip' && returnFlight.value === null) {
+  else if (typeOfFlight.value == 'Round Trip' && returnFlight.value === null) {
     return
   }
   router.push({
@@ -121,6 +129,7 @@ const checkNotValidLocation = () => {
     return false;
   return leavingDestination.value === goingDestination.value;
 };
+
 
 watchEffect(() => {
   checkNotValidLocation();
@@ -216,24 +225,20 @@ const toggle = (nameDialog) => {
         <DestinationDialog
           @destination-selected="handleDestination"
           :type="'leaving'"
-          class="w-[550px] absolute -mt-14"
+          class="w-[550px] absolute -mt-14 z-100"
           v-if="showLeaving"
         ></DestinationDialog>
       </div>
       <div>
-        <div v-show="checkNotValidLocation()">
-          <p
-            class="absolute -mt-12 bg-red-600/85 font-light tracking-wide px-2 py-2 w-[250px] text-xs text-white"
-          >
-            Please select different departure and arrival cities
-          </p>
-          <span
-            class="w-0 h-0 ml-5 absolute border-t-8 border-t-red-600/85 border-l-8 border-l-transparent border-r-8 border-r-transparent"
-          ></span>
+        <div>
+          <NotiDialog message="Please select different departure and arrival cities" v-show="checkNotValidLocation()"></NotiDialog>
+        </div>
+        <div>
+          <NotiDialog message="Please select leaving and going city before search flight tickets !" v-show="(desNotBlank)"></NotiDialog>
         </div>
         <button
           @click="reverseLocation"
-          class="w-10 absolute bg-white border-1 border-gray-300 -ml-5 mt-1.5 rounded-full flex justify-center items-center h-10"
+          class="w-10 absolute z-10 bg-white border-1 border-gray-300 -ml-5 mt-1.5 rounded-full flex justify-center items-center h-10"
         >
           <img
             src="../assets/image/airplanes-and-arrows-symbol-svgrepo-com.svg"
@@ -270,7 +275,7 @@ const toggle = (nameDialog) => {
         <DestinationDialog
           @destination-selected="handleDestination"
           :type="'going'"
-          class="w-[550px] absolute -mt-14"
+          class="w-[550px] absolute -mt-14 z-100"
           v-if="showGoing"
         ></DestinationDialog>
       </div>

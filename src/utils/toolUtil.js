@@ -23,5 +23,18 @@ const notFilledInto = (data) => {
   return false;
 };
 
+const checkName = (data) => {
+  const value = new RegExp ('^[a-zA-Z\u0E00-\u0E7F]{1,50}$');
+  return value.test(data)
+}
 
-export {getAirlineLogo, notFilledInto}
+const checkDay = (data) => {
+  const date = new Date(data)
+  const currentDate = new Date()
+
+  if (date < currentDate) {
+    return true
+  }
+}
+
+export {getAirlineLogo, notFilledInto, checkName, checkDay}
