@@ -158,7 +158,7 @@ const newBookingHotel = reactive({
   checkInDate:"",
   checkOutTime: "",
   checkOutDate: "",
-  approve: "waiting",
+  approve: "Waiting",
 });
 
 watchEffect(() => {
