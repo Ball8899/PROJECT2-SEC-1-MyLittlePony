@@ -10,7 +10,6 @@ const props = defineProps({
 const getFilterValue = (booked) =>{
 filterValue.value = booked;
 }
-console.log(filterValue.value);
 
 const filteredItems = computed(() => {
   if (filterValue.value === 'All') {

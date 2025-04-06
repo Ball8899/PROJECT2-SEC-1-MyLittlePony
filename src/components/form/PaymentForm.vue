@@ -13,12 +13,12 @@ const statusPost = ref(null);
 
 const data = computed(() => {
   return {
-    id: bookingNumber.value,
+    id: String(bookingNumber.value),
     flight: flight.value.id,
     passenger: passengerInfo.value,
     contact: contact.value,
     bookingDate: new Date(),
-    approve: "waiting",
+    approve: "Waiting",
   };
 });
 
