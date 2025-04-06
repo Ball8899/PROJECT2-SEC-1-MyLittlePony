@@ -5,9 +5,12 @@ import { Teleport } from "vue";
 import { defineProps } from "vue";
 import { getHotelById, createBooking } from "../utils/fetchUtil";
 import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 
 const date = new Date();
 const route = useRoute();
+const router = useRouter();
+
 defineProps(["closeModal"]);
 
 const hotels = ref({});
@@ -152,6 +155,7 @@ const newBookingHotel = reactive({
   nightAmount: 1,
   checkInTime: "",
   checkOutTime: "",
+   approve: "waiting"
 });
 
 watchEffect(() => {
@@ -210,6 +214,12 @@ const closeModal = async () => {
   }
   bookingSuccess.value = false;
 };
+
+const routerToListContent = () => {
+  closeModal()
+  router.push({name:"flightBookedContent"})
+
+}
 
 const addBooking = async () => {
   if (!calculateCheckIn.value || isNaN(calculateCheckIn.value.getTime())) {
@@ -880,7 +890,7 @@ const validFrom = () => {
 
           <button
             class="w-1/2 bg-blue-600 text-white py-2  px-3 rounded-md hover:bg-blue-700 transition font-medium"
-            @click="closeModal"
+            @click="routerToListContent"
           >
             Your Booked
           </button>
