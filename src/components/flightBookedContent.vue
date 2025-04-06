@@ -64,6 +64,10 @@ const deleteCancelledBooking = async (bookingId) => {
   } catch (error) {
     console.log(error);
   }
+
+  router.push({
+        name: "flightBookedContent"
+    })
 };
 </script>
 

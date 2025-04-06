@@ -14,7 +14,6 @@ import { useRouter } from "vue-router";
 import NotiDialog from "./validate/NotiDialog.vue";
 
 const router = useRouter();
-const departureNotNull = ref(false)
 
 const formatDate = (date) => {
   if (!date) return null;

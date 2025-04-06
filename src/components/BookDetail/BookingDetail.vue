@@ -5,7 +5,7 @@ import TotalAmount from "./TotalAmount.vue";
 import PromoCode from "./PromoCode.vue";
 import { storeToRefs } from "pinia";
 import { useBooking } from "../../store/booking.js";
-import { useRoute } from "vue-router";
+import { useRoute , useRouter } from "vue-router";
 import { updateItem, getItems } from "../../utils/fetchUtil.js";
 import {
     ref,
@@ -19,6 +19,7 @@ const bookingStore = useBooking();
 const { flightsBookings } = storeToRefs(bookingStore);
 const { getBooking } = bookingStore;
 const route = useRoute();
+const router = useRouter();
 const bookId = route.params.id;
 const bookings = ref([])
 
@@ -126,6 +127,12 @@ const cancelBooking = async () => {
     } catch (error) {
         console.error("Error cancelling booking:", error);
     }
+
+    router.push({
+        name: "flightBookedContent"
+    })
+
+
 };
 
 
