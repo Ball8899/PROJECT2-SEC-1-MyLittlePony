@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="bg-white rounded-lg mb-7 h-108 left-20 w-320 relative top-276">
+  <div class="bg-white rounded-lg mb-7 h-108 text-base left-20 w-320 relative top-276">
     <div class="absolute">
       <h1 class="text-xl p-4 font-semibold">
         <slot name="roomName">
@@ -328,21 +328,21 @@
 
             <ul>
               <li
-                class="absolute text-2xl text-white font-semibold cursor-pointer hover:bg-blue-700 rounded-lg bg-blue-600 h-12 justify-center items-center flex inset-y-0 right-28 top-25 w-30"
+                class="absolute  font-medium  text-xl text-white  cursor-pointer hover:bg-blue-700 rounded-lg bg-blue-600 h-10 justify-center items-center flex inset-y-0 right-28 top-25 w-26"
               >
                 <slot name="ReserveOption1"> Reserve </slot>
               </li>
-              <li class="absolute right-60 text-xl top-25">
+              <li class="absolute right-60 text-lg top-25">
                 ฿<slot name="priceOption1"> 800</slot>
               </li>
               <li class="absolute right-60 text-light top-31">Price Detail</li>
 
               <li
-                class="absolute text-2xl text-white font-semibold cursor-pointer hover:bg-blue-700 rounded-lg bg-blue-600 h-12 justify-center items-center flex inset-y-0 right-28 top-55 w-30"
+                class="absolute font-medium text-xl text-white cursor-pointer hover:bg-blue-700 rounded-lg bg-blue-600 h-10 justify-center items-center flex inset-y-0 right-28 top-55 w-26"
               >
                 <slot name="ReserveOption2"> Reserve </slot>
               </li>
-              <li class="absolute right-60 text-xl top-54">
+              <li class="absolute right-60 text-lg top-54">
                 ฿<slot name="priceOption2"> 800</slot>
               </li>
               <li class="absolute right-60 text-light top-60">Price Detail</li>

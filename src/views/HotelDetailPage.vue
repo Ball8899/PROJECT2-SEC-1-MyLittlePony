@@ -115,7 +115,7 @@ const activeReserve = (roomId, hotelId,optionId) => {
         </div>
 
         <h1
-          class="absolute text-2xl text-white font-semibold cursor-pointer hover:bg-blue-700 rounded-lg bg-blue-600 h-15 justify-center items-center flex inset-y-0 right-5 top-5 w-39"
+          class="absolute text-xl text-white font-semibold cursor-pointer hover:bg-blue-700 rounded-lg bg-blue-600 h-13 justify-center items-center flex inset-y-0 right-5 top-5 w-35"
         >
           Select Room
         </h1>

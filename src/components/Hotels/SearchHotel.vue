@@ -2,23 +2,38 @@
 import { ref, onMounted, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getHotels } from "../../utils/fetchUtil.js";
+
 const hotels = ref([]);
 const filteredProvinces = ref("");
 const filteredPrice = ref("");
 const storefilteredHotels = ref([]);
 const numberCapacity = ref(0);
 const router = useRouter();
-const route = useRoute();
-const show = ref(false);
 
 const storeValue = ref({
   showProvinces: false,
   showFilterPrice: false,
   showFilterCapacity: false,
+
 });
 
-const clickShow = () => {
-  show.value = !show.value;
+
+
+const closeToggle = () => {
+  if (storeValue.value.showProvinces === true) {
+    storeValue.value.showProvinces = false;
+    return;
+  }
+  if (storeValue.value.showFilterPrice === true) {
+    storeValue.value.showFilterPrice = false;
+    return;
+  }
+  if (storeValue.value.showFilterCapacity === true) {
+    storeValue.value.showFilterCapacity = false;
+    return;
+  } else {
+    return;
+  }
 };
 
 onMounted(async () => {
@@ -40,13 +55,12 @@ const applyFilters = () => {
 
   if (filteredProvinces.value) {
     filtered = filtered.filter(
-      (hotel) => hotel.provinces === filteredProvinces.value
+      (hotel) => hotel.provinces === filteredProvinces.value.toUpperCase()
     );
   }
 
   if (filteredPrice.value) {
     const priceRangeStr = filteredPrice.value.split("-");
-
     const priceRange = [
       parseInt(priceRangeStr[0].replace(/,/g, "")),
       parseInt(priceRangeStr[1].replace(/,/g, "")),
@@ -83,6 +97,7 @@ const toggle = (nameDialog) => {
     if (key !== nameDialog) {
       storeValue.value[key] = false;
     }
+    
   });
 
   storeValue.value[nameDialog] = !storeValue.value[nameDialog];
@@ -104,6 +119,7 @@ const searchHotel = () => {
   ) {
     return;
   }
+
   const hotelIds = storefilteredHotels.value.map((hotel) => hotel.id);
   router.push({
     path: "/pageHotelList",
@@ -118,45 +134,47 @@ const searchHotel = () => {
 </script>
 
 <template>
-  <div class="bg-white text-black h-auto pt-10 pb-5 rounded-lg">
+  <div @click="closeToggle" class="bg-white text-black h-auto pt-10 pb-5 rounded-lg">
     <div class="flex flex-row px-10 mt-2 gap-2 justify-between">
       <div class="relative">
-        <div>
-          <button
-            @click.stop="toggle('showProvinces')"
-            class="w-72 text-left text-gray-800 text-sm font-bold border border-gray-300 p-4 rounded-md flex justify-between items-center"
+        <button
+          :class="{ 'rounded-sm': filteredProvinces }"
+          @click.stop="toggle('showProvinces')"
+          class="w-72 text-left h-13 text-gray-800 text-sm font-bold border border-gray-300 p-4 rounded-md flex justify-between items-center"
+        >
+          <span
+            class="text-gray-300 absolute"
+            :class="{
+              'text-gray-800 w-68 rounded-sm right-2 h-10 p-1 pl-2 bg-blue-100/80':
+                filteredProvinces,
+            }"
           >
-            <span class="text-gray-300">{{
-              filteredProvinces || "Provinces"
-            }}</span>
-            <span>▼</span>
-          </button>
-        </div>
+            {{ filteredProvinces || "Provinces" }}
+          </span>
+        </button>
 
         <div
           v-if="storeValue.showProvinces"
-          class="bg-white p-4 w-[280px] rounded-md absolute mt-1 shadow-lg z-10"
+          class="bg-white p-4 w-84 rounded-md absolute mt-1 shadow-lg z-10"
         >
-          <div class="font-semibold">
-            <h3 class="text-lg mb-2">Thailand</h3>
-            <div class="font-light pt-2 text-sm space-y-2">
-              <div class="grid grid-cols-2 gap-2">
-                <div
-                  v-for="province in [
-                    'BANGKOK',
-                    'CHIANG MAI',
-                    'PHUKET',
-                    'SURAT THANI',
-                    'AYUTTHAYA',
-                    'PRACHUAP KHIRI KHAN',
-                  ]"
-                  :key="province"
-                  @click="filterProvinces(province)"
-                  class="cursor-pointer hover:bg-blue-100 p-2 rounded-md transition-colors"
-                  :class="{ 'bg-blue-100': filteredProvinces === province }"
-                >
-                  {{ province }}
-                </div>
+          <h3 class="font-light text-sm text-gray-400">Thailand</h3>
+          <div class="font-light pt-2 text-sm space-y-2">
+            <div class="grid grid-cols-2 gap-2">
+              <div
+                v-for="province in [
+                  'Bangkok',
+                  'Chiang Mai',
+                  'Phuket',
+                  'Surat Thani',
+                  'Ayutthaya',
+                  'Prachuap Khiri Khan',
+                ]"
+                :key="province"
+                @click="filterProvinces(province)"
+                class="cursor-pointer hover:bg-blue-100 p-2 rounded-md transition-colors"
+                :class="{ 'bg-blue-100': filteredProvinces === province }"
+              >
+                {{ province }}
               </div>
             </div>
           </div>
@@ -166,86 +184,83 @@ const searchHotel = () => {
       <div class="relative">
         <button
           @click.stop="toggle('showFilterPrice')"
-          class="w-72 text-left text-gray-800 text-sm font-bold border border-gray-300 p-4 rounded-md flex justify-between items-center"
+          class="w-72 text-left text-gray-800 text-sm font-bold border border-gray-300 h-13 rounded-md flex justify-between items-center"
         >
-          <span class="text-gray-300">{{
-            filteredPrice || "Price Range"
-          }}</span>
-          <span>▼</span>
+          <span
+            class="text-gray-300 pl-4"
+            :class="{
+              'text-gray-800 w-69 text-base rounded-sm h-10 p-1 ml-1 bg-blue-100/80':
+                filteredPrice,
+            }"
+          >
+            {{ filteredPrice || "Price Range" }}
+          </span>
         </button>
 
         <div
           v-if="storeValue.showFilterPrice"
           class="bg-white p-4 w-72 rounded-md absolute mt-1 shadow-lg z-10"
         >
-          <div class="font-medium">
-            <h3 class="text-lg mb-3 font-semibold">Price Range</h3>
-            <div class="bg-gray-50 p-3 rounded-lg">
-              <ul class="space-y-1.5">
-                <li
-                  v-for="range in [
-                    '500-1,000',
-                    '1,000-3,000',
-                    '3,000-6,000',
-                    '6,000-8,000',
-                    '10,000-20,000',
-                    '20,000-50,000',
-                  ]"
-                  :key="range"
-                  @click="mapPrice(range)"
-                  class="cursor-pointer hover:bg-blue-50 hover:text-blue-600 p-2.5 rounded-md transition-all flex items-center justify-between"
-                  :class="{
-                    'bg-blue-100 text-blue-700 font-medium shadow-sm':
-                      filteredPrice === range,
-                  }"
+          <h3 class="text-lg mb-3 font-semibold">Price Range</h3>
+          <div class="bg-gray-50 p-3 rounded-lg">
+            <ul class="space-y-1.5">
+              <li
+                v-for="range in [
+                  '500-1,000',
+                  '1,000-3,000',
+                  '3,000-6,000',
+                  '6,000-8,000',
+                  '10,000-20,000',
+                  '20,000-50,000',
+                ]"
+                :key="range"
+                @click="mapPrice(range)"
+                class="cursor-pointer hover:bg-blue-50 hover:text-blue-600 p-2.5 rounded-md transition-all flex items-center justify-between"
+                :class="{
+                  'bg-blue-100 text-blue-700 font-medium shadow-sm': filteredPrice === range,
+                }"
+              >
+                <div class="flex items-center">
+                  <span class="text-blue-500 mr-2">฿</span>
+                  <span>{{ range }}</span>
+                </div>
+                <svg
+                  v-if="filteredPrice === range"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <div class="flex items-center">
-                    <span class="text-blue-500 mr-2">฿</span>
-                    <span>{{ range }}</span>
-                  </div>
-                  <svg
-                    v-if="filteredPrice === range"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 text-blue-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </li>
-              </ul>
-            </div>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
       <div class="relative">
         <div
-          @click="clickShow"
+          @click.stop="toggle('showFilterCapacity')"
           class="w-72 text-left text-gray-800 font-medium border border-gray-300 p-4 rounded-md flex justify-between items-center cursor-pointer hover:border-blue-400 transition-colors"
         >
           <div class="flex flex-col">
             <p class="text-sm text-gray-500">Capacity</p>
-            <p class="font-bold mt-1">
+            <p class="font-semibold text-sm mt-1">
               {{ numberCapacity }}
               {{ numberCapacity === 1 ? "Person" : "People" }}
             </p>
           </div>
-          <span
-            class="text-blue-500 transition-transform duration-200"
-            :class="{ 'transform rotate-180': show }"
-            >▼</span
-          >
         </div>
 
         <div
-          v-if="show"
+          v-if="storeValue.showFilterCapacity"
           class="absolute top-full left-0 mt-2 w-full bg-white shadow-xl rounded-lg py-4 px-6 border border-gray-100 z-10 transition-all duration-200 ease-in-out"
         >
           <div class="flex items-center justify-between">
@@ -254,64 +269,36 @@ const searchHotel = () => {
               <button
                 @click="increaseOrDecreaseCapacity('decrease')"
                 class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors duration-200"
-                :class="{
-                  'opacity-50 cursor-not-allowed': numberCapacity <= 0,
-                }"
+                :class="{ 'opacity-50 cursor-not-allowed': numberCapacity <= 0 }"
                 :disabled="numberCapacity <= 0"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                    clip-rule="evenodd"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                 </svg>
               </button>
-              <span class="w-8 text-center font-bold text-lg">{{
-                numberCapacity
-              }}</span>
+              <span class="w-8 text-center font-bold text-lg">{{ numberCapacity }}</span>
               <button
                 @click="increaseOrDecreaseCapacity('increase')"
                 class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors duration-200"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                    clip-rule="evenodd"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                 </svg>
               </button>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
 
     <div class="flex flex-row gap-2 justify-end mt-5 px-5">
-      <div>
-        <button
-          @click="searchHotel"
-          class="border-2 border-blue-600 bg-blue-600 rounded-lg text-xl font-light px-5 py-3 text-white"
-        >
-          <i class="fa-solid fa-magnifying-glass mr-3"></i>Search
-        </button>
-      </div>
+      <button
+        @click="searchHotel"
+        class="border-2 border-blue-600 bg-blue-600 rounded-lg text-xl font-light px-5 py-3 text-white"
+      >
+        <i class="fa-solid fa-magnifying-glass mr-3"></i>Search
+      </button>
     </div>
-
-    <div class="mt-4 px-10 text-gray-600"></div>
   </div>
 
   <div v-if="router.path === '/pageHotelList'">

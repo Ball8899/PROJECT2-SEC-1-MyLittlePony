@@ -95,7 +95,7 @@ const closeToggleSelectNight = () => {
 
 const toggleSelectRoom = () => {
   selectRoomValue.value = !selectRoomValue.value;
-  selectedNight.value = false
+  selectedNight.value = false;
 };
 
 const totalPrice = computed(() => {
@@ -151,11 +151,14 @@ const newBookingHotel = reactive({
   hotelName: hotels.value.name,
   price: totalPrice.value,
   dateBooking: date.toLocaleString("th-TH"),
+  timeBooking:"",
   roomAmount: 1,
   nightAmount: 1,
   checkInTime: "",
+  checkInDate:"",
   checkOutTime: "",
-   approve: "waiting"
+  checkOutDate: "",
+  approve: "waiting",
 });
 
 watchEffect(() => {
@@ -164,15 +167,34 @@ watchEffect(() => {
   newBookingHotel.price = totalPrice.value;
 
   if (calculateCheckIn.value) {
-    (newBookingHotel.checkInTime =
-      calculateCheckIn.value.toLocaleString("th-TH")),
-      (newBookingHotel.checkOutTime =
-        calculateCheckOut.value.toLocaleString("th-TH"));
+    newBookingHotel.checkOutTime = formatTime(calculateCheckOut.value);
+    newBookingHotel.checkOutDate = formatDate(calculateCheckOut.value)
+
+    newBookingHotel.checkInTime = formatTime(calculateCheckIn.value);
+    newBookingHotel.checkInDate = formatDate(calculateCheckIn.value);
+    
   } else {
     newBookingHotel.checkInTime = "";
     newBookingHotel.checkOutTime = "";
   }
 });
+
+const formatTime = (times) => {
+  const dates = new Date(times)
+  const hours = dates.getHours();  
+  const minutes = dates.getMinutes(); 
+ return `${hours}:${minutes}0`
+
+}
+
+const formatDate = (times) => {
+  const dates = new Date(times).toDateString()
+ return dates
+
+}
+
+
+console.log(formatTime.value)
 
 const submitBooking = async () => {
   if (!validFrom()) {
@@ -216,10 +238,9 @@ const closeModal = async () => {
 };
 
 const routerToListContent = () => {
-  closeModal()
-  router.push({name:"flightBookedContent"})
-
-}
+  closeModal();
+  router.push({ name: "flightBookedContent" });
+};
 
 const addBooking = async () => {
   if (!calculateCheckIn.value || isNaN(calculateCheckIn.value.getTime())) {
@@ -240,11 +261,22 @@ const addBooking = async () => {
 const validFrom = () => {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phonePattern = /^[0-9]{10}$/;
+  const namePattern = /^[A-Za-zก-๙\s'-]+$/;
+  const datePattern = /^(\d{4})\/(\d{1,2})\/(\d{1,2})$/;
 
-  const checkFname = fName.value.trim().length > 0;
-  const checkLname = lName.value.trim().length > 0;
+  const checkFname =
+    fName.value.trim().length > 0 && namePattern.test(fName.value);
+  const checkLname =
+    lName.value.trim().length > 0 && namePattern.test(lName.value);
   const checkEmail = emailPattern.test(email.value);
   const checkPhoneNumber = phonePattern.test(phoneNumber.value);
+
+  let checkDate = true;
+  if (checkInTime.value) {
+    if (typeof checkInTime.value === "string") {
+      checkDate = datePattern.test(checkInTime.value.trim());
+    }
+  }
 
   if (
     checkFname === "" ||
@@ -262,9 +294,11 @@ const validFrom = () => {
   if (!checkFname || !checkLname) {
     return false;
   }
+
   if (!checkEmail) {
     return false;
   }
+
   if (!checkPhoneNumber) {
     return false;
   }
@@ -272,7 +306,12 @@ const validFrom = () => {
   if (!checkInTime.value) {
     return false;
   }
+
   if (!calculateCheckIn.value) {
+    return false;
+  }
+
+  if (!checkDate) {
     return false;
   }
 
@@ -282,45 +321,12 @@ const validFrom = () => {
   if (calculateCheckIn.value < today) {
     return false;
   }
+
   return true;
 };
 </script>
 <template>
   <div>
-    <div @click="closeToggleSelectNight" class="bg-blue-600 py-4">
-      <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
-        <div class="flex items-center">
-          <div class="text-2xl font-bold text-white mr-8">JET.com</div>
-          <div class="flex items-center">
-            <div
-              class="flex items-center bg-white text-blue-600 rounded-full w-6 h-6 justify-center font-bold mr-2"
-            >
-              1
-            </div>
-            <span class="text-white mr-4">Your Selection</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-white mr-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            <div
-              class="flex items-center bg-gray-200 text-blue-600 rounded-full w-6 h-6 justify-center font-bold mr-2"
-            >
-              2
-            </div>
-            <span class="text-white">Final Step</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="max-w-7xl mx-auto px-4 py-6">
       <div
         @click="closeToggleSelectNight"
@@ -491,7 +497,10 @@ const validFrom = () => {
             </div>
           </div>
 
-          <div @click="closeToggleSelectNight" class="bg-white rounded-lg shadow-sm mb-6">
+          <div
+            @click="closeToggleSelectNight"
+            class="bg-white rounded-lg shadow-sm mb-6"
+          >
             <div class="p-6">
               <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold text-gray-800">
@@ -512,7 +521,10 @@ const validFrom = () => {
             </div>
           </div>
 
-          <div @click="closeToggleSelectNight" class="bg-white rounded-lg shadow-sm mb-6">
+          <div
+            @click="closeToggleSelectNight"
+            class="bg-white rounded-lg shadow-sm mb-6"
+          >
             <div class="p-6">
               <h2 class="text-xl font-semibold text-gray-800 mb-4">
                 Available for This Booking
@@ -562,7 +574,10 @@ const validFrom = () => {
               </div>
 
               <div v-if="selectedOption">
-                <div @click="closeToggleSelectNight" class="border-t border-gray-200 pt-4 mb-4">
+                <div
+                  @click="closeToggleSelectNight"
+                  class="border-t border-gray-200 pt-4 mb-4"
+                >
                   <h3 class="font-bold text-navy-900 mb-2">
                     Lisheng Selected Standard Double Bed Room
                   </h3>
@@ -883,13 +898,13 @@ const validFrom = () => {
         <div class="flex gap-5">
           <button
             @click="closeModal"
-            class="w-1/2 bg-red-600 text-white py-2  px-3 hover:bg-red-700 rounded-md transition font-medium"
+            class="w-1/2 bg-red-600 text-white py-2 px-3 hover:bg-red-700 rounded-md transition font-medium"
           >
             Close
           </button>
 
           <button
-            class="w-1/2 bg-blue-600 text-white py-2  px-3 rounded-md hover:bg-blue-700 transition font-medium"
+            class="w-1/2 bg-blue-600 text-white py-2 px-3 rounded-md hover:bg-blue-700 transition font-medium"
             @click="routerToListContent"
           >
             Your Booked
