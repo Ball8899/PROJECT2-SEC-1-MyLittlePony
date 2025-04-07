@@ -81,7 +81,7 @@ const deleteCancelledBooking = async (bookingId) => {
           @click="routerTo(booked.id)"
                 
         >
-          <div class="flex justify-between items-center border-b pb-2">
+          <div class="flex justify-between items-center border-b border-b-gray-300 pb-2">
             <div>
               <span class="text-sm text-gray-500">Booking ID:</span>
               <p
