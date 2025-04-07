@@ -13,13 +13,14 @@ const router = useRouter()
 const bookingStore = useBooking();
 const { hotelBookings } = storeToRefs(bookingStore);
 const { getHotel } = bookingStore;
+const hotels = ref([])
 
 const getHotelBooking = async () => {
   try {
     const data = await getItems(`${import.meta.env.VITE_APP_URL}/bookingHotel`);
 
     getHotel(data[0].id,data)
-    bookings.value = data;
+    hotels.value =  hotelBookings.value[0].hotel
   } catch (error) {
     console.log(error);
   }
@@ -36,7 +37,7 @@ const deleteCancelledBooking = async (bookingId) => {
       (booking) => booking.id !== bookingId
     );
 
-
+   
     console.log(`Deleted booking ID: ${bookingId}`);
   } catch (error) {
     console.log(error);
@@ -47,7 +48,9 @@ const deleteCancelledBooking = async (bookingId) => {
 
 onMounted(async () => {
   hotelBookings.value = [];
+  
   await getHotelBooking();
+
 });
 
 const routerBookingDetail = (id) => {
@@ -59,21 +62,24 @@ const routerBookingDetail = (id) => {
   <div  class="flex flex-row p-6">
     <flightBookedMenu class="w-1/4 mr-6" />
     <div class="flex flex-col bg-white p-6 rounded-lg shadow-md w-3/4">
-      <filterFlightBooked :items="hotelBookings" v-slot="{ booked }">
+      <filterFlightBooked :items="hotels" v-slot="{ booked }">
         <div 
           class="border border-gray-200 rounded-lg p-4 mb-4 shadow max-h-178 overflow-y-auto"
            
         >
 
+ 
+
         
           <div class="flex justify-between items-center border-b pb-2">
+             
             <div>
               <span class="text-sm text-gray-500"
                 >Booking ID: {{ booked.id }}</span
               >
             </div>
             <span class="text-sm text-blue-500"
-              >Booking Date: {{ booked.hotel[0].dateBooking }}</span
+              >Booking Date: {{ booked.dateBooking }}</span
             >
           </div>
 
@@ -81,33 +87,33 @@ const routerBookingDetail = (id) => {
             <img class="w-48 mt-3 ml-3 rounded-md" src="../../assets/hotels/hotel2.jpg" alt="" />
 
             <div class="ml-7">
-              <p class="text-lg font-semibold">{{ booked.hotel[0].hotelName }}</p>
+              <p class="text-lg font-semibold">{{ booked.hotelName }}</p>
               <div
                 class=" items-center space-x-4 text-gray-500 text-sm mt-1"
               >
                 <span class="text-green-500">
-                  Check In: {{ booked.hotel[0].checkInTime }}</span
+                  Check In: {{ booked.checkInTime }}</span
                 >
                 <span class="inline-block mb-1 w-14 h-0.5 bg-gray-300 my-auto"></span>
                 <span class="text-red-500">
-                  Check Out: {{ booked.hotel[0].checkOutTime }}</span
+                  Check Out: {{ booked.checkOutTime }}</span
                 >
               </div>
             </div>
             <div class="ml-auto text-right">
               <p class="text-xl font-bold text-gray-800" >
-                ฿ {{ booked.hotel[0].price }}
+                ฿ {{ booked.price }}
               </p>
               <button
                 class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
-                v-if="booked.hotel[0].approve !== 'Cancelled'"
+                v-if="booked.approve !== 'Cancelled'"
                 @click="routerBookingDetail(booked.id)"
               >
                 Payment 
               </button>
               <button 
                 class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
-                v-if="booked.hotel[0].approve == 'Cancelled'"
+                v-if="booked.approve == 'Cancelled'"
                 @click="deleteCancelledBooking(booked.id)"
               >
                 Delete
@@ -120,6 +126,4 @@ const routerBookingDetail = (id) => {
   </div>
 </template>
 
-<style scoped></style>
-
- 
+<style scoped></style> 

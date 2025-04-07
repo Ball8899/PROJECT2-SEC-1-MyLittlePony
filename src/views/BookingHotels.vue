@@ -239,7 +239,7 @@ const closeModal = async () => {
 
 const routerToListContent = () => {
   closeModal();
-  router.push({ name: "flightBookedContent" });
+  router.push({ name: "HotelBookedContent" });
 };
 
 const addBooking = async () => {
