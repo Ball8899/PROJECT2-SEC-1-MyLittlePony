@@ -1,52 +1,77 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getAirlineLogo } from "../../utils/toolUtil.js";
-import { getItems } from "../../utils/fetchUtil.js";
 import ListModel from "../listModel.vue";
+import { useFlight } from "../../store/flight.js";
+
+const { getFlights } = useFlight();
 
 const { query } = useRoute();
 const router = useRouter();
 
 const showMoreOption = ref(false);
 const flightOption = ref([]);
-const flightFound = ref([]);
 const uniqueAirline = ref([]);
 const airlines = ref([]);
 const temp = ref([]);
 
-onMounted(async () => {
-  try {
-    const leavingCity = encodeURIComponent(query.leavingDestination);
-    const goingCity = encodeURIComponent(query.goingDestination);
 
+const storeFlights = computed(() => getFlights());
+
+const flightFound = ref([]);
+
+onMounted(async () => {
+  const leavingCity = decodeURIComponent(query.leavingDestination);
+  const goingCity = decodeURIComponent(query.goingDestination);
+  try {
+
+    const allFlights = [...storeFlights.value];
+    
+    // Apply filters based on query
     if (query.type === "Round Trip") {
-      flightFound.value = await getItems(
-        `${import.meta.env.VITE_APP_URL}/flights?departure.date=${
-          query.departFlight
-        }&returnDeparture.date=${
-          query.returnFlight
-        }&flightDetails.type=Round%20Trip&arrival.airport.city=${goingCity}&departure.airport.city=${leavingCity}`
-      );
+      flightFound.value = allFlights.filter((flight) => {
+        return (
+          flight.departure.date === query.departFlight &&
+          flight.returnDeparture?.date === query.returnFlight &&
+          flight.flightDetails.type === "Round Trip" &&
+          flight.arrival.airport.city === goingCity &&
+          flight.departure.airport.city === leavingCity
+        );
+      });
     } else if (query.type === "One Way") {
-      flightFound.value = await getItems(
-        `${import.meta.env.VITE_APP_URL}/flights?departure.date=${
-          query.departFlight
-        }&flightDetails.type=One%20Way&arrival.airport.city=${goingCity}&departure.airport.city=${leavingCity}`
-      );
+      flightFound.value = allFlights.filter((flight) => {
+        return (
+          flight.departure.date === query.departFlight &&
+          flight.flightDetails.type === "One Way" &&
+          flight.arrival.airport.city === goingCity &&
+          flight.departure.airport.city === leavingCity
+        );
+      });
+    } else {
+      // If no query type specified, use all flights
+      flightFound.value = allFlights;
     }
+
+    // Sort by price
     flightFound.value = flightFound.value.sort(
       (a, b) => a.pricing.basePrice - b.pricing.basePrice
     );
+    
+    // Store a copy for filtering
     temp.value = JSON.parse(JSON.stringify(flightFound.value));
+    
+    // Build unique airline list
     flightFound.value.forEach((flight) => {
       const newAirline = flight.flightDetails.airline;
       if (!uniqueAirline.value.includes(newAirline)) {
         uniqueAirline.value.push(newAirline);
       }
     });
+    
+    console.log("Filtered flights:", flightFound.value);
   } catch (error) {
-    console.error(error);
+    console.error("Error processing flights:", error);
   }
 });
 
@@ -71,9 +96,6 @@ const filterAirline = (airline) => {
             airlines.value.includes(f.flightDetails.airline)
           );
   }
-
-  console.log(airlines.value);
-  console.log(flightFound.value);
 };
 
 const bookingFlight = (id, total) => {
@@ -196,12 +218,12 @@ const toggleShowOption = (id) => {
                   </label>
                 </div>
                 <div>
-                <img
-                  src="../../assets/image/bag-holiday-tourism-2-svgrepo-com.svg"
-                  class="w-8 h-8"
-                  alt=""
-                />
-              </div>
+                  <img
+                    src="../../assets/image/bag-holiday-tourism-2-svgrepo-com.svg"
+                    class="w-8 h-8"
+                    alt=""
+                  />
+                </div>
               </div>
               <div class="w-[100%] font-light text-[15px]">
                 <div class="flex justify-between w-[100%]">
@@ -272,10 +294,12 @@ const toggleShowOption = (id) => {
                           `฿ ${
                             temp
                               ?.filter(
-                                (flight) => flight.flightDetails.airline == airline
+                                (flight) =>
+                                  flight.flightDetails.airline == airline
                               )
                               .sort(
-                                (a, b) => a.pricing.basePrice - b.pricing.basePrice
+                                (a, b) =>
+                                  a.pricing.basePrice - b.pricing.basePrice
                               )[0].pricing.basePrice
                           }`
                         }}
@@ -291,12 +315,18 @@ const toggleShowOption = (id) => {
     </div>
 
     <div class="w-[70%] py-5">
-      <div class="bg-[url('src/assets/image/headerflight.png')] bg-[center_60px] px-4 py-3.5 rounded-t-xl flex justify-between items-center">
+      <div
+        class="bg-[url('src/assets/image/headerflight.png')] bg-[center_60px] px-4 py-3.5 rounded-t-xl flex justify-between items-center"
+      >
         <div>
-          <p class="text-base tracking-wide font-medium text-white">{{ query.type }} to {{ query.goingDestination }}</p>
+          <p class="text-base tracking-wide font-medium text-white">
+            {{ query.type }} to {{ query.goingDestination }}
+          </p>
         </div>
         <div>
-          <p class="text-sm text-white font-thin">Last update {{ new Date().toLocaleTimeString() }}</p>
+          <p class="text-sm text-white font-thin">
+            Last update {{ new Date().toLocaleTimeString() }}
+          </p>
         </div>
       </div>
       <div class="">
@@ -312,141 +342,227 @@ const toggleShowOption = (id) => {
               >
                 Cheapest nonstop
               </div>
-              <div class="card bg-white px-6 py-3.5 rounded-lg hover:shadow-lg hover:shadow-gray-300 duration-300">
+              <div
+                class="card bg-white px-6 py-3.5 rounded-lg hover:shadow-lg hover:shadow-gray-300 duration-300"
+              >
                 <div class="flex items-center justify-between">
-                
                   <div>
                     <div class="flex w- items-center space-x-8">
-                    <div class="relative h-12 w-12">
-                      <img
-                        :src="getAirlineLogo(flight.flightDetails.airline)"
-                        alt="Airline Logo"
-                        class="rounded-full h-12 w-12 object-contain"
-                      />
-                    </div>
-
-                    <div class="flex items-center ml-5  mt-5 space-x-4">
-                      <div class="w-[80px] text-center">
-                        <div class="text-2xl font-semibold">
-                          {{ flight.departure.time }}
-                        </div>
-                        <div class="text-sm text-gray-500">
-                          {{ flight.departure.airport.code }}
-                        </div>
+                      <div class="relative h-12 w-12">
+                        <img
+                          :src="getAirlineLogo(flight.flightDetails.airline)"
+                          alt="Airline Logo"
+                          class="rounded-full h-12 w-12 object-contain"
+                        />
                       </div>
 
-                      <div class="flex flex-col gap-2.5 items-center px-4">
-                        <div class="text-xs font-light text-blue-600 px-3 py-1 rounded-full flex items-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          {{ flight.flightDetails.duration }}
-                        </div>
-                        <div class="relative w-32 my-2">
-                          <div class="w-full h-[2px] bg-gradient-to-r from-[#b5daff] to-[#2d73ff]"></div>
-                          <div class="absolute -left-1 -top-1 w-2 h-2 rounded-xl bg-[#63adf8]"></div>
-                          <div class="absolute -right-1 -top-1 w-2 h-2 rounded-xl bg-[#095bff]"></div>
-                          <div class="absolute top-[-5px] left-1/2 transform -translate-x-1/2">
-                            <img src="../../assets/image/plane-take-off-transportation-transport-plane-svgrepo-com.svg" class="w-3 h-3" alt="">
+                      <div class="flex items-center ml-5 mt-5 space-x-4">
+                        <div class="w-[80px] text-center">
+                          <div class="text-2xl font-semibold">
+                            {{ flight.departure.time }}
+                          </div>
+                          <div class="text-sm text-gray-500">
+                            {{ flight.departure.airport.code }}
                           </div>
                         </div>
-                        <div class="text-xs font-light text-blue-600 bg-blue-50 px-2 py-1 rounded-full flex items-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                          {{ flight.flightDetails.nonstop }}
-                        </div>
-                      </div>
 
-                      <div class="text-center">
-                        <div class="w-[80px] text-2xl font-semibold">
-                          {{ flight.arrival.time }}
-                        </div>
-                        <div class="text-sm text-gray-500">
-                          {{ flight.arrival.airport.code }}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div v-if="flight.returnDeparture != null && flight.returnArrival != null" class="flex items-center space-x-8">
-                    <div class="relative h-12 w-12">
-                      <img
-                        :src="getAirlineLogo(flight.flightDetails.airline)"
-                        alt="Airline Logo"
-                        class="rounded-full h-12 w-12 object-contain"
-                      />
-                    </div>
-
-                    <div class=" flex items-center ml-5  mt-5 space-x-4">
-                      <div class="w-[80px] text-center">
-                        <div class="text-2xl font-semibold">
-                          {{ flight.returnDeparture.time }}
-                        </div>
-                        <div class="text-sm text-gray-500">
-                          {{ flight.returnDeparture.airport.code }}
-                        </div>
-                      </div>
-
-                      <div class="flex flex-col gap-2.5 items-center px-4">
-                        <div class="text-xs font-light text-blue-600 px-3 py-1 rounded-full flex items-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          {{ flight.flightDetails.duration }}
-                        </div>
-                        <div class="relative w-32 my-2">
-                          <div class="w-full h-[2px] bg-gradient-to-r from-[#b5daff] to-[#2d73ff]"></div>
-                          <div class="absolute -left-1 -top-1 w-2 h-2 rounded-full bg-[#63adf8]"></div>
-                          <div class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-[#095bff]"></div>
-                          <div class="absolute top-[-5px] left-1/2 transform -translate-x-1/2">
-                            <img src="../../assets/image/plane-take-off-transportation-transport-plane-svgrepo-com.svg" class="w-3 h-3" alt="">
+                        <div class="flex flex-col gap-2.5 items-center px-4">
+                          <div
+                            class="text-xs font-light text-blue-600 px-3 py-1 rounded-full flex items-center"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3 w-3 mr-1 text-blue-500"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                            {{ flight.flightDetails.duration }}
+                          </div>
+                          <div class="relative w-32 my-2">
+                            <div
+                              class="w-full h-[2px] bg-gradient-to-r from-[#b5daff] to-[#2d73ff]"
+                            ></div>
+                            <div
+                              class="absolute -left-1 -top-1 w-2 h-2 rounded-xl bg-[#63adf8]"
+                            ></div>
+                            <div
+                              class="absolute -right-1 -top-1 w-2 h-2 rounded-xl bg-[#095bff]"
+                            ></div>
+                            <div
+                              class="absolute top-[-5px] left-1/2 transform -translate-x-1/2"
+                            >
+                              <img
+                                src="../../assets/image/plane-take-off-transportation-transport-plane-svgrepo-com.svg"
+                                class="w-3 h-3"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                          <div
+                            class="text-xs font-light text-blue-600 bg-blue-50 px-2 py-1 rounded-full flex items-center"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3 w-3 mr-1 text-blue-500"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                            {{ flight.flightDetails.nonstop }}
                           </div>
                         </div>
-                        <div class="text-xs font-light text-blue-600 bg-blue-50 px-2 py-1 rounded-full flex items-center">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                          {{ flight.flightDetails.nonstop }}
-                        </div>
-                      </div>
 
-                      <div class="text-center">
-                        <div class="w-[80px] text-2xl font-semibold">
-                          {{ flight.returnArrival.time }}
-                        </div>
-                        <div class="text-sm text-gray-500">
-                          {{ flight.returnArrival.airport.code }}
+                        <div class="text-center">
+                          <div class="w-[80px] text-2xl font-semibold">
+                            {{ flight.arrival.time }}
+                          </div>
+                          <div class="text-sm text-gray-500">
+                            {{ flight.arrival.airport.code }}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+
+                    <div
+                      v-if="
+                        flight.returnDeparture != null &&
+                        flight.returnArrival != null
+                      "
+                      class="flex items-center space-x-8"
+                    >
+                      <div class="relative h-12 w-12">
+                        <img
+                          :src="getAirlineLogo(flight.flightDetails.airline)"
+                          alt="Airline Logo"
+                          class="rounded-full h-12 w-12 object-contain"
+                        />
+                      </div>
+
+                      <div class="flex items-center ml-5 mt-5 space-x-4">
+                        <div class="w-[80px] text-center">
+                          <div class="text-2xl font-semibold">
+                            {{ flight.returnDeparture.time }}
+                          </div>
+                          <div class="text-sm text-gray-500">
+                            {{ flight.returnDeparture.airport.code }}
+                          </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5 items-center px-4">
+                          <div
+                            class="text-xs font-light text-blue-600 px-3 py-1 rounded-full flex items-center"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3 w-3 mr-1 text-blue-500"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                            {{ flight.flightDetails.duration }}
+                          </div>
+                          <div class="relative w-32 my-2">
+                            <div
+                              class="w-full h-[2px] bg-gradient-to-r from-[#b5daff] to-[#2d73ff]"
+                            ></div>
+                            <div
+                              class="absolute -left-1 -top-1 w-2 h-2 rounded-full bg-[#63adf8]"
+                            ></div>
+                            <div
+                              class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-[#095bff]"
+                            ></div>
+                            <div
+                              class="absolute top-[-5px] left-1/2 transform -translate-x-1/2"
+                            >
+                              <img
+                                src="../../assets/image/plane-take-off-transportation-transport-plane-svgrepo-com.svg"
+                                class="w-3 h-3"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                          <div
+                            class="text-xs font-light text-blue-600 bg-blue-50 px-2 py-1 rounded-full flex items-center"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3 w-3 mr-1 text-blue-500"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                            {{ flight.flightDetails.nonstop }}
+                          </div>
+                        </div>
+
+                        <div class="text-center">
+                          <div class="w-[80px] text-2xl font-semibold">
+                            {{ flight.returnArrival.time }}
+                          </div>
+                          <div class="text-sm text-gray-500">
+                            {{ flight.returnArrival.airport.code }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="flex items-center mt-4">
-                    <div class="flex flex-col justify-center items-end space-y-1">
-                    <div class="text-right items-center">
-                      <div class="flex items-center gap-2">
-                        <span
-                          class="text-lg mx-auto font-semibold pl-2 py-1 text-blue-700"
-                          >{{ flight.pricing.currency }}</span
-                        >
-                        <span class="text-[25px] font-semibold text-[#3366FF]">{{
-                          flight.pricing.basePrice
-                        }}</span>
-                      </div>
-                    </div>
-                    <button
-                      @click="toggleShowOption(flight.id)"
-                      class="bg-[#3366FF] hover:bg-[#2952CC] w-[100%] text-white py-1.5 px-0 rounded-md"
+                    <div
+                      class="flex flex-col justify-center items-end space-y-1"
                     >
-                      {{
-                        showMoreOption && flightOption.includes(flight.id)
-                          ? "Hide"
-                          : "Select"
-                      }}
-                    </button>
-                  </div>
+                      <div class="text-right items-center">
+                        <div class="flex items-center gap-2">
+                          <span
+                            class="text-lg mx-auto font-semibold pl-2 py-1 text-blue-700"
+                            >{{ flight.pricing.currency }}</span
+                          >
+                          <span
+                            class="text-[25px] font-semibold text-[#3366FF]"
+                            >{{ flight.pricing.basePrice }}</span
+                          >
+                        </div>
+                      </div>
+                      <button
+                        @click="toggleShowOption(flight.id)"
+                        class="bg-[#3366FF] hover:bg-[#2952CC] w-[100%] text-white py-1.5 px-0 rounded-md"
+                      >
+                        {{
+                          showMoreOption && flightOption.includes(flight.id)
+                            ? "Hide"
+                            : "Select"
+                        }}
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -461,15 +577,24 @@ const toggleShowOption = (id) => {
                   v-show="showMoreOption && flightOption.includes(flight.id)"
                   class="flex bg-gray-100/50 shadow-lg p-1 rounded-lg"
                 >
-                  <ListModel class="flex" :items="flight.pricing.baggageOptions">
+                  <ListModel
+                    class="flex"
+                    :items="flight.pricing.baggageOptions"
+                  >
                     <template #listItems="{ Item: option }">
-                      <div class="p-7 bg-white m-3 w-[350px] rounded-lg shadow-[0_4px_10px_rgba(0,0,0,0.05)]">
-                        <h1 class="font-semibold text-black text-xl tracking-wide">
+                      <div
+                        class="p-7 bg-white m-3 w-[350px] rounded-lg shadow-[0_4px_10px_rgba(0,0,0,0.05)]"
+                      >
+                        <h1
+                          class="font-semibold text-black text-xl tracking-wide"
+                        >
                           {{ flight.flightDetails.class }} class
                         </h1>
                         <hr class="text-gray-200 mb-3 mt-3" />
                         <div class="mt-3 mb-3 space-y-3">
-                          <p class="font-semibold font-sm tracking-wide">Bagage</p>
+                          <p class="font-semibold font-sm tracking-wide">
+                            Bagage
+                          </p>
                           <div class="flex flex-row gap-2">
                             <p>
                               <img
@@ -478,7 +603,9 @@ const toggleShowOption = (id) => {
                                 alt=""
                               />
                             </p>
-                            <p class="font-light text-[15px]">Carry-on baggage:</p>
+                            <p class="font-light text-[15px]">
+                              Carry-on baggage:
+                            </p>
                             <p class="px-1 font-semibold text-[15px]">
                               {{ flight.baggageAllowance.carryOn.pieces }}
                             </p>
@@ -492,7 +619,9 @@ const toggleShowOption = (id) => {
                                 alt=""
                               />
                             </p>
-                            <p class="text-[15px] font-light">Checked baggage:</p>
+                            <p class="text-[15px] font-light">
+                              Checked baggage:
+                            </p>
                             <p class="font-semibold">
                               {{ flight.baggageAllowance.checked.pieces }}
                             </p>
@@ -504,7 +633,9 @@ const toggleShowOption = (id) => {
                         <div class="mb-3 space-y-2">
                           <p class="font-semibold tracking-wide">Fare Rules</p>
                           <p class="text-[15px] font-light">
-                            <span v-if="flight.policies.refundable">Refundable</span>
+                            <span v-if="flight.policies.refundable"
+                              >Refundable</span
+                            >
                             <span class="flex items-center gap-3" v-else>
                               <img
                                 src="../../assets/image/block-svgrepo-com.svg"
@@ -566,6 +697,4 @@ const toggleShowOption = (id) => {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

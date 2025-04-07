@@ -1,9 +1,11 @@
 <script setup>
-import { ref, defineProps, defineEmits } from "vue";
+import { ref, defineProps, defineEmits, onMounted} from "vue";
 import Booking from "./Booking.vue";
 import Advert from "./Advert.vue";
-const typeBooking = ref('flight')
+const typeBooking = ref('flight');
 import SearchHotel from "./Hotels/SearchHotel.vue";
+import MainCardFlightList from "./FlightList/MainCardFlightList.vue";
+import MainCardHotelList from "./Hotels/MainCardHotelList.vue";
 
 const emits = defineEmits(["update"]);
 
@@ -30,7 +32,7 @@ const updateEmits = () => {
         <div
           class="flex flex-row justify-center items-center text-base gap-5 tracking-wide"
         >
-          <p>🏖 Your tirp start here</p>
+          <p>🏖 Your trip start here</p>
           <p>|</p>
           <p>🏕 Custom your trip now!</p>
         </div>

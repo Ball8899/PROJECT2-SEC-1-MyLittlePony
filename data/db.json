@@ -75,6 +75,7 @@
   "flights": [
     {
       "id": "1",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "09:00",
@@ -140,6 +141,7 @@
     },
     {
       "id": "2",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "08:00",
@@ -205,6 +207,7 @@
     },
     {
       "id": "3",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "11:15",
@@ -270,6 +273,7 @@
     },
     {
       "id": "4",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "09:00",
@@ -335,6 +339,7 @@
     },
     {
       "id": "5",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "12:30",
@@ -400,6 +405,7 @@
     },
     {
       "id": "6",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "07:30",
@@ -465,6 +471,7 @@
     },
     {
       "id": "7",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "10:30",
@@ -530,6 +537,7 @@
     },
     {
       "id": "8",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "13:00",
@@ -595,6 +603,7 @@
     },
     {
       "id": "9",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "16:15",
@@ -660,6 +669,7 @@
     },
     {
       "id": "10",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "15:00",
@@ -725,6 +735,7 @@
     },
     {
       "id": "11",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "18:00",
@@ -790,6 +801,7 @@
     },
     {
       "id": "12",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "08:30",
@@ -855,6 +867,7 @@
     },
     {
       "id": "13",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "11:45",
@@ -920,6 +933,7 @@
     },
     {
       "id": "14",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "10:00",
@@ -985,6 +999,7 @@
     },
     {
       "id": "15",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "13:20",
@@ -1050,6 +1065,7 @@
     },
     {
       "id": "16",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "15:00",
@@ -1115,6 +1131,7 @@
     },
     {
       "id": "17",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "18:15",
@@ -1180,6 +1197,7 @@
     },
     {
       "id": "18",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "16:00",
@@ -1245,6 +1263,7 @@
     },
     {
       "id": "19",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "19:20",
@@ -1310,6 +1329,7 @@
     },
     {
       "id": "20",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "17:00",
@@ -1375,6 +1395,7 @@
     },
     {
       "id": "21",
+      "available": "true",
       "departure": {
         "date": "2025-04-21",
         "time": "07:00",
@@ -1440,6 +1461,7 @@
     },
     {
       "id": "22",
+      "available": "true",
       "departure": {
         "date": "2025-04-21",
         "time": "10:20",
@@ -1505,6 +1527,7 @@
     },
     {
       "id": "23",
+      "available": "true",
       "departure": {
         "date": "2025-04-21",
         "time": "08:00",
@@ -1570,6 +1593,7 @@
     },
     {
       "id": "24",
+      "available": "true",
       "departure": {
         "date": "2025-04-21",
         "time": "11:15",
@@ -1635,6 +1659,7 @@
     },
     {
       "id": "25",
+      "available": "true",
       "departure": {
         "date": "2025-04-21",
         "time": "09:00",
@@ -1700,6 +1725,7 @@
     },
     {
       "id": "26",
+      "available": "true",
       "departure": {
         "date": "2025-04-21",
         "time": "12:30",
@@ -1765,6 +1791,7 @@
     },
     {
       "id": "27",
+      "available": "true",
       "departure": {
         "date": "2025-04-21",
         "time": "10:00",
@@ -1830,6 +1857,7 @@
     },
     {
       "id": "28",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "08:00",
@@ -1911,6 +1939,7 @@
     },
     {
       "id": "29",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "09:00",
@@ -1992,6 +2021,7 @@
     },
     {
       "id": "30",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "07:30",
@@ -2073,6 +2103,7 @@
     },
     {
       "id": "31",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "13:00",
@@ -2154,6 +2185,7 @@
     },
     {
       "id": "32",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "08:30",
@@ -2235,6 +2267,7 @@
     },
     {
       "id": "33",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "10:00",
@@ -2316,6 +2349,7 @@
     },
     {
       "id": "34",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "15:00",
@@ -2397,6 +2431,7 @@
     },
     {
       "id": "35",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "16:00",
@@ -2478,6 +2513,7 @@
     },
     {
       "id": "36",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "07:00",
@@ -2543,6 +2579,7 @@
     },
     {
       "id": "37",
+      "available": "true",
       "departure": {
         "date": "2025-04-20",
         "time": "21:00",

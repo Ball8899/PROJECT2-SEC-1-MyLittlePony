@@ -24,7 +24,7 @@ const validateRoomId = ((roomId) => {
 </script>
 
 <template>
-  <div v-if="['','/'].includes(route.path) && !receivedRoomId" @sendRoomId="validateRoomId"    class="ml-40">
+  <div v-if="['','/'].includes(route.path) && !receivedRoomId" @sendRoomId="validateRoomId"    class="">
     <ListModelofHotel :items="hotels">
       <template #header class="hidden"> Name </template>
       <template #Topics>Featured Properties </template>
