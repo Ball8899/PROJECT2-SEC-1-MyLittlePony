@@ -7,21 +7,35 @@ import { storeToRefs } from "pinia";
 import { useBooking } from "../../store/booking.js";
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRoute , useRouter } from "vue-router";
+import {updateItem,getItemById } from "../../utils/fetchUtil.js";
+
 const bookingStore = useBooking();
 const { hotelBookings } = storeToRefs(bookingStore);
 const { getHotel } = bookingStore;
 const route = useRoute();
 const router = useRouter();
 const hotelId = route.params.id
+const hotels = ref({})
 
 
 const currentHotel = computed(() => {
-    return hotelBookings.value.find(
+    return hotelBookings.value[0].hotel.find(
         (hotel) => String(hotel.id) === String(hotelId)
     );
 });
 
-
+const getHotels = async () => {
+  try {
+    hotels.value = await getItemById(
+      `${import.meta.env.VITE_APP_URL}/hotels`,
+      currentHotel.value.hotelId
+    );
+    
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
 
@@ -54,11 +68,46 @@ const formattedTime = computed(() => {
 onMounted(startCountdown);
 onUnmounted(() => clearTimeout(timer.value));
 
-const cancelBooking = () => {
+const cancelBooking = async () => {
     clearTimeout(timer.value);
     status.value = false;
-    
+    try {
+        const simplifiedBooking = {
+            id: currentHotel.value.id,
+            fName: currentHotel.value.fName,
+            lName: currentHotel.value.lName,
+            email: currentHotel.value.email,
+            phoneNumber: currentHotel.value.phoneNumber,
+            hotelId: currentHotel.value.hotelId,
+            roomId: currentHotel.value.roomId,
+            hotelName: currentHotel.value.hotelName,
+            price: currentHotel.value.price,
+            dateBooking: currentHotel.value.dateBooking,
+            timeBooking: currentHotel.value.timeBooking,
+            roomAmount: currentHotel.value.roomAmount,
+            nightAmount: currentHotel.value.nightAmount,
+            checkInTime: currentHotel.value.checkInTime,
+            checkInDate: currentHotel.value.checkInDate,
+            checkOutTime: currentHotel.value.checkOutTime,
+            checkOutDate: currentHotel.value.checkOutDate,
+            approve: "Cancelled"
+        };
+
+        await updateItem(
+            `${import.meta.env.VITE_APP_URL}/bookingHotel`,
+            currentHotel.value.id,
+            simplifiedBooking
+        );
+
+    } catch (error) {
+        console.error("Error cancelling hotel booking:", error);
+    }
+
+    router.push({
+        name: "HotelBookedContent"
+    });
 };
+
 
 
 const toggleShowMore = () => {
@@ -82,9 +131,11 @@ const selectedPromo = ref(null);
 
 
 onMounted(() => {
+    getHotels();
      if (!currentHotel.value) {
         getHotel();
     }
+    
 })
 
 </script>
@@ -105,8 +156,8 @@ onMounted(() => {
 
 
 
-        <PaymentStatus v-if="status" :status="currentHotel.hotel[0].approve"
-            reason="Pay before time runs out to keep your booking." :bookingNo="currentHotel.hotel[0].hotelId">
+        <PaymentStatus v-if="status" :status="currentHotel.approve"
+            :reason="currentHotel.dateBooking" :bookingNo="currentHotel.hotelId">
             <template #action>
                 <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-2 sm:mt-0">
                     <button v-if="countdown > 0"
@@ -125,7 +176,7 @@ onMounted(() => {
             </template>
         </PaymentStatus>
 
-        <PaymentStatus v-else :bookingNo="currentHotel.hotel[0].hotelId" pin="405">
+        <PaymentStatus v-else :bookingNo="currentHotel.hotelId" pin="405">
             <template #action>
                 <button
                     class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">
@@ -133,28 +184,27 @@ onMounted(() => {
                 </button>
             </template>
         </PaymentStatus>
-        <!-- 
-        <TotalAmount :totalAmount="pricing.basePrice" :bookingTime="formattedBookingDate"
-        :selectedPromo="selectedPromo" /> -->
+      
+        <TotalAmount :totalAmount="currentHotel.price" :bookingTime="currentHotel.dateBooking"
+        :selectedPromo="selectedPromo" />
 
         <div
             class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 flex items-center space-x-4 rounded-xl">
             <img src="https://picsum.photos/300/200" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg">
             <div class="flex-1 mt-[-16px] pl-2 ">
-                <h2 class="text-xl font-bold text-gray-800">NASA BANGKOK <span
-                        class="text-yellow-500 text-sm pl-1">★★★★</span>
+                <h2 class="text-xl font-bold text-gray-800">{{ currentHotel.hotelName }} 
                 </h2>
-                <p class="text-gray-500 text-sm mt-2">นาซ่า กรุงเทพฯ</p>
+                <p class="text-gray-500 text-sm mt-2">★★★★</p>
                 <div class="text-gray-600 flex items-center mt-3 text-sm">
                     <i class="fa-solid fa-location-dot"></i>
                     <p class="pl-2">
-                        44 Sukhumvit 71 Rd, Suan Luang, Bangkok, 10250, Thailand
+                        {{ hotels.address }}
                     </p>
                 </div>
                 <div class="text-gray-600 flex items-center mt-1 text-sm">
                     <i class="fa-solid fa-phone"></i>
                     <p class="pl-2">
-                        +66-27199988
+                        +66-095826441
                     </p>
                 </div>
 
@@ -165,18 +215,18 @@ onMounted(() => {
             <div class="flex justify-between items-start">
                 <div>
                     <p class="text-gray-500 text-sm">Check-in</p>
-                    <p class="text-lg font-bold text-gray-800 mt-1">Fri, Mar 14, 2025</p>
-                    <p class="text-gray-600 text-sm">14:00–00:00</p>
+                    <p class="text-lg font-bold text-gray-800 mt-1">{{ currentHotel.checkInDate }}</p>
+                    <p class="text-gray-600 text-sm">{{ currentHotel.checkInTime }}</p>
                 </div>
                 <div class="flex items-center justify-center text-gray-700 mt-5 space-x-1">
-                    <p class="text-sm">1 Night</p>
+                    <p class="text-sm">{{ currentHotel.nightAmount }}  Night</p>
                     <i class="fa-solid fa-moon"></i>
                 </div>
 
                 <div class="text-right">
                     <p class="text-gray-500 text-sm">Check-out</p>
-                    <p class="text-lg font-bold text-gray-800 mt-1">Sat, Mar 15, 2025</p>
-                    <p class="text-gray-600 text-sm">Before 12:00</p>
+                    <p class="text-lg font-bold text-gray-800 mt-1">{{ currentHotel.checkOutDate }}</p>
+                    <p class="text-gray-600 text-sm">{{ currentHotel.checkOutTime }}</p>
                 </div>
             </div>
             <p class="text-gray-500 text-sm mt-4">• All times are in the hotel's local time</p>
@@ -255,7 +305,7 @@ onMounted(() => {
                             </div>
                             <div class="flex">
                                 <p class="font-bold w-40">Contact number:</p>
-                                <p class="flex-1">+66-2-7199888</p>
+                                <p class="flex-1">+66-095826441</p>
                             </div>
                             <div class="flex">
                                 <p class="font-bold w-40">Validity period:</p>
@@ -273,15 +323,15 @@ onMounted(() => {
             <h2 class="text-lg font-bold text-gray-900">Guest Info</h2>
             <div class="grid grid-cols-[150px_1fr] gap-8 mt-3">
                 <p class="font-bold text-sm">Names</p>
-                <p class="text-sm">GHGGG SADSADSSAD</p>
+                <p class="text-sm">{{ currentHotel.fName }}{{ currentHotel.lName }}</p>
             </div>
             <hr class="my-4 border-gray-300">
             <div class="grid grid-cols-[150px_1fr] gap-8 mt-3">
                 <p class="font-bold text-sm">Contact Info</p>
                 <div class="text-sm flex items-center space-x-2">
-                    <p>66-095****880</p>
+                    <p>{{ currentHotel.phoneNumber }}</p>
                     <span class="text-gray-400">|</span>
-                    <p>ax***22@gmail.com</p>
+                    <p>{{ currentHotel.email }}</p>
                 </div>
             </div>
         </div>

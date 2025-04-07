@@ -174,7 +174,7 @@ onMounted(() => {
 
             <router-link to="/flightBookedContent" class="text-blue-600 hover:underline">All Bookings</router-link>
             <span> > </span>
-            <a href="" class="text-blue-600 hover:underline">Flight Bookings</a>
+            <router-link to="/flightBookedContent" class="text-blue-600 hover:underline">Flight Bookings</router-link>
             <span> > </span>
             <span class="text-gray-900">Booking Details</span>
         </div>
