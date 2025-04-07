@@ -81,7 +81,7 @@ const activeReserve = (roomId, hotelId,optionId) => {
     class="transition-transform max-h-600 duration-700 ease-in-out bg-gray-100 h-500 w-full rounded-t-3xl"
   >
     <h1
-      @click="$router.go(-1)"
+      @click="router.go(-1)"
       class="ml-21 top-35 hover:underline cursor-pointer text-blue-600 absolute font-semibold text-xl"
     >
       Back
@@ -259,7 +259,7 @@ const activeReserve = (roomId, hotelId,optionId) => {
       </div>
     </div>
 
-    <div class=" " v-for="(room , index) in rooms.slice(0,2)" :key="room.id">
+    <div class="" v-for="(room , index) in rooms.slice(0,2)" :key="room.id">
     
       
         <ListRoom>

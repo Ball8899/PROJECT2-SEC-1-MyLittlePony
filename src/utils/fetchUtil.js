@@ -47,7 +47,7 @@ async function getHotelById(url, id) {
               console.error("Data is not an array:", data);
               return [];
           }
-          return data.filter(hotel => id.includes(Number(hotel.id)));
+          return data.filter(hotel => id.includes(hotel.id));
       }
   } catch (error) {
       console.error("Error fetching hotels:", error);
