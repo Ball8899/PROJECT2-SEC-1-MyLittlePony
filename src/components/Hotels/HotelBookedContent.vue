@@ -92,11 +92,11 @@ const routerBookingDetail = (id) => {
                 class=" items-center space-x-4 text-gray-500 text-sm mt-1"
               >
                 <span class="text-green-500">
-                  Check In: {{ booked.checkInTime }}</span
+                  Check In: {{ booked.checkInDate }}  {{ booked.checkInTime }} </span
                 >
                 <span class="inline-block mb-1 w-14 h-0.5 bg-gray-300 my-auto"></span>
                 <span class="text-red-500">
-                  Check Out: {{ booked.checkOutTime }}</span
+                  Check Out: {{ booked.checkOutDate }} {{ booked.checkOutTime }}</span
                 >
               </div>
             </div>
