@@ -4,6 +4,7 @@ import router from '@/router';
 const routerTo = () => {
   router.push({ name: "flightBookedContent"});
 };
+
 </script>
 
 <template>
@@ -13,9 +14,11 @@ const routerTo = () => {
         <i class="fa-solid fa-bars"></i>
       </button>
       <div class="ml-3 flex flex-row">
+       <a href="http://localhost:5173/" class="flex">
         <h1 class="text-blue-700 text-3xl font-bold">JET</h1>
         <h1 class="text-amber-400 font-bold text-2xl">.</h1>
         <h1 class="text-amber-400 font-bold text-2xl">GO</h1>
+      </a>
       </div>
       <div class="pl-10 relative mx-auto text-gray-600">
         <input class="border-1 border-gray-300 bg-white h-10 px-5 pr-19 rounded-lg text-sm focus:outline-none"
