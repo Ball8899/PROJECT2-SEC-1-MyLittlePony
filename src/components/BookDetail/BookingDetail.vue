@@ -137,6 +137,37 @@ const cancelBooking = async () => {
 
 };
 
+const bookAgain = async () => {
+    clearTimeout(timer.value);
+    status.value = false;
+    try {
+        const simplifiedBooking = {
+            id: currentBooking.value.id,
+            flight: currentBooking.value.flight.id || currentBooking.value.flight,
+            passenger: currentBooking.value.passenger,
+            contact: currentBooking.value.contact,
+            bookingDate: currentBooking.value.bookingDate,
+            approve: "Waiting"
+        };
+
+        await updateItem(
+            `${import.meta.env.VITE_APP_URL}/flightBooking`,
+            currentBooking.value.id,
+            simplifiedBooking
+        );
+
+
+    } catch (error) {
+        console.error("Error cancelling booking:", error);
+    }
+
+    router.push({
+        name: "flightBookedContent"
+    })
+
+
+};
+
 
 
 const formattedBookingDate = computed(() => {
@@ -200,9 +231,13 @@ onMounted(() => {
 
         <PaymentStatus v-else :bookingNo="currentBooking.id" pin="405">
             <template #action>
-                <button
+                <button 
                     class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">
                     Book Again
+                </button>
+                <button @click="bookAgain"
+                    class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">
+                    Re Booking
                 </button>
             </template>
         </PaymentStatus>

@@ -18,7 +18,7 @@ const props = defineProps({
     <p v-if="reason" class="text-gray-600 text-sm mt-2">{{ reason }}</p>
     <p class="text-gray-600 text-sm mt-1">Booking No. {{ bookingNo }}</p>
     <p v-if="pin" class="text-blue-600 text-sm mt-1">PIN {{ pin }}</p>
-    <div class="mt-4 flex justify-end">
+    <div class="mt-4 flex justify-end gap-3.5">
       <slot name="action"></slot>
     </div>
   </div>
