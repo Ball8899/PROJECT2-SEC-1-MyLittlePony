@@ -5,7 +5,7 @@ import Advert from "./Advert.vue";
 const typeBooking = ref('flight');
 import SearchHotel from "./Hotels/SearchHotel.vue";
 import MainCardFlightList from "./FlightList/MainCardFlightList.vue";
-import MainCardHotelList from "./Hotels/MainCardHotelList.vue";
+import MainCardHotelList from "./Hotels/CardHotelList.vue";
 
 const emits = defineEmits(["update"]);
 

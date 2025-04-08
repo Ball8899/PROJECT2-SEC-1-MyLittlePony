@@ -231,10 +231,6 @@ onMounted(() => {
 
         <PaymentStatus v-else :bookingNo="currentBooking.id" pin="405">
             <template #action>
-                <button 
-                    class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">
-                    Book Again
-                </button>
                 <button @click="bookAgain"
                     class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">
                     Re Booking

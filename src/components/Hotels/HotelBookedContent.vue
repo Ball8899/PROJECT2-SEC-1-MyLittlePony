@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 import { getItems, getItemById, deleteItemById } from "../../utils/fetchUtil";
 import filterFlightBooked from "../AppFilter.vue";
-import FooterComp from "../AppFooter.vue";
+import FooterComp from "../FooterComp.vue";
 import flightBookedMenu from "../AppBookedMenu.vue";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";

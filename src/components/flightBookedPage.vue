@@ -1,9 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { getItems, getItemById, deleteItemById } from "../utils/fetchUtil";
-import filterFlightBooked from "./filterFlightBooked.vue";
+import filterFlightBooked from "./AppFilter.vue";
 import FooterComp from "./FooterComp.vue";
-import flightBookedMenu from "./flightBookedMenu.vue";
+import flightBookedMenu from "./AppBookedMenu.vue";
 import { storeToRefs } from "pinia";
 import { useBooking } from "../store/booking.js";
 import { useRouter } from "vue-router";

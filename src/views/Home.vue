@@ -3,7 +3,7 @@ import { ref } from "vue";
 import Menu from "../components/Menu.vue";
 import MainContent from "../components/MainContent.vue";
 import MainCardFlightList from "../components/FlightList/MainCardFlightList.vue";
-import MainCardHotelList from "../components/Hotels/MainCardHotelList.vue";
+import MainCardHotelList from "../components/Hotels/CardHotelList.vue";
 
 // Reactive variable to control MainContent toggle
 const resetShow = ref(false);

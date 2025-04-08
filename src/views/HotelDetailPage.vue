@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar.vue";
 import { computed, onMounted, ref, defineEmits } from "vue";
 import { getHotelById } from "../utils/fetchUtil";
 import { useRoute, useRouter } from "vue-router";
-import FooterComp from "../components/AppFooter.vue";
+import FooterComp from "../components/FooterComp.vue";
 
 const route = useRoute();
 const router = useRouter();

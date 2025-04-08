@@ -40,7 +40,9 @@ const getHotels = async () => {
 
 
 
-const status = ref('awaiting');
+const status = computed(() => {
+    return currentHotel.value?.approve === "Waiting";
+});
 const countdown = ref(5 * 60);
 const showMore = ref(false)
 const showModal = ref(false);
@@ -92,6 +94,47 @@ const cancelBooking = async () => {
             checkOutTime: currentHotel.value.checkOutTime,
             checkOutDate: currentHotel.value.checkOutDate,
             approve: "Cancelled"
+        };
+
+        await updateItem(
+            `${import.meta.env.VITE_APP_URL}/bookingHotel`,
+            currentHotel.value.id,
+            simplifiedBooking
+        );
+
+    } catch (error) {
+        console.error("Error cancelling hotel booking:", error);
+    }
+
+    router.push({
+        name: "HotelBookedContent"
+    });
+};
+
+
+const bookAgain = async () => {
+    clearTimeout(timer.value);
+    status.value = false;
+    try {
+        const simplifiedBooking = {
+            id: currentHotel.value.id,
+            fName: currentHotel.value.fName,
+            lName: currentHotel.value.lName,
+            email: currentHotel.value.email,
+            phoneNumber: currentHotel.value.phoneNumber,
+            hotelId: currentHotel.value.hotelId,
+            roomId: currentHotel.value.roomId,
+            hotelName: currentHotel.value.hotelName,
+            price: currentHotel.value.price,
+            dateBooking: currentHotel.value.dateBooking,
+            timeBooking: currentHotel.value.timeBooking,
+            roomAmount: currentHotel.value.roomAmount,
+            nightAmount: currentHotel.value.nightAmount,
+            checkInTime: currentHotel.value.checkInTime,
+            checkInDate: currentHotel.value.checkInDate,
+            checkOutTime: currentHotel.value.checkOutTime,
+            checkOutDate: currentHotel.value.checkOutDate,
+            approve: "Waiting"
         };
 
         await updateItem(
@@ -179,9 +222,9 @@ onMounted(() => {
 
         <PaymentStatus v-else :bookingNo="currentHotel.hotelId" pin="405">
             <template #action>
-                <button
+                  <button @click="bookAgain"
                     class="border border-blue-400 text-blue-500 px-3 sm:px-4 py-2 rounded-lg shadow-sm bg-transparent hover:bg-blue-100 text-sm w-full sm:w-auto mt-2 sm:mt-0">
-                    Book Again
+                    Re Booking
                 </button>
             </template>
         </PaymentStatus>
@@ -191,7 +234,7 @@ onMounted(() => {
 
         <div
             class="bg-white p-4 sm:p-6 shadow-md w-full max-w-3xl mx-auto sm:ml-24 mt-4 flex items-center space-x-4 rounded-xl">
-            <img src="https://picsum.photos/300/200" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg">
+            <img src="../../assets/hotels/room2.jpg" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg">
             <div class="flex-1 mt-[-16px] pl-2 ">
                 <h2 class="text-xl font-bold text-gray-800">{{ currentHotel.hotelName }} 
                 </h2>
