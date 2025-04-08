@@ -34,17 +34,19 @@
 - Create related components
 
 ##### 66130500027 Flight And Tours Managements
-- Can CURD  information
+- Can CRUD  information
 - Create related components of flight and Tour
 - Manage All components
 - Fetch function for display value
 
 ##### 66130500041 All flight booking information report
-- Can CURD  information
-- Create related components 
-
+- Can CRUD  information
+- Create related components of flightBookedPage(Details) and AppFilter and AppBookedMenu and HotelBookedPage(Without Details) and App Footer
+- Fetch fucntion for display flightBookings and flightDetails value
+- Can filter status of flightBooking by approveValue
+- Can Click Delete flightBooking when approve value = Cancelled
 ##### 66130500036 Flight booking information report
-- Can CURD  information
+- Can CRUD  information
 - Create related components
 
 
