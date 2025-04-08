@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, defineEmits } from "vue";
-import CardModel from "../CardModel.vue";
+import CardModel from "./CardModel.vue";
 import { getHotels } from "../../utils/fetchUtil";
 import ListModelofHotel from "./ListModelofHotel.vue";
 import { useRoute } from "vue-router";
