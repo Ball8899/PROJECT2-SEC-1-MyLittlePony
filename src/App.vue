@@ -3,7 +3,7 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useFlight } from "./store/flight.js";
 import { getItems } from "@/utils/fetchUtil";
-
+import FooterComp from "./components/FooterComp.vue";
 import Navbar from "./components/Navbar.vue";
 
 const { setFlights, getFlights } = useFlight();
@@ -28,7 +28,9 @@ onMounted(async () => {
     </div>
     
     <router-view></router-view>
+    <FooterComp class="ml-[17%]"></FooterComp>
   </div>
+  
 </template>
 
 <style scoped>

@@ -1,51 +1,59 @@
 <script setup>
-
 </script>
 
 <template>
-  <div class="flex flex-col min-h-60 ">
-    <div class="flex-1">
-    </div>
-    <footer class="bg-gray-100 p-6 mt-auto">
-      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-sm px-50">
-        <div >
-          <h3 class="font-bold mb-2">ติดต่อเรา</h3>
-          <ul>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">บริการลูกค้า</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">การรับประกันบริการ</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">ข้อมูลบริการเพิ่มเติม</a></li>
-          </ul>
-          
-        </div>
+  <div class="flex flex-col min-h-100 ">
+    <div class="flex-1"></div>
 
+    <footer class="bg-gray-100 p-6 mt-auto border-t-8 border-t-white">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm px-4 md:px-6">
+        
+        <!-- Contact Us -->
         <div>
-          <h3 class="font-bold mb-2">เกี่ยวกับ</h3>
-          <ul>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">เกี่ยวกับ Trip.com</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">ข่าวประชาสัมพันธ์</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">ร่วมงานกับเรา</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">ข้อกำหนดและเงื่อนไข</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">นโยบายความเป็นส่วนตัว</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">เกี่ยวกับ Trip.com Group</a></li>
+          <h3 class="font-bold mb-3 border-b pb-1">Contact Us</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Customer Service</a></li>
+    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Service Guarantee</a></li>
+    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">More Service Info</a></li>
+    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Help Center</a></li>
+    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">FAQs</a></li>
+    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Email Us</a></li>
           </ul>
         </div>
 
+        <!-- About -->
         <div>
-          <h3 class="font-bold mb-2">บริการ</h3>
-          <ul>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">ที่จองงานสัมมนา</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">โปรแกรม Trip.com Rewards</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">โปรแกรม Trip.com Affiliate Partner</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">ลงทะเบียนที่พัก</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">สมัครซัพพลายเออร์ทัวร์และตัวท่องเที่ยว</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-gray-900">ความปลอดภัย</a></li>
+          <h3 class="font-bold mb-3 border-b pb-1">About</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">About JET</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Press Releases</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Careers</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Terms & Conditions</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">JET Group Info</a></li>
           </ul>
         </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="font-bold mb-3 border-b pb-1">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Seminar Booking</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">JET Rewards Program</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Affiliate Program</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">List Your Property</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Tour Supplier Sign-up</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Security Center</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center text-xs text-gray-400 mt-8">
+        &copy; 2025 JET. All rights reserved.
       </div>
     </footer>
   </div>
 </template>
 
 <style scoped>
-
 </style>
