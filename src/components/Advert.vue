@@ -4,27 +4,27 @@ import { computed, ref ,onMounted,onUnmounted} from 'vue';
 const collectImgs = [
   {
     id: 1,
-    img: 'https://dimg04.tripcdn.com/images/0a16s12000j1sxyhy8F1E.png'
+    img: '/src/assets/image/p2.png'
   },
   {
     id: 2,
-    img: 'https://dimg04.tripcdn.com/images/0a13212000ixwsb8j6D26.png'
+    img: '/src/assets/image/p3.png'
   },
   {
     id: 3,
-    img: 'https://dimg04.tripcdn.com/images/0a15q12000j2vm5lr7D62.png'
+    img: '/src/assets/image/p4.png'
   },
   {
     id:4,
-    img:'https://dimg04.tripcdn.com/images/0a11j12000j2erahdA41A.png'
+    img:'/src/assets/image/p5.png'
   },
   {
     id:5,
-    img:'https://dimg04.tripcdn.com/images/0a14m12000hmyrcxa789E.png'
+    img:'/src/assets/image/p6.png'
   },
   {
     id:6,
-    img:'https://dimg04.tripcdn.com/images/0a13012000ilk8von773D.png'
+    img:'/src/assets/image/p7.png'
   },
 ];
 
