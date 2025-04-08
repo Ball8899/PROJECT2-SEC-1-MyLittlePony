@@ -98,3 +98,9 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 | 66130500027 | Meeting & Design  | Upload project and create homepage and component for booking |  update FlightList for display fights and update booking for send data to fetch for query flights | update fucntion process post flight booking to backend| update work flow for reserve ticket and validation data input from user and add function display ticket type round trip |
 | 66130500036  | Meeting & Design |  Upload create componet BookingDetail,Likely,PaymentStatus,TotalAmount  |  Upload  BookDetail and add FligthDetail,function BookingDetail and Likely create component Advert   |   update function BookingDetail , PromoCode, TotalAmount,BookingHotelDetail | update store booking and feach BookingDetail,BookingHotelDeatail
 | 66130500041  | Meeting & Design | Upload Component listHotel function to loop hotel details in file.json and hotelList for scoped slot hotel detail on All booking page  | Update List flight model(filterFlightBooked) Menu for Booked Page | re design BookedPage from week 3 and fetch flightBooking from db.json and get flight from flightBooking to fetch flightDetails add FooterComp | Add Delete flightBooking function and Help 013 do HotelBookedPage and help 036 add fetch function update approve from cancelled to waiting
+
+
+### Inspiration
+Inspiration trip.com because it’s a platform that makes trip planning easier with comprehensive information on tourist attractions, accommodations, and flights all in one place. Plus, it offers real traveler reviews to help you decide with confidence. Whether it’s a short getaway or a long adventure, it caters to every travel style!
+https://th.trip.com/
+
