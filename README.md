@@ -44,6 +44,7 @@
 - Fetch fucntion for display flightBookings and flightDetails value
 - Can filter status of flightBooking by approveValue
 - Can Click Delete flightBooking when approve value = Cancelled
+- Can fetch function update approve value from cancelled to waiting
 ##### 66130500036 Flight booking information report
 - Can CRUD  information
 - Create related components
@@ -56,4 +57,4 @@
 | 66130500013   | Meeting & Design | Upload CardHotelList.vue , ListModelOfHotel.vue , CardModel.vue and Upload Hotel.json for test | create Fetch data of Hotels and fix Responsive|    add view-router and create BookingHotel , create List Room , add Hotels data to db.json| Upload Search hotel , and List Search Hotel ,and upload photo, the last update getHotelById in fetchUtils |
 | 66130500027 | Meeting & Design  | Upload project and create homepage and component for booking |  update FlightList for display fights and update booking for send data to fetch for query flights | update fucntion process post flight booking to backend| update work flow for reserve ticket and validation data input from user and add function display ticket type round trip |
 | 66130500036  | Meeting & Design |  Upload create componet BookingDetail,Likely,PaymentStatus,TotalAmount  |  Upload  BookDetail and add FligthDetail,function BookingDetail and Likely create component Advert   |   update function BookingDetail , PromoCode, TotalAmount,BookingHotelDetail | update store booking and feach BookingDetail,BookingHotelDeatail
-| 66130500041  | Meeting & Design | Upload Component listHotel function to loop hotel details in file.json and hotelList for scoped slot hotel detail on All booking page  | Update List flight model(filterFlightBooked) Menu for Booked Page | re design BookedPage from week 3 and fetch flightBooking from db.json and get flight from flightBooking to fetch flightDetails add FooterComp | Add Delete flightBooking function and Help 013 and 036 
+| 66130500041  | Meeting & Design | Upload Component listHotel function to loop hotel details in file.json and hotelList for scoped slot hotel detail on All booking page  | Update List flight model(filterFlightBooked) Menu for Booked Page | re design BookedPage from week 3 and fetch flightBooking from db.json and get flight from flightBooking to fetch flightDetails add FooterComp | Add Delete flightBooking function and Help 013 do HotelBookedPage and help 036 add fetch function update approve from cancelled to waiting
