@@ -820,7 +820,7 @@ const validFrom = () => {
                   </h3>
                   <div class="space-y-3">
                     <div class="flex justify-between">
-                      <span class="text-gray-600">1 room × 1 night</span>
+                      <span class="text-gray-600"> {{ numberRoom }} room × {{ numberNight }} night</span>
                       <span class="font-medium">฿ {{ totalPrice }}</span>
                     </div>
 
@@ -877,7 +877,7 @@ const validFrom = () => {
   <Teleport to="body">
     <div
       v-if="bookingSuccess"
-      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-200 bg-opacity-50"
     >
       <div
         class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center"
