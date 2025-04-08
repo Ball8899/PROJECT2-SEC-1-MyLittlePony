@@ -1,5 +1,5 @@
 <script setup>
-import Likely from './Likely.vue';
+import Likely from './Rating.vue';
 import PaymentStatus from './PaymentStatus.vue';
 import TotalAmount from './TotalAmount.vue';
 import PromoCode from './PromoCode.vue';

@@ -1,6 +1,6 @@
 <script setup>
 import PaymentStatus from "./PaymentStatus.vue";
-import Likely from "./Likely.vue";
+import Likely from "./Rating.vue";
 import TotalAmount from "./TotalAmount.vue";
 import PromoCode from "./PromoCode.vue";
 import { storeToRefs } from "pinia";
