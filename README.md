@@ -9,11 +9,11 @@
 | 66130500036  | Thattaphol Seelong   |  Turbo9922 | 25 |
 | 66130500041  |  Thammasorn Chatchayanusorn  | Thammasornn |  25 |
 
-#### Component Diagram
+### Component Diagram
 ![image](https://github.com/user-attachments/assets/9905b2d3-ea0d-4d47-b6fc-6a9fe8d1ddd0)
 
 
-#### Video Demonstrate use
+## Video Demonstrate use
 https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share_link
 
 #### Text Manual คู่มือการใช้งาน
@@ -65,11 +65,15 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
  4. After completing the booking, the user can navigate to view the hotel they just booked.
  5. On the list page showing all booked hotels, the user can either make a payment or cancel the booking.
 
-##### 66130500027 Flight And Tours Managements
-- Can CRUD  information
-- Create related components of flight and Tour
-- Manage All components
-- Fetch function for display value
+##### 66130500027 Flight And Admin Managements
+- FLight list use http method get for hook all flight from backend
+- Flight booking use http method post
+- Create flight store by pinia for state managements
+- Create related component for workflow booking ticket flight
+- Create Admin Panel for set status available or not available flight for user use http method put for update status for each flight
+- Create function login logout
+- Create components CalendarDialog, DestinationDialog for reuse in each booking such hotel booking.
+
 
 ##### 66130500041 All flight booking information report
 - Create related components of flightBookedPage(Details) and AppFilter and AppBookedMenu and HotelBookedPage(Without Details) and App Footer
@@ -77,6 +81,7 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - Can filter status of flightBooking by approveValue
 - Can Click Delete flightBooking when approve value = Cancelled
 - Can fetch function update approve value from cancelled to waiting
+- 
 ##### 66130500036 Flight booking information report
 -  Create related components of BookingDetailPage and BookingHotelDetailPage and PaymentStatus and PromoCode and Rating and TotalAmount and  Advert and store booking.js
 -  Can see approve, click to cancel, and when status is cancelled, click to rebook.
