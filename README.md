@@ -10,7 +10,8 @@
 | 66130500041  |  Thammasorn Chatchayanusorn  | Thammasornn |  25 |
 
 #### Component Diagram
-![image](https://github.com/user-attachments/assets/bb5fd913-1876-42e2-a6a5-a163e2347665)
+![image](https://github.com/user-attachments/assets/9905b2d3-ea0d-4d47-b6fc-6a9fe8d1ddd0)
+
 
 
 
@@ -26,7 +27,6 @@
 
 ##### Admin Role
 - Manage flight information
-- Manage Hotel information
 
 
 
