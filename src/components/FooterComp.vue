@@ -5,7 +5,7 @@
   <div class="flex flex-col min-h-100 ">
     <div class="flex-1"></div>
 
-    <footer class="bg-gray-100 p-6 mt-auto border-t-8 border-t-white">
+    <footer class="bg-gray-100 p-6 mt-auto">
       <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm px-4 md:px-6">
         
         <!-- Contact Us -->

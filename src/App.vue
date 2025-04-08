@@ -28,7 +28,7 @@ onMounted(async () => {
     </div>
     
     <router-view></router-view>
-    <FooterComp class="ml-[17%]"></FooterComp>
+    <FooterComp v-if="['/'].includes(route.path)" class="ml-[17%] border-gray-100"></FooterComp>
   </div>
   
 </template>
