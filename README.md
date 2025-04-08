@@ -13,7 +13,27 @@
 ![image](https://github.com/user-attachments/assets/9905b2d3-ea0d-4d47-b6fc-6a9fe8d1ddd0)
 
 
+#### Text Manual คู่มือการใช้งาน
+##### Admin Panel
+###### Login
+- Press signup or register button then login by username: jetdotgo and password: jetdotgopasswd
+- Press login button
+- If login successfully will redirect to FlightListAdmin for manange flights in system
+###### FlightListAdmin
+- You can set available or non availaable flight just press button available or non availabe in column actions of table
 
+##### Booking Flight
+###### Search flights
+- Select type of flight
+- Select leaving city
+- Select going city
+- Select date to departure and select date to return if type of flgiht is round trip
+- Select count of passenger must be more than 0 and less then ten
+- Then press button search
+###### Select flight
+- Select flight and selection option (weight of baggage and options)
+- Input information for travelers, contact value
+- Next press payment button, is finish yet booking flight.
 
 
 
