@@ -12,7 +12,7 @@ const resetShow = ref(false);
 <template>
   <div @click="resetShow = true">
     <div class="flex flex-row">
-      <Menu class="w-[17%] fixed" />
+      <Menu class="w-[17%] fixed " />
       <div class="w-[83%] ml-[17%]">
         <MainContent
           @update="resetShow = false"

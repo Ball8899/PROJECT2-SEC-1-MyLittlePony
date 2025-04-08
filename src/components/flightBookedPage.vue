@@ -155,7 +155,7 @@ const deleteCancelledBooking = async (bookingId) => {
       </filterFlightBooked>
     </div>
   </div>
-  <FooterComp></FooterComp>
+
 </template>
 
 <style scoped></style>

@@ -14,6 +14,7 @@ import FlightListAdmin from '@/components/admin/FlightListAdmin.vue'
 import Login from '@/components/admin/Login.vue'
 import PageNotFound from '@/views/PageNotFound.vue'
 import Home from '@/views/Home.vue'
+import FlightBookedPage from '@/components/flightBookedPage.vue'
 
 
 const router = createRouter({
@@ -63,7 +64,7 @@ const router = createRouter({
     {
       path: "/flightBookedContent",
       name: "flightBookedContent",
-      component: flightBookedContent,
+      component: FlightBookedPage,
     },
     {
       path: "/pageHotelList",
