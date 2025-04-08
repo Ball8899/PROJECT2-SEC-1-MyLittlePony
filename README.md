@@ -46,7 +46,7 @@
 - Can Click Delete flightBooking when approve value = Cancelled
 - Can fetch function update approve value from cancelled to waiting
 ##### 66130500036 Flight booking information report
-- Can CRUD  information
+-  Create related components of BookingDetailPage and BookingHotelDetailPage and PaymentStatus and PromoCode and Rating and TotalAmount and  Advert and store booking.js
 - Create related components
 
 
