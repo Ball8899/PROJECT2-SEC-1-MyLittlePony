@@ -13,6 +13,9 @@
 ![image](https://github.com/user-attachments/assets/9905b2d3-ea0d-4d47-b6fc-6a9fe8d1ddd0)
 
 
+#### Video Demonstrate use
+https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share_link
+
 #### Text Manual คู่มือการใช้งาน
 ##### Admin Panel
 ###### Login
