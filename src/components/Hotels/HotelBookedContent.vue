@@ -54,11 +54,11 @@ const routerBookingDetail = (id) => {
 <template>
   <div class="flex flex-row p-6">
     <flightBookedMenu class="w-1/4 mr-6" />
-    <div class="flex flex-col bg-white p-6 rounded-lg shadow-md w-3/4">
+    <div class="flex  flex-col bg-white p-6 rounded-lg shadow-md w-3/4">
       <filterFlightBooked :items="hotels" v-slot="{ booked }">
         <div
          
-          class="border border-gray-200 rounded-lg p-4 mb-4 shadow max-h-178 overflow-y-auto"
+          class="border cursor-pointer border-gray-200 rounded-lg p-4 mb-4 shadow max-h-178 overflow-y-auto"
         >
           <div  @click="routerBookingDetail(booked.id)" class="flex justify-between items-center border-b pb-2">
             <div>
@@ -104,7 +104,7 @@ const routerBookingDetail = (id) => {
                 Payment
               </button>
               <button
-                class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
+                class="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded-lg mt-2"
                 v-if="booked.approve == 'Cancelled'"
                 @click="deleteCancelledBooking(booked.id)"
               >

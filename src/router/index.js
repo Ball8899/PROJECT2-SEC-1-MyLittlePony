@@ -22,83 +22,98 @@ const router = createRouter({
     {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { title: "Home" }
     },
     {
       path: "/list-flight",
       name: "listFlight",
       component: FlightList,
-      meta: { title: "เลือกเส้นทางของคุณ" },
+      meta: { title: "Fight" },
     },
     {
       path: "/flight-booking-form/:flightId/:passenger",
       name: "flightBookingForm",
       component: FlightBookingForm,
+      meta: { title: "Flight Booking" },
     },
     {
       path: "/payment",
       name: "paymentForm",
       component: PaymentForm,
+      meta: { title: "Payment" },
     },
     {
       path: "/hotelDetail/:hotelId",
       name: "hotelDetail",
       component: HotelDetailPage,
+      meta: { title: "Hotel Detail" },
     },
     {
       path: "/BookingHotels/:roomId/:hotelId/:optionId",
       name: "BookingHotels",
       component: BookingHotels,
+      meta: { title: "Booking Hotel" },
     },
     {
       path: "/TotalAmount",
       name: "TotalAmount",
       component: TotalAmount,
+      meta: { title: "Total Amount" },
     },
     {
       path: "/BookingDetail/:id",
       name: "BookingDetail",
       component: BookingDetail,
+      meta: { title: "Booking Flight Detail " },
     },
     {
       path: "/flightBookedContent",
       name: "flightBookedContent",
       component: FlightBookedPage,
+      meta: { title: "Flight Booked" },
     },
     {
       path: "/pageHotelList",
       name: "pageHotelList",
       component: ListHotelSearch,
+      meta: { title: "Hotel" },
     },
     {
       path: "/BookingHotelDetail/:id",
       name: "BookingHotelDetail",
       component: BookingHotelDetail,
+      meta: { title: "Booking Hotel Detail" },
     },
     {
       path:"/HotelBookedContent",
       name: "HotelBookedContent",
-      component:HotelBookedContent
+      component:HotelBookedContent,
+      meta: { title: "Hotel Booked" },
     },
     {
       path: "/admin-panel",
       name: "AdminPanel",
-      component: FlightListAdmin
+      component: FlightListAdmin,
+      meta: { title: "Admin" },
     },
     {
       path: "/login",
       name: "/login",
-      component: Login
+      component: Login,
+      meta: { title: "Login" },
     },
     {
     path: "/:catchAll(.*)",
     name: "notFound",
     redirect: "/page-not-found",
+    meta: { title: "notFound" },
   },
   {
     path: "/page-not-found", 
     name: "PageNotFound",
     component: PageNotFound,
+    meta: { title: "Page Not Found" },
   },
   ],
 });
