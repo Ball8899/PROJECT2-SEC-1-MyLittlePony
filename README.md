@@ -33,6 +33,12 @@
 ##### 66130500013 Homes & Hotel Managements
 - Can CURD Homes & Hotel information
 - Create related components
+- I worked on a hotel booking system with basic CRUD operations, focusing on GET, POST, and PUT requests. The process flow is as follows
+ 1. The user selects a hotel.
+ 2. The user chooses a room and proceeds to book it.
+ 3. On the booking page, the user is required to fill in their information, which includes input validation.
+ 4. After completing the booking, the user can navigate to view the hotel they just booked.
+ 5. On the list page showing all booked hotels, the user can either make a payment or cancel the booking.
 
 ##### 66130500027 Flight And Tours Managements
 - Can CRUD  information
