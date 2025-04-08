@@ -40,7 +40,6 @@
 - Fetch function for display value
 
 ##### 66130500041 All flight booking information report
-- Can CRUD  information
 - Create related components of flightBookedPage(Details) and AppFilter and AppBookedMenu and HotelBookedPage(Without Details) and App Footer
 - Fetch fucntion for display flightBookings and flightDetails value
 - Can filter status of flightBooking by approveValue
