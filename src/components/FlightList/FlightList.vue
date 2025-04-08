@@ -2,10 +2,8 @@
 import { onMounted, ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getAirlineLogo } from "../../utils/toolUtil.js";
-import ListModel from "../listModel.vue";
-import { useFlight } from "../../store/flight.js";
-
-const { getFlights } = useFlight();
+import ListModel from "../ListModel.vue";
+import { getItems } from "@/utils/fetchUtil.js";
 
 const { query } = useRoute();
 const router = useRouter();
@@ -16,59 +14,51 @@ const uniqueAirline = ref([]);
 const airlines = ref([]);
 const temp = ref([]);
 
-
-const storeFlights = computed(() => getFlights());
-
 const flightFound = ref([]);
 
 onMounted(async () => {
   const leavingCity = decodeURIComponent(query.leavingDestination);
   const goingCity = decodeURIComponent(query.goingDestination);
   try {
+    const flights = await getItems(`${import.meta.env.VITE_APP_URL}/flights`);
+    flightFound.value = flights;
 
-    const allFlights = [...storeFlights.value];
-    
-    // Apply filters based on query
     if (query.type === "Round Trip") {
-      flightFound.value = allFlights.filter((flight) => {
+      flightFound.value = flightFound.value.filter((flight) => {
         return (
           flight.departure.date === query.departFlight &&
           flight.returnDeparture?.date === query.returnFlight &&
           flight.flightDetails.type === "Round Trip" &&
           flight.arrival.airport.city === goingCity &&
-          flight.departure.airport.city === leavingCity
+          flight.departure.airport.city === leavingCity &&
+          flight.available === "true"
         );
       });
     } else if (query.type === "One Way") {
-      flightFound.value = allFlights.filter((flight) => {
+      flightFound.value = flightFound.value.filter((flight) => {
         return (
           flight.departure.date === query.departFlight &&
           flight.flightDetails.type === "One Way" &&
           flight.arrival.airport.city === goingCity &&
-          flight.departure.airport.city === leavingCity
+          flight.departure.airport.city === leavingCity &&
+          flight.available === "true"
         );
       });
-    } else {
-      // If no query type specified, use all flights
-      flightFound.value = allFlights;
     }
 
-    // Sort by price
     flightFound.value = flightFound.value.sort(
       (a, b) => a.pricing.basePrice - b.pricing.basePrice
     );
-    
-    // Store a copy for filtering
+
     temp.value = JSON.parse(JSON.stringify(flightFound.value));
-    
-    // Build unique airline list
+
     flightFound.value.forEach((flight) => {
       const newAirline = flight.flightDetails.airline;
       if (!uniqueAirline.value.includes(newAirline)) {
         uniqueAirline.value.push(newAirline);
       }
     });
-    
+
     console.log("Filtered flights:", flightFound.value);
   } catch (error) {
     console.error("Error processing flights:", error);
@@ -124,8 +114,95 @@ const toggleShowOption = (id) => {
 </script>
 
 <template>
-  <div class="flex justify-between px-30 bg-gray-100">
-    <div class="w-[30%] px-10 my-5">
+  <div class="flex justify-between px-30"
+  :class="flightFound.length === 0 ? '' : 'bg-gray-200/30 h-screen'">
+    <div
+      class="mt-20 rounded-lg overflow-hidden shadow-lg w-full"
+      v-if="flightFound.length === 0"
+    >
+      <div class="bg-gradient-to-r from-blue-50 to-white p-8">
+        <div
+          class="flex flex-col items-center justify-center py-10 text-center"
+        >
+          <div class="relative mb-6">
+            <!-- Airplane icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-20 w-20 text-blue-500 mb-2"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+              ></path>
+            </svg>
+
+            <!-- Small decorative plane -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-blue-300 absolute -top-2 -right-4 transform rotate-45"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+              ></path>
+            </svg>
+          </div>
+
+          <div class="space-y-4">
+            <h1
+              @click="router.go(-1)"
+              class="text-3xl font-bold text-blue-700 hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+            >
+              No flights found
+            </h1>
+
+            <p class="text-blue-600 max-w-md">
+              We couldn't find any flights matching your search criteria. Please
+              try different dates or destinations.
+            </p>
+
+            <button
+              @click="router.go(-1)"
+              class="mt-4 inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors duration-300 shadow-md"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7"></path>
+              </svg>
+              Search again
+            </button>
+          </div>
+
+          <div class="w-full mt-8 flex items-center justify-center">
+            <div class="h-0.5 w-16 bg-blue-200 rounded-full"></div>
+            <div class="h-3 w-3 mx-1 rounded-full bg-blue-400"></div>
+            <div class="h-0.5 w-16 bg-blue-200 rounded-full"></div>
+            <div class="h-3 w-3 mx-1 rounded-full bg-blue-400"></div>
+            <div class="h-0.5 w-16 bg-blue-200 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="flightFound.length !== 0" class="w-[30%] px-10 my-5">
       <div>
         <div>
           <button
@@ -314,7 +391,7 @@ const toggleShowOption = (id) => {
       </div>
     </div>
 
-    <div class="w-[70%] py-5">
+    <div v-if="flightFound.length !== 0" class="w-[70%] py-5">
       <div
         class="bg-[url('src/assets/image/headerflight.png')] bg-[center_60px] px-4 py-3.5 rounded-t-xl flex justify-between items-center"
       >

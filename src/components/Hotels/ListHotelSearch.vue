@@ -140,30 +140,86 @@ const routerToHotelDetail = (id) => {
         </div>
       </div>
 
-
-
-      <div class="border border-yellow-500" v-if="safeHotelsData.length === 0">
-        <div class="bg-white rounded-md shadow-lg  flex px-8 py-10">
-          <div class="text-center min-w-64 py-10">
-            <div class="mb-4">
+      <div
+        class="border border-blue-500 rounded-lg overflow-hidden shadow-lg"
+        v-if="safeHotelsData.length === 0"
+      >
+        <div class="bg-gradient-to-r from-blue-50 to-white p-8">
+          <div
+            class="flex flex-col items-center justify-center py-10 text-center"
+          >
+            <div class="relative mb-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-16 top-65 w-16 mx-auto absolute text-yellow-500"
-                fill="none"
+                class="h-20 w-20 text-blue-500 mb-2"
                 viewBox="0 0 24 24"
+                fill="none"
                 stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                ></path>
               </svg>
 
-              <h1  @click="router.go(-1)" class="text-4xl ml-23 top-75  hover:text-blue-500 cursor-pointer   font-semibold text-gray-700 mb-2">Please search again.</h1>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-blue-300 absolute -top-2 -right-4 transform rotate-45"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+                ></path>
+              </svg>
             </div>
-            
+
+            <div class="space-y-4">
+              <h1
+                @click="router.go(-1)"
+                class="text-3xl font-bold text-blue-700 hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+              >
+                No flights found
+              </h1>
+
+              <p class="text-blue-600 max-w-md">
+                We couldn't find any flights matching your search criteria.
+                Please try different dates or destinations.
+              </p>
+
+              <button
+                @click="router.go(-1)"
+                class="mt-4 inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors duration-300 shadow-md"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 mr-2"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                </svg>
+                Search again
+              </button>
+            </div>
+
+            <div class="w-full mt-8 flex items-center justify-center">
+              <div class="h-0.5 w-16 bg-blue-200 rounded-full"></div>
+              <div class="h-3 w-3 mx-1 rounded-full bg-blue-400"></div>
+              <div class="h-0.5 w-16 bg-blue-200 rounded-full"></div>
+              <div class="h-3 w-3 mx-1 rounded-full bg-blue-400"></div>
+              <div class="h-0.5 w-16 bg-blue-200 rounded-full"></div>
+            </div>
           </div>
         </div>
       </div>

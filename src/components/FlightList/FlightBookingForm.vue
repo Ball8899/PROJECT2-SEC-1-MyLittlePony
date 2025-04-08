@@ -2,11 +2,15 @@
 import { onMounted, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { getItemById } from "../../utils/fetchUtil.js";
-import { getAirlineLogo, notFilledInto } from "../../utils/toolUtil.js";
+import { getAirlineLogo, notFilledInto, checkPhoneNumber } from "../../utils/toolUtil.js";
 import { useRouter } from "vue-router";
 import UserFrom from "../form/UserFrom.vue";
+import NotiDialog from "../validate/NotiDialog.vue";
+
 const router = useRouter();
 const { params, query } = useRoute();
+
+const phoneInvalid = ref(false)
 
 const totalFormat = computed(() => {
   const total = (
@@ -33,7 +37,8 @@ const contact = ref([
 ]);
 
 const continuePayment = () => {
-  if (notFilledInto(passengerInto.value) || notFilledInto(contact.value)) {
+
+  if (notFilledInto(passengerInto.value) || notFilledInto(contact.value))  {
     return;
   }
   router.push({
@@ -348,7 +353,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div class="bg-gray-200/19 min-h-screen">
+    <div class=" min-h-screen">
       <div class="">
         <div class="max-w-3xl mx-auto absolute left-30 mt-10">
           <div class="flex items-center gap-2 mb-6">
@@ -496,8 +501,8 @@ onMounted(async () => {
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-gray-50 rounded-lg p-6 flex items-center gap-4">
+          <div class=" grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-50  rounded-lg p-6 flex items-center gap-4">
               <div class="flex-shrink-0">
                 <div class="w-20 h-20 flex items-center justify-center">
                   <img
@@ -566,7 +571,7 @@ onMounted(async () => {
                       </div>
                       <input
                         v-model="contact[0].name"
-                        placeholder="Napat Chumtham"
+                        placeholder="contact name"
                         type="text"
                         class="w-full px-4 pt-4 pb-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300"
                       />
@@ -581,7 +586,7 @@ onMounted(async () => {
                         Email
                       </div>
                       <input
-                        placeholder="napat.chum@gmail.com"
+                        placeholder="example@mail.com"
                         v-model="contact[0].email"
                         type="email"
                         class="w-full px-4 pt-4 pb-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300"
@@ -589,6 +594,7 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="flex flex-col">
+                    <NotiDialog class="mb-5" v-show="phoneInvalid" message="Phone number must be integer only and must be size 10."></NotiDialog>
                     <div class="relative">
                       <div
                         class="absolute -top-2.5 left-4 bg-white px-1 text-gray-500 text-sm"

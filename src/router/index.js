@@ -1,5 +1,4 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import Booking from '../components/Booking.vue'
 import FlightList from '../components/FlightList/FlightList.vue'
 import FlightBookingForm from '../components/FlightList/FlightBookingForm.vue'
 import HotelDetailPage from '../views/HotelDetailPage.vue'
@@ -11,11 +10,20 @@ import flightBookedContent from "../components/flightBookedContent.vue"
 import ListHotelSearch from '../components/Hotels/ListHotelSearch.vue'
 import BookingHotelDetail from '@/components/BookDetail/BookingHotelDetail.vue'
 import HotelBookedContent from '@/components/Hotels/HotelBookedContent.vue'
+import FlightListAdmin from '@/components/admin/FlightListAdmin.vue'
+import Login from '@/components/admin/Login.vue'
+import PageNotFound from '@/views/PageNotFound.vue'
+import Home from '@/views/Home.vue'
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+    path: '/',
+    name: 'Home',
+    component: Home
+    },
     {
       path: "/list-flight",
       name: "listFlight",
@@ -71,9 +79,50 @@ const router = createRouter({
       path:"/HotelBookedContent",
       name: "HotelBookedContent",
       component:HotelBookedContent
-    }
+    },
+    {
+      path: "/admin-panel",
+      name: "AdminPanel",
+      component: FlightListAdmin
+    },
+    {
+      path: "/login",
+      name: "/login",
+      component: Login
+    },
+    {
+    path: "/:catchAll(.*)",
+    name: "notFound",
+    redirect: "/page-not-found",
+  },
+  {
+    path: "/page-not-found", 
+    name: "PageNotFound",
+    component: PageNotFound,
+  },
   ],
 });
+
+router.beforeEach ((to, from, next) => {
+  if (to.name === 'AdminPanel') {
+    console.log ('Before navigating to AdminPanel');
+
+    if (isUserAdmin ()) {
+      next (); 
+    } else {
+      next ('/login'); 
+    }
+  } else {
+    next (); 
+  }
+});
+
+
+function isUserAdmin () {
+  return localStorage.getItem('role') === 'admin';
+}
+
+
 
 router.beforeEach ((to, from, next) => {
   if (to.meta.title) {

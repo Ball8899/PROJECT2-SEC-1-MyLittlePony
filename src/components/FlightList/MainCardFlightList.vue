@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import ListModel from "../listModel.vue";
+import ListModel from "../ListModel.vue";
 import { getAirlineLogo } from "../../utils/toolUtil.js";
 import { getItems } from "@/utils/fetchUtil";
 
@@ -41,10 +41,10 @@ onMounted(async () => {
 <template>
   <div class="bg-gray-200/30">
     <h1 class="text-3xl font-medium mb-5 text-gray-700">Fly With Our Partner Airlines</h1>
-    <ListModel :items="visibleFlights" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+    <ListModel :items="visibleFlights.filter(flight => flight.available === 'true')" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
       <template #listItems="{Item: flight}">
         <div class="bg-white p-4 rounded-lg hover:shadow-sm hover:shadow-gray-300 transition-shadow duration-300">
-          <div class="flex justify-between items-start mb-2">
+          <div class="flex justify-between items-start mb-3">
             <div class="flex items-center gap-2">
               <img
                 :src="getAirlineLogo(flight.flightDetails.airline)"

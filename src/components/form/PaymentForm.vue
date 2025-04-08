@@ -2,6 +2,8 @@
 import { useRoute } from "vue-router";
 import { computed, ref } from "vue";
 import { postItem } from "../../utils/fetchUtil.js";
+import { useRouter } from "vue-router";
+const router = useRouter()
 const { query } = useRoute();
 const flight = ref(JSON.parse(query.flight));
 const contact = ref(JSON.parse(query.contact));
@@ -9,6 +11,7 @@ const passengerInfo = ref(JSON.parse(query.passengerInfo));
 const bookingNumber = computed(() => {
   return new Date().getTime();
 });
+
 const statusPost = ref(null);
 
 const data = computed(() => {
@@ -28,7 +31,10 @@ const postFlightBooking = async () => {
       `${import.meta.env.VITE_APP_URL}/flightBooking`,
       data.value
     );
-  } catch (error) {}
+    router.push({name: "flightBookedContent"})
+  } catch (error) { }
+
+  
 };
 </script>
 <template>

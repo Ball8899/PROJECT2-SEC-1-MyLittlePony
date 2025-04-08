@@ -209,14 +209,14 @@ const clearInput = () => {
             <NotiDialog v-show="tempFormData.gender == '' && checkGender"  message="Please ensure that you enter a value in this field" />
             <select
               v-model="tempFormData.gender"
-              class="appearance-none w-full px-4 py-3 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 text-gray-400"
+              class="appearance-none w-full px-4 py-3 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 text-gray-600"
             >
               <option value="" disabled selected>Gender on ID</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
             <div
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-600"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -251,7 +251,7 @@ const clearInput = () => {
             <NotiDialog v-show="checkNationality"  message="Please ensure that you enter a value in this field" />
             <select
               v-model="tempFormData.nationality"
-              class="appearance-none w-full px-4 py-3 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 text-gray-400"
+              class="appearance-none w-full px-4 py-3 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 text-gray-600"
             >
               <option value="" disabled selected>Nationality</option>
               <option value="th">Thai</option>

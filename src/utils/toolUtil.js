@@ -37,4 +37,9 @@ const checkDay = (data) => {
   }
 }
 
-export {getAirlineLogo, notFilledInto, checkName, checkDay}
+const checkPhoneNumber = (data) => {
+  const phoneRegex = new RegExp ('^(?:\\+66|0)\\d{9}$');
+  return phoneRegex.test(data)
+}
+
+export {getAirlineLogo, notFilledInto, checkName, checkDay, checkPhoneNumber}

@@ -5,6 +5,10 @@ const routerTo = () => {
   router.push({ name: "flightBookedContent"});
 };
 
+const loginTo = () => {
+  router.push({ name: "AdminPanel"});
+}
+
 </script>
 
 <template>
@@ -53,7 +57,7 @@ const routerTo = () => {
         Customer Support
       </button>
       <button class="hover:bg-gray-100 px-4 py-2 rounded-lg" @click="routerTo">My Booking</button>
-      <button class="hover:bg-amber-400 hover:text-black duration-500 px-4 py-2 rounded-lg bg-blue-600/90 text-white">
+      <button @click="loginTo" class="hover:bg-amber-400 hover:text-black duration-500 px-4 py-2 rounded-lg bg-blue-600/90 text-white">
         Sign in / Register
       </button>
     </div>

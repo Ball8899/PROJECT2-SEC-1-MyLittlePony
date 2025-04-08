@@ -2,6 +2,7 @@
 import { ref, onMounted, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getHotels } from "../../utils/fetchUtil.js";
+import DestinationDialog from "../DestinationDialog.vue"
 
 const hotels = ref([]);
 const filteredProvinces = ref("");
@@ -46,6 +47,14 @@ onMounted(async () => {
   }
 });
 
+
+const handleDestination = (data) => {
+  if (data.type === "going") {
+    filteredProvinces.value = data.value
+  }
+  return true
+}
+
 watch([filteredProvinces, filteredPrice, numberCapacity], () => {
   applyFilters();
 });
@@ -80,11 +89,6 @@ const applyFilters = () => {
   }
 
   storefilteredHotels.value = filtered;
-};
-
-const filterProvinces = (name) => {
-  filteredProvinces.value = name;
-  storeValue.value.showProvinces = false;
 };
 
 const mapPrice = (price) => {
@@ -153,32 +157,13 @@ const searchHotel = () => {
           </span>
         </button>
 
-        <div
+       
+        <DestinationDialog
+          @destination-selected="handleDestination"
+          :type="'going'"
+          class="w-[550px] absolute -mt-14 z-100"
           v-if="storeValue.showProvinces"
-          class="bg-white p-4 w-84 rounded-md absolute mt-1 shadow-lg z-10"
-        >
-          <h3 class="font-light text-sm text-gray-400">Thailand</h3>
-          <div class="font-light pt-2 text-sm space-y-2">
-            <div class="grid grid-cols-2 gap-2">
-              <div
-                v-for="province in [
-                  'Bangkok',
-                  'Chiang Mai',
-                  'Phuket',
-                  'Surat Thani',
-                  'Ayutthaya',
-                  'Prachuap Khiri Khan',
-                ]"
-                :key="province"
-                @click="filterProvinces(province)"
-                class="cursor-pointer hover:bg-blue-100 p-2 rounded-md transition-colors"
-                :class="{ 'bg-blue-100': filteredProvinces === province }"
-              >
-                {{ province }}
-              </div>
-            </div>
-          </div>
-        </div>
+        ></DestinationDialog>
       </div>
 
       <div class="relative">

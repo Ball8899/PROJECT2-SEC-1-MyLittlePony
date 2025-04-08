@@ -1,145 +1,166 @@
 <script setup>
-let modalTimeout = null;
-import { computed, onMounted, reactive, ref, watchEffect } from "vue";
-import { Teleport } from "vue";
-import { defineProps } from "vue";
-import { getHotelById, createBooking } from "../utils/fetchUtil";
-import { useRoute } from "vue-router";
-import { useRouter } from "vue-router";
+let modalTimeout = null
+import { computed, onMounted, reactive, ref, watchEffect } from "vue"
+import { Teleport } from "vue"
+import { defineProps } from "vue"
+import { getHotelById, createBooking } from "../utils/fetchUtil"
+import { useRoute } from "vue-router"
+import { useRouter } from "vue-router"
+import CalendarDialog from "../components/CalendarDialog.vue"
+const showCalendar = ref(false)
 
-const date = new Date();
-const route = useRoute();
-const router = useRouter();
+const date = ref(new Date())
+const route = useRoute()
+const router = useRouter()
 
-defineProps(["closeModal"]);
+const props = defineProps({
+  closeModal: {
+    type: Function,
+    default: () => {},
+  },
+})
 
-const hotels = ref({});
-const fName = ref("");
-const lName = ref("");
-const email = ref("");
-const phoneNumber = ref("");
-const roomId = route.params.roomId;
-const hotelId = route.params.hotelId;
-const optionId = route.params.optionId;
-const rooms = ref([]);
-const fromSubmit = ref(false);
-const selectedRoom = ref(null);
-const selectedOption = ref(null);
-const selectedNight = ref(false);
-const selectRoomValue = ref(false);
-const numberNight = ref(1);
-const numberRoom = ref(1);
-const checkInTime = ref("");
-const errorMessage = ref("Please Enter Again");
-const bookingSuccess = ref(false);
+const hotels = ref({})
+const fName = ref("")
+const lName = ref("")
+const email = ref("")
+const phoneNumber = ref("")
+const roomId = route.params.roomId
+const hotelId = route.params.hotelId
+const optionId = route.params.optionId
+const rooms = ref([])
+const fromSubmit = ref(false)
+const selectedRoom = ref(null)
+const selectedOption = ref(null)
+const selectedNight = ref(false)
+const selectRoomValue = ref(false)
+const numberNight = ref(1)
+const numberRoom = ref(1)
+const checkInTime = ref("")
+const errorMessage = ref("Please Enter Again")
+const bookingSuccess = ref(false)
+
+const departFlight = ref(new Date())
+const returnFlight = ref(null)
+
+const leavingDestination = ref("")
+const goingDestination = ref("")
+
+const formatDate = (date) => {
+  if (!date) return null
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  return `${year}-${month}-${day}`
+}
+
+const handleDate = (data) => {
+  departFlight.value = data.start
+  date.value = data.start
+  checkInTime.value = formatDate(data.start)
+  showCalendar.value = false
+}
+
 
 onMounted(async () => {
   try {
     if (!hotelId || !roomId || !optionId) {
-      console.log("not found room ID or not found Hotel ID");
-      return;
+      console.log("not found room ID or not found Hotel ID")
+      return
     }
-    hotels.value = await getHotelById(
-      `${import.meta.env.VITE_APP_URL}/hotels`,
-      hotelId
-    );
+    hotels.value = await getHotelById(`${import.meta.env.VITE_APP_URL}/hotels`, hotelId)
     if (hotels.value && hotels.value.rooms) {
-      rooms.value = hotels.value.rooms;
-      newBookingHotel.hotelName = hotels.value.name;
+      rooms.value = hotels.value.rooms
+      newBookingHotel.hotelName = hotels.value.name
     }
+
+    checkInTime.value = formatDate(departFlight.value)
   } catch (error) {
-    console.error("Error fetching hotels:", error);
+    console.error("Error fetching hotels:", error)
   }
-});
+})
 
 watchEffect(() => {
   if (hotels.value && hotels.value.name) {
-    newBookingHotel.hotelName = hotels.value.name;
+    newBookingHotel.hotelName = hotels.value.name
   }
-});
+})
 
 watchEffect(() => {
   if (rooms.value && rooms.value.length > 0) {
-    selectedRoom.value = rooms.value.find(
-      (room) => room.id === parseInt(roomId)
-    );
+    selectedRoom.value = rooms.value.find((room) => room.id === parseInt(roomId))
   } else {
-    selectedRoom.value = "";
+    selectedRoom.value = ""
   }
-});
+})
 
 watchEffect(() => {
   if (selectedRoom.value && selectedRoom.value.options) {
-    selectedOption.value = selectedRoom.value.options.find(
-      (option) => option.id === parseInt(optionId)
-    );
+    selectedOption.value = selectedRoom.value.options.find((option) => option.id === parseInt(optionId))
   }
-});
+})
 
 const minDate = computed(() => {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return { day, month, year };
-});
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return { day, month, year }
+})
 
 const toggleSelectNight = () => {
-  selectedNight.value = !selectedNight.value;
-  selectRoomValue.value = false;
-};
+  selectedNight.value = !selectedNight.value
+  selectRoomValue.value = false
+}
+
 const closeToggleSelectNight = () => {
-  selectedNight.value = false;
-  selectRoomValue.value = false;
-};
+  selectedNight.value = false
+  selectRoomValue.value = false
+}
 
 const toggleSelectRoom = () => {
-  selectRoomValue.value = !selectRoomValue.value;
-  selectedNight.value = false;
-};
+  selectRoomValue.value = !selectRoomValue.value
+  selectedNight.value = false
+}
 
 const totalPrice = computed(() => {
-  const pricePerNight = 400;
-  const pricePerRoom = 600;
-  const optionPrice = selectedOption.value ? selectedOption.value.price : 0;
+  const pricePerNight = 400
+  const pricePerRoom = 600
+  const optionPrice = selectedOption.value ? selectedOption.value.price : 0
 
-  return (
-    numberNight.value * pricePerNight +
-    numberRoom.value * pricePerRoom +
-    optionPrice
-  );
-});
+  return numberNight.value * pricePerNight + numberRoom.value * pricePerRoom + optionPrice
+})
 
 const calculateCheckIn = computed(() => {
-  if (!checkInTime.value) return null;
-  const date = new Date(checkInTime.value);
-  date.setHours(16, 0, 0, 0);
-  return date;
-});
+  if (!checkInTime.value) return null
+  const date = new Date(checkInTime.value)
+  date.setHours(16, 0, 0, 0)
+  return date
+})
 
 const calculateCheckOut = computed(() => {
-  if (!checkInTime.value) return null;
-  const checkInDate = new Date(checkInTime.value);
-  checkInDate.setDate(checkInDate.getDate() + numberNight.value);
-  checkInDate.setHours(15, 0, 0, 0);
-  return checkInDate;
-});
+  if (!checkInTime.value) return null
+  const checkInDate = new Date(checkInTime.value)
+  checkInDate.setDate(checkInDate.getDate() + numberNight.value)
+  checkInDate.setHours(15, 0, 0, 0)
+  return checkInDate
+})
 
 const increaseOrDecreaseNight = (value) => {
   if (value === "increase") {
-    numberNight.value++;
+    numberNight.value++
   } else if (value === "decrease" && numberNight.value > 1) {
-    numberNight.value--;
+    numberNight.value--
   }
-};
+}
 
 const increaseOrDecreaseRoom = (value) => {
   if (value === "increase") {
-    numberRoom.value++;
+    numberRoom.value++
   } else if (value === "decrease" && numberRoom.value > 1) {
-    numberRoom.value--;
+    numberRoom.value--
   }
-};
+}
 
 const newBookingHotel = reactive({
   fName: "",
@@ -148,182 +169,157 @@ const newBookingHotel = reactive({
   phoneNumber: "",
   hotelId: hotelId,
   roomId: roomId,
-  hotelName: hotels.value.name,
-  price: totalPrice.value,
-  dateBooking: date.toLocaleString("th-TH"),
-  timeBooking:"",
+  hotelName: "",
+  price: 0,
+  dateBooking: "",
+  timeBooking: "",
   roomAmount: 1,
   nightAmount: 1,
   checkInTime: "",
-  checkInDate:"",
+  checkInDate: "",
   checkOutTime: "",
   checkOutDate: "",
   approve: "Waiting",
-});
+})
 
 watchEffect(() => {
-  newBookingHotel.roomAmount = numberRoom.value;
-  newBookingHotel.nightAmount = numberNight.value;
-  newBookingHotel.price = totalPrice.value;
+  newBookingHotel.roomAmount = numberRoom.value
+  newBookingHotel.nightAmount = numberNight.value
+  newBookingHotel.price = totalPrice.value
+
+  newBookingHotel.dateBooking = new Date().toLocaleString("th-TH")
 
   if (calculateCheckIn.value) {
-    newBookingHotel.checkOutTime = formatTime(calculateCheckOut.value);
+    newBookingHotel.checkOutTime = formatTime(calculateCheckOut.value)
     newBookingHotel.checkOutDate = formatDate(calculateCheckOut.value)
 
-    newBookingHotel.checkInTime = formatTime(calculateCheckIn.value);
-    newBookingHotel.checkInDate = formatDate(calculateCheckIn.value);
-    
+    newBookingHotel.checkInTime = formatTime(calculateCheckIn.value)
+    newBookingHotel.checkInDate = formatDate(calculateCheckIn.value)
   } else {
-    newBookingHotel.checkInTime = "";
-    newBookingHotel.checkOutTime = "";
+    newBookingHotel.checkInTime = ""
+    newBookingHotel.checkOutTime = ""
   }
-});
+})
 
 const formatTime = (times) => {
+  if (!times) return ""
   const dates = new Date(times)
-  const hours = dates.getHours();  
-  const minutes = dates.getMinutes(); 
- return `${hours}:${minutes}0`
-
+  const hours = dates.getHours()
+  const minutes = dates.getMinutes()
+  return `${hours}:${minutes}0`
 }
-
-const formatDate = (times) => {
-  const dates = new Date(times).toDateString()
- return dates
-
-}
-
-
-console.log(formatTime.value)
 
 const submitBooking = async () => {
   if (!validFrom()) {
-    fromSubmit.value = true;
-    return false;
+    fromSubmit.value = true
+    return false
   }
-  bookingSuccess.value = true;
+  bookingSuccess.value = true
 
-  newBookingHotel.fName = fName.value;
-  newBookingHotel.lName = lName.value;
-  newBookingHotel.email = email.value;
-  newBookingHotel.phoneNumber = phoneNumber.value;
-  newBookingHotel.price = totalPrice.value;
+  newBookingHotel.fName = fName.value
+  newBookingHotel.lName = lName.value
+  newBookingHotel.email = email.value
+  newBookingHotel.phoneNumber = phoneNumber.value
+  newBookingHotel.price = totalPrice.value
 
   modalTimeout = setTimeout(async () => {
     try {
-      await addBooking();
+      await addBooking()
     } catch (error) {
-      console.error("Booking is not correct", error);
+      console.error("Booking is not correct", error)
     }
-  }, 300000);
-};
+  }, 300000)
+}
 
-const closeModal = async () => {
+const closeModalHandler = async () => {
   if (!validFrom()) {
-    fromSubmit.value = true;
-    return false;
+    fromSubmit.value = true
+    return false
   }
   if (modalTimeout) {
-    clearTimeout(modalTimeout);
-    modalTimeout = null;
+    clearTimeout(modalTimeout)
+    modalTimeout = null
   }
   if (validFrom()) {
     try {
-      await addBooking();
+      await addBooking()
     } catch (error) {
-      console.error("Booking is not correct", error);
+      console.error("Booking is not correct", error)
     }
   }
-  bookingSuccess.value = false;
-};
+  bookingSuccess.value = false
+
+  if (props.closeModal) {
+    props.closeModal()
+  }
+}
 
 const routerToListContent = () => {
-  closeModal();
-  router.push({ name: "HotelBookedContent" });
-};
+  closeModalHandler()
+  router.push({ name: "HotelBookedContent" })
+}
 
 const addBooking = async () => {
   if (!calculateCheckIn.value || isNaN(calculateCheckIn.value.getTime())) {
-    return false;
+    return false
   }
   try {
-    await createBooking(
-      `${import.meta.env.VITE_APP_URL}/bookingHotel`,
-      newBookingHotel
-    );
-    return true;
+    await createBooking(`${import.meta.env.VITE_APP_URL}/bookingHotel`, newBookingHotel)
+    return true
   } catch (err) {
-    console.log("not Create");
-    return false;
+    console.log("not Create")
+    return false
   }
-};
+}
 
 const validFrom = () => {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phonePattern = /^[0-9]{10}$/;
-  const namePattern = /^[A-Za-zก-๙\s'-]+$/;
-  const datePattern = /^(\d{4})\/(\d{1,2})\/(\d{1,2})$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  const phonePattern = /^[0-9]{10}$/
+  const namePattern = /^[A-Za-zก-๙\s'-]+$/
 
-  const checkFname =
-    fName.value.trim().length > 0 && namePattern.test(fName.value);
-  const checkLname =
-    lName.value.trim().length > 0 && namePattern.test(lName.value);
-  const checkEmail = emailPattern.test(email.value);
-  const checkPhoneNumber = phonePattern.test(phoneNumber.value);
+  const checkFname = fName.value.trim().length > 0 && namePattern.test(fName.value)
+  const checkLname = lName.value.trim().length > 0 && namePattern.test(lName.value)
+  const checkEmail = emailPattern.test(email.value)
+  const checkPhoneNumber = phonePattern.test(phoneNumber.value)
 
-  let checkDate = true;
-  if (checkInTime.value) {
-    if (typeof checkInTime.value === "string") {
-      checkDate = datePattern.test(checkInTime.value.trim());
-    }
-  }
-
-  if (
-    checkFname === "" ||
-    checkLname === "" ||
-    checkEmail === "" ||
-    checkPhoneNumber === ""
-  ) {
-    return false;
+  if (checkFname === "" || checkLname === "" || checkEmail === "" || checkPhoneNumber === "") {
+    return false
   }
 
   if (!checkFname || !checkLname || !checkEmail || !checkPhoneNumber) {
-    return false;
+    return false
   }
 
   if (!checkFname || !checkLname) {
-    return false;
+    return false
   }
 
   if (!checkEmail) {
-    return false;
+    return false
   }
 
   if (!checkPhoneNumber) {
-    return false;
+    return false
   }
 
   if (!checkInTime.value) {
-    return false;
+    return false
   }
 
   if (!calculateCheckIn.value) {
-    return false;
+    return false
   }
 
-  if (!checkDate) {
-    return false;
-  }
-
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
 
   if (calculateCheckIn.value < today) {
-    return false;
+    return false
   }
 
-  return true;
-};
+  return true
+}
+
 </script>
 <template>
   <div>
@@ -444,13 +440,29 @@ const validFrom = () => {
                       }}</span>
                     </label>
 
-                    <input
-                      type="text"
-                      v-model="checkInTime"
-                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                      :placeholder="`${minDate.year}/${minDate.month}/${minDate.day}`"
-                      :class="{ 'border-red-500': fromSubmit, '': !fromSubmit }"
-                    />
+                    <button
+                      @click.stop="showCalendar = !showCalendar"
+                      class="w-[240px] text-left text-gray-800 text-sm font-bold border-1 border-gray-300 p-4 rounded-md"
+                    >
+                      <div class="flex flex-row justify-between">
+                        <p>
+                          {{
+                            departFlight.toLocaleString("default", {
+                              day: "numeric",
+                              month: "short",
+                              year: "numeric",
+                            })
+                          }}
+                        </p>
+                      </div>
+                    </button>
+                    <CalendarDialog
+                      @update-calendar="handleDate"
+                      :start-date="departFlight"
+                      type-flight="One Way"
+                      class="absolute right-27"
+                      v-if="showCalendar"
+                    ></CalendarDialog>
                   </div>
                 </div>
 
@@ -778,7 +790,6 @@ const validFrom = () => {
 
                       <button
                         @click="increaseOrDecreaseRoom('increase')"
-                        increase
                         class="absolute right-4 font-semibold px-1 text-blue-600 rounded-md cursor-pointer 0 shadow-lg"
                       >
                         +
@@ -897,7 +908,7 @@ const validFrom = () => {
 
         <div class="flex gap-5">
           <button
-            @click="closeModal"
+            @click="closeModalHandler"
             class="w-1/2 bg-red-600 text-white py-2 px-3 hover:bg-red-700 rounded-md transition font-medium"
           >
             Close

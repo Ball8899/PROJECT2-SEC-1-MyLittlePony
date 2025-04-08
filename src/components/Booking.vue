@@ -7,7 +7,7 @@ import {
   computed,
   watchEffect,
 } from "vue";
-import CalendarDialog from "./Calendar.vue";
+import CalendarDialog from "./CalendarDialog.vue";
 import DestinationDialog from "./DestinationDialog.vue";
 import PassengerDialog from "./PassengerDialog.vue";
 import { useRouter } from "vue-router";
@@ -64,9 +64,9 @@ const leavingDestination = ref("");
 const goingDestination = ref("");
 
 const reverseLocation = () => {
-  const tempGogin = goingDestination.value;
+  const tempGoing = goingDestination.value;
   goingDestination.value = leavingDestination.value;
-  leavingDestination.value = tempGogin;
+  leavingDestination.value = tempGoing;
 };
 const departFlight = ref(new Date());
 const returnFlight = ref(null);

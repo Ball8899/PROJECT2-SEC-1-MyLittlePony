@@ -7,7 +7,8 @@ import { storeToRefs } from "pinia";
 import { useBooking } from "../../store/booking.js";
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRoute , useRouter } from "vue-router";
-import {updateItem,getItemById } from "../../utils/fetchUtil.js";
+import { updateItem, getItemById } from "../../utils/fetchUtil.js";
+
 
 const bookingStore = useBooking();
 const { hotelBookings } = storeToRefs(bookingStore);
