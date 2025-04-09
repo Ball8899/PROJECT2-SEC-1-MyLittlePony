@@ -50,6 +50,14 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - After completing the booking, the user can navigate to view the hotel they just booked.
 - On the list page showing all booked hotels, the user can either make a payment or cancel the booking.
 
+#### BookingDetail
+###### BookingDetailPage
+- Can see approval status, click to cancel the booking, and if the status is "Cancelled", you can click to rebook.
+- Can click to select a rating and provide feedback.
+- Can click to view flight details, including departure and return times, prices, and your booking information.
+- Can select and apply a discount coupon (promo code) for the flight.
+###### BookingHotelDetailPage
+
 
 
 
