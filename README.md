@@ -10,7 +10,8 @@
 | 66130500041  |  Thammasorn Chatchayanusorn  | Thammasornn |  25 |
 
 ### Component Diagram
-<img width="805" alt="image" src="https://github.com/user-attachments/assets/61a10d84-21a9-4c65-9e9d-7d22d7c1591c" />
+<img width="805" alt="image" src="https://github.com/user-attachments/assets/e300c32d-b65d-4692-8b38-29796aaa3750" />
+
 
 
 
