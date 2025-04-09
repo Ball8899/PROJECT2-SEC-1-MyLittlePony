@@ -44,11 +44,27 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 
 
 #### Booking Hotels
-- The user selects a hotel.
-- The user chooses a room and proceeds to book it.
-- On the booking page, the user is required to fill in their information, which includes input validation.
-- After completing the booking, the user can navigate to view the hotel they just booked.
-- On the list page showing all booked hotels, the user can either make a payment or cancel the booking.
+###### Search Your Hotels
+- Select Province
+- Select Price Range
+- Select Capacity
+- Press  button search 
+###### Hotels Detail
+- You will see the hotel and room details
+- Select the room you want by clicking "Reserve"
+###### Booking Hotel
+- Select your first name
+- Select your last name
+- Select your email
+- Select your phone
+- Select your number of nights (default 1)
+- Select your number of rooms  (default 1)
+- Select your Special Requests (Optional)
+- Press complete Booking
+- Once the booking is complete, you can click to close, or if you want to view the list of your booked hotels, click 'Your Booked'.
+###### List Booked Hotels
+- You can view the list of booked hotels
+  
 
 #### BookingDetail
 ###### BookingDetailPage
@@ -82,9 +98,14 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 #### Future And Responsible
 
 ##### 66130500013 Homes & Hotel Managements
-- Can CURD Homes & Hotel information
-- Create related components
-- I worked on a hotel booking system with basic CRUD operations, focusing on GET, POST, and PUT requests. The process flow is as follows
+- Hotel List use  http method get  all hotels from backend
+- Hotel Booking use http method post
+- Hotel delete Booked use http method delete
+- Create Card Hotel List
+- Create Search hotel
+- Create Hotel Detail
+- Create Booking Hotel
+- Create List Booked Hotel
 
 ##### 66130500027 Flight And Admin Managements
 - FLight list use http method get for hook all flight from backend
