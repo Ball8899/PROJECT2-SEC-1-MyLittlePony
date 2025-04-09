@@ -126,9 +126,10 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 
 ##### 66130500036 Flight and Hotel Booking Information Report
 - Create  function  updateItem in the fetchUtil.
-- Create booking store by pinia for state managements
+- Create booking store by pinia for Flight and Hotel bookings.
 - Create reusable components PaymentStatus, PromoCode, Rating, and TotalAmount be used in the BookingDetail page for both Flight and Hotel. 
 - Create  related components of BookingDetailPage and BookingHotelDetailPage
+- Create update approve for Flight and Hotel bookings.
 
 
 ### Weekly Progression
