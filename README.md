@@ -42,6 +42,14 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - Input information for travelers, contact value
 - Next press payment button, is finish yet booking flight.
 
+###### Booking Hotels
+- The user selects a hotel.
+- The user chooses a room and proceeds to book it.
+- On the booking page, the user is required to fill in their information, which includes input validation.
+- After completing the booking, the user can navigate to view the hotel they just booked.
+- On the list page showing all booked hotels, the user can either make a payment or cancel the booking.
+
+
 
 
 #### What is we project 
@@ -63,11 +71,6 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - Can CURD Homes & Hotel information
 - Create related components
 - I worked on a hotel booking system with basic CRUD operations, focusing on GET, POST, and PUT requests. The process flow is as follows
- 1. The user selects a hotel.
- 2. The user chooses a room and proceeds to book it.
- 3. On the booking page, the user is required to fill in their information, which includes input validation.
- 4. After completing the booking, the user can navigate to view the hotel they just booked.
- 5. On the list page showing all booked hotels, the user can either make a payment or cancel the booking.
 
 ##### 66130500027 Flight And Admin Managements
 - FLight list use http method get for hook all flight from backend
