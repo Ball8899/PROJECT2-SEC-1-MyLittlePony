@@ -42,7 +42,8 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - Input information for travelers, contact value
 - Next press payment button, is finish yet booking flight.
 
-###### Booking Hotels
+
+#### Booking Hotels
 - The user selects a hotel.
 - The user chooses a room and proceeds to book it.
 - On the booking page, the user is required to fill in their information, which includes input validation.
