@@ -71,11 +71,11 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - Can see approval status, click to cancel the booking, and if the status is "Cancelled", you can click to rebook.
 - Can click to select a rating and provide feedback.
 - Can click to view flight details, including departure and return times, prices, and your booking information.
-- Can select and apply a discount coupon (promo code) for the flight.
+- Can select and apply a discount coupon (promo code) for the flight, or choose not to use one.
 ###### BookingHotelDetail
 - Can see approval status, click to cancel the booking, and if the status is "Cancelled", you can click to rebook.
 - Can click to view hotel details including booking information, booking price, name, email, and phone number used for the reservation.
-- Can select and apply a discount coupon (promo code) for the flight.
+- Can select and apply a discount coupon (promo code) for the hotel, or choose not to use one.
 - Can click to select a rating and provide feedback.
 
 
