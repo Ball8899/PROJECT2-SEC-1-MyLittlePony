@@ -123,9 +123,12 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - Can filter status of flightBooking by approveValue
 - Can Click Delete flightBooking when approve value = Cancelled
 - Can fetch function update approve value from cancelled to waiting
-- 
-##### 66130500036 Flight booking information report
-- Can CURD 
+
+##### 66130500036 Flight and Hotel Booking Information Report
+- Create  function  updateItem in the fetchUtil.
+- Create booking store by pinia for state managements
+- Create reusable components PaymentStatus, PromoCode, Rating, and TotalAmount be used in the BookingDetail page for both Flight and Hotel. 
+- Create  related components of BookingDetailPage and BookingHotelDetailPage
 
 
 ### Weekly Progression
