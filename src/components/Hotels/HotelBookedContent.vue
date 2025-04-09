@@ -53,22 +53,22 @@ const routerBookingDetail = (id) => {
 
 <template>
   <div class="flex flex-row p-6">
-    <flightBookedMenu class="w-1/4 mr-6" />
-    <div class="flex  flex-col bg-white p-6 rounded-lg shadow-md w-3/4">
-      <filterFlightBooked :items="hotels" v-slot="{ booked }">
-        <div
-         
-          class="border cursor-pointer border-gray-200 rounded-lg p-4 mb-4 shadow max-h-178 overflow-y-auto"
-        >
-          <div  @click="routerBookingDetail(booked.id)" class="flex justify-between items-center border-b pb-2">
+  <flightBookedMenu class="w-1/4 mr-6" />
+  <div class="flex flex-col bg-white p-6 rounded-lg shadow-md w-3/4">
+    <filterFlightBooked :items="hotels" v-slot="{ booked }">
+      <div
+        class="border border-gray-200 rounded-lg p-4 mb-4 shadow max-h-178 overflow-y-auto"
+      >
+        <div class="flex flex-col cursor-pointer" @click="routerBookingDetail(booked.id)">
+          <div class="flex justify-between items-center border-b pb-2">
             <div>
-              <span class="text-sm text-gray-500"
-                >Booking ID: {{ booked.id }}</span
-              >
+              <span class="text-sm text-gray-500">
+                Booking ID: {{ booked.id }}
+              </span>
             </div>
-            <span class="text-sm text-blue-500"
-              >Booking Date: {{ booked.dateBooking }}</span
-            >
+            <span class="text-sm text-blue-500">
+              Booking Date: {{ booked.dateBooking }}
+            </span>
           </div>
 
           <div class="flex items-center">
@@ -77,7 +77,6 @@ const routerBookingDetail = (id) => {
               src="../../assets/hotels/hotel2.jpg"
               alt=""
             />
-
             <div class="ml-7">
               <p class="text-lg font-semibold">{{ booked.hotelName }}</p>
               <div class="items-center space-x-4 text-gray-500 text-sm mt-1">
@@ -89,34 +88,39 @@ const routerBookingDetail = (id) => {
                 ></span>
                 <span class="text-red-500">
                   Check Out: {{ booked.checkOutDate }}
-                  {{ booked.checkOutTime }}</span
-                >
+                  {{ booked.checkOutTime }}
+                </span>
               </div>
             </div>
+
             <div class="ml-auto text-right">
               <p class="text-xl font-bold text-gray-800">
                 ฿ {{ booked.price }}
               </p>
-              <button
-                class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
-                v-if="booked.approve !== 'Cancelled'"
-              >
-                Payment
-              </button>
-              <button
-                class="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded-lg mt-2"
-                v-if="booked.approve == 'Cancelled'"
-                @click="deleteCancelledBooking(booked.id)"
-              >
-                Delete
-              </button>
             </div>
           </div>
         </div>
-        <div class="ml-auto text-right"></div>
-      </filterFlightBooked>
-    </div>
+
+        <div class="flex justify-end mt-2">
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            v-if="booked.approve !== 'Cancelled'"
+          >
+            Payment
+          </button>
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            v-if="booked.approve == 'Cancelled'"
+            @click="deleteCancelledBooking(booked.id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </filterFlightBooked>
   </div>
+</div>
+
 </template>
 
 <style scoped></style>
