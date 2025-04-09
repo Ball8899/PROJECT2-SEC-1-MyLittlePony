@@ -405,7 +405,7 @@ const toggleShowOption = (id) => {
 
     <div v-if="flightFound.length !== 0" class="w-[70%] py-5">
       <div
-        class="bg-[url('src/assets/image/headerflight.png')] bg-[center_60px] px-4 py-3.5 rounded-t-xl flex justify-between items-center"
+        class="bg-[url('/headerflight.png')] bg-[center_60px] px-4 py-3.5 rounded-t-xl flex justify-between items-center"
       >
         <div>
           <p class="text-base tracking-wide font-medium text-white">

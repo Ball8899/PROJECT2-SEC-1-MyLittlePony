@@ -1,12 +1,18 @@
 <script setup>
 
+
 import router from '@/router';
+
 const routerTo = () => {
   router.push({ name: "flightBookedContent"});
 };
 
 const loginTo = () => {
   router.push({ name: "AdminPanel"});
+}
+
+const routerToHome = () => {
+  router.push({ name: "Home"});
 }
 
 </script>
@@ -17,12 +23,12 @@ const loginTo = () => {
       <button class="w-[100%] px-4.5 py-2.5 flex flex-row gap-6">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <div class="ml-3 flex flex-row">
-       <a href="http://localhost:5173/" class="flex">
+      <div @click="routerToHome" class="ml-3  flex flex-row">
+       <div class="flex cursor-pointer">
         <h1 class="text-blue-700 text-3xl font-bold">JET</h1>
         <h1 class="text-amber-400 font-bold text-2xl">.</h1>
         <h1 class="text-amber-400 font-bold text-2xl">GO</h1>
-      </a>
+       </div>
       </div>
       <div class="pl-10 relative mx-auto text-gray-600">
         <input class="border-1 border-gray-300 bg-white h-10 px-5 pr-19 rounded-lg text-sm focus:outline-none"
