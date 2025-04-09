@@ -1,4 +1,3 @@
-# PROJECT2-SEC-1-MyLittlePonyProject
 
 #### Team Member MyLittlePony
 
@@ -10,7 +9,7 @@
 | 66130500041  |  Thammasorn Chatchayanusorn  | Thammasornn |  25 |
 
 ### Component Diagram
-<img width="805" alt="image" src="https://github.com/user-attachments/assets/e300c32d-b65d-4692-8b38-29796aaa3750" />
+<img width="805" alt="image" src="https://github.com/user-attachments/assets/a495136f-83f8-4822-80b0-2113208e92d4" />
 
 
 
