@@ -86,7 +86,7 @@ const isDateInRange = (date) => {
 };
 
 const handleMouseDown = (date) => {
-  if (!date) return;
+  if (!date || isPastDate(date)) return
 
   if (props.typeFlight === "One Way") {
     selectionStart.value = date;
@@ -218,14 +218,17 @@ const isFinishDay = ref(false)
 
 watch(selectionEnd, (newEnd, oldEnd) => {
   if (newEnd) {
-    console.log('newEnd:', newEnd);
-    console.log((`test ${isFinishDay.value}`));
+   
     
     isFinishDay.value = true
   }
 })
 
 const handleClick = (event) => {
+  if (isPastDate(new Date())) { 
+    event.stopPropagation();
+    return; 
+  }
   if (selectionType.value === "depart" && props.typeFlight === "Round Trip") {
     event.stopPropagation();
   }
@@ -241,6 +244,12 @@ const handleClick = (event) => {
     return
   }
 
+};
+
+const isPastDate = (date) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); 
+  return date < today;
 };
 </script>
 
