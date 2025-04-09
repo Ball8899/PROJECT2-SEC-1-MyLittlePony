@@ -19,7 +19,6 @@ async function fetchContents() {
     destinations.value = await getItems(
       `${import.meta.env.VITE_APP_URL}/continents`
     );
-    console.log(destinations.value);
   } catch (error) {
     console.error(error);
   }

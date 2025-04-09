@@ -4,12 +4,20 @@ import { useRoute, useRouter } from "vue-router";
 import { getHotels } from "../../utils/fetchUtil.js";
 import DestinationDialog from "../DestinationDialog.vue"
 
+
 const hotels = ref([]);
 const filteredProvinces = ref("");
 const filteredPrice = ref("");
 const storefilteredHotels = ref([]);
 const numberCapacity = ref(0);
 const router = useRouter();
+
+defineEmits(['update'])
+
+
+defineProps({
+  showToggle: Boolean,
+});
 
 const storeValue = ref({
   showProvinces: false,

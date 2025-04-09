@@ -24,7 +24,7 @@ const collectImgs = [
   },
   {
     id:6,
-    img:'/src/assets/p7.png'
+    img:'assets/p7.png'
   },
 ];
 

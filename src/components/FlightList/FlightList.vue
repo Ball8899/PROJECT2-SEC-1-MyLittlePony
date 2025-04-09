@@ -43,7 +43,7 @@ const fetchFlightData = async () => {
     const newFlightsJson = JSON.stringify(flights);
     
     if (currentFlightsJson !== newFlightsJson) {
-      console.log("Flight data has changed, updating...");
+     
       
       flightFound.value = flights.sort((a, b) => a.pricing.basePrice - b.pricing.basePrice);
       temp.value = JSON.parse(JSON.stringify(flightFound.value));
