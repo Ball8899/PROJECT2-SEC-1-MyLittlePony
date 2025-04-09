@@ -104,11 +104,7 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - Can fetch function update approve value from cancelled to waiting
 - 
 ##### 66130500036 Flight booking information report
--  Create related components of BookingDetailPage and BookingHotelDetailPage and PaymentStatus and PromoCode and Rating and TotalAmount and  Advert and store booking.js
--  Can see approve, click to cancel, and when status is cancelled, click to rebook.
--  Can click to select a rating and provide feedback.
--  Can view booking details or price and other related information.
--  Can select and use a discount coupon (promo code).
+- Can CURD 
 
 
 ### Weekly Progression
