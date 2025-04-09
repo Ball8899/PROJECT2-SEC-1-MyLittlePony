@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref, onUnmounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getAirlineLogo } from "../../utils/toolUtil.js";
 import ListModel from "../ListModel.vue";
@@ -15,53 +15,66 @@ const airlines = ref([]);
 const temp = ref([]);
 
 const flightFound = ref([]);
+const lastUpdated = ref(new Date());
+const isLoading = ref(false);
+const timeoutId = ref(null);
+
+const fetchFlightData = async () => {
+  if (isLoading.value) return;
+  
+  isLoading.value = true;
+  try {
+    const leavingCity = encodeURIComponent(query.leavingDestination);
+    const goingCity = encodeURIComponent(query.goingDestination);
+    
+    let url = `${import.meta.env.VITE_APP_URL}/flights?`;
+    
+    if (query.type === "Round Trip") {
+      url += `departure.date=${query.departFlight}&returnDeparture.date=${query.returnFlight}&flightDetails.type=Round%20Trip`;
+    } else if (query.type === "One Way") {
+      url += `departure.date=${query.departFlight}&flightDetails.type=One%20Way`;
+    }
+    
+    url += `&arrival.airport.city=${goingCity}&departure.airport.city=${leavingCity}&available=true`;
+    
+    const flights = await getItems(url);
+    
+    const currentFlightsJson = JSON.stringify(flightFound.value);
+    const newFlightsJson = JSON.stringify(flights);
+    
+    if (currentFlightsJson !== newFlightsJson) {
+      console.log("Flight data has changed, updating...");
+      
+      flightFound.value = flights.sort((a, b) => a.pricing.basePrice - b.pricing.basePrice);
+      temp.value = JSON.parse(JSON.stringify(flightFound.value));
+
+      uniqueAirline.value = [];
+      flightFound.value.forEach((flight) => {
+        const newAirline = flight.flightDetails.airline;
+        if (!uniqueAirline.value.includes(newAirline)) {
+          uniqueAirline.value.push(newAirline);
+        }
+      });
+      
+      lastUpdated.value = new Date();
+    }
+  } catch (error) {
+    console.error("Error fetching flight data:", error);
+  } finally {
+    isLoading.value = false;
+    
+    timeoutId.value = setTimeout(fetchFlightData, 15000); 
+  }
+};
 
 onMounted(async () => {
-  const leavingCity = decodeURIComponent(query.leavingDestination);
-  const goingCity = decodeURIComponent(query.goingDestination);
-  try {
-    const flights = await getItems(`${import.meta.env.VITE_APP_URL}/flights`);
-    flightFound.value = flights;
+  await fetchFlightData();
+});
 
-    if (query.type === "Round Trip") {
-      flightFound.value = flightFound.value.filter((flight) => {
-        return (
-          flight.departure.date === query.departFlight &&
-          flight.returnDeparture?.date === query.returnFlight &&
-          flight.flightDetails.type === "Round Trip" &&
-          flight.arrival.airport.city === goingCity &&
-          flight.departure.airport.city === leavingCity &&
-          flight.available === "true"
-        );
-      });
-    } else if (query.type === "One Way") {
-      flightFound.value = flightFound.value.filter((flight) => {
-        return (
-          flight.departure.date === query.departFlight &&
-          flight.flightDetails.type === "One Way" &&
-          flight.arrival.airport.city === goingCity &&
-          flight.departure.airport.city === leavingCity &&
-          flight.available === "true"
-        );
-      });
-    }
-
-    flightFound.value = flightFound.value.sort(
-      (a, b) => a.pricing.basePrice - b.pricing.basePrice
-    );
-
-    temp.value = JSON.parse(JSON.stringify(flightFound.value));
-
-    flightFound.value.forEach((flight) => {
-      const newAirline = flight.flightDetails.airline;
-      if (!uniqueAirline.value.includes(newAirline)) {
-        uniqueAirline.value.push(newAirline);
-      }
-    });
-
-    console.log("Filtered flights:", flightFound.value);
-  } catch (error) {
-    console.error("Error processing flights:", error);
+onUnmounted(() => {
+  if (timeoutId.value) {
+    clearTimeout(timeoutId.value);
+    timeoutId.value = null;
   }
 });
 
@@ -141,7 +154,6 @@ const toggleShowOption = (id) => {
               ></path>
             </svg>
 
-            <!-- Small decorative plane -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-8 w-8 text-blue-300 absolute -top-2 -right-4 transform rotate-45"
@@ -400,9 +412,10 @@ const toggleShowOption = (id) => {
             {{ query.type }} to {{ query.goingDestination }}
           </p>
         </div>
-        <div>
+        <div class="flex items-center">
           <p class="text-sm text-white font-thin">
-            Last update {{ new Date().toLocaleTimeString() }}
+            อัพเดทล่าสุด {{ lastUpdated.toLocaleTimeString() }}
+            <span class="ml-1 inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
           </p>
         </div>
       </div>
@@ -774,4 +787,23 @@ const toggleShowOption = (id) => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+.animate-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.3s ease;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+</style>

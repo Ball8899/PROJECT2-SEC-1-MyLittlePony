@@ -309,7 +309,7 @@ const toggle = (nameDialog) => {
           :start-date="departFlight"
           :end-date="returnFlight"
           :type-flight="typeOfFlight"
-          class="absolute right-27"
+          class="absolute right-27 z-100"
           v-if="showCalendar"
         ></CalendarDialog>
       </div>

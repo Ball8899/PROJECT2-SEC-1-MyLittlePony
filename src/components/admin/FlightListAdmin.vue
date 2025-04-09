@@ -2,13 +2,21 @@
 import { ref, computed, onUpdated } from "vue";
 import { useFlight } from "../../store/flight.js";
 import { updateItem } from "@/utils/fetchUtil.js";
+import { useRouter } from "vue-router";
+
 const flightStore = useFlight();
-const { setStatus, getFlights, setFlights} = flightStore;
+const { setStatus, getFlights, setFlights } = flightStore;
+const router = useRouter();
 
 const searchQuery = ref("");
 const filterType = ref("All");
 const sortField = ref("departure.date");
 const sortOrder = ref("asc");
+
+const handleLogout = () => {
+  localStorage.removeItem('role'); 
+  router.push({ name: 'Login' });
+};
 
 const filteredFlights = computed(() => {
   let flights = [...getFlights()];
@@ -65,7 +73,8 @@ const setAvailable = async (flight) => {
       flight.id,
       flight
     );
-    setStatus(flight.id);
+    
+    
   } catch (error) {}
 };
 
@@ -84,6 +93,15 @@ const toggleSort = (field) => {
     <div class="mb-6">
       <h1 class="text-2xl font-bold text-gray-800">Flight Tickets</h1>
       <p class="text-sm text-gray-500">Manage your available flight tickets</p>
+    </div>
+
+    <div class="flex justify-end mb-4">
+      <button
+        @click="handleLogout"
+        class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+      >
+        Logout
+      </button>
     </div>
 
     <div
@@ -300,56 +318,28 @@ const toggleSort = (field) => {
             {{ flight.flightDetails.type }}
           </span>
         </div>
-
-        <div class="mb-3">
-          <div class="flex justify-between items-center mb-1">
-            <div class="text-sm font-medium">
-              {{ flight.departure.airport.code }}
-            </div>
-            <div
-              class="flex-1 border-t border-dashed border-gray-300 mx-2"
-            ></div>
-            <div class="text-sm font-medium">
-              {{ flight.arrival.airport.code }}
-            </div>
-          </div>
-          <div class="flex justify-between text-xs text-gray-500">
-            <div>{{ flight.departure.time }}</div>
-            <div>{{ flight.flightDetails.duration }}</div>
-            <div>{{ flight.arrival.time }}</div>
-          </div>
+        <div class="text-sm text-gray-900">
+          {{ flight.departure.airport.code }} →
+          {{ flight.arrival.airport.code }}
         </div>
-
-        <div v-if="flight.flightDetails.type === 'Round Trip'" class="mb-3">
-          <div class="flex justify-between items-center mb-1">
-            <div class="text-sm font-medium">
-              {{ flight.returnDeparture?.airport.code }}
-            </div>
-            <div
-              class="flex-1 border-t border-dashed border-gray-300 mx-2"
-            ></div>
-            <div class="text-sm font-medium">
-              {{ flight.returnArrival?.airport.code }}
-            </div>
-          </div>
+        <div class="text-sm text-gray-500">
+          {{ flight.departure.date }} - {{ flight.departure.time }}
         </div>
-
-        <div class="flex justify-between items-center mb-3">
-          <div class="text-sm">
-            <span class="font-medium">Date:</span> {{ flight.departure.date }}
-          </div>
-          <div class="text-sm font-medium text-gray-900">
+        <div class="flex justify-between items-center mt-3">
+          <div class="text-sm text-gray-900">
             {{ flight.pricing.basePrice.toLocaleString() }}
             {{ flight.pricing.currency }}
           </div>
-        </div>
-
-        <div class="flex justify-end space-x-2 pt-2 border-t border-gray-100">
           <button
             @click="setAvailable(flight)"
-            class="text-indigo-600 hover:text-indigo-900"
+            :class="{
+              'text-blue-600 hover:text-blue-800': flight.available === 'true',
+              'text-red-600 hover:text-red-800': flight.available === 'false',
+            }"
           >
-            <p>{{ flight.available }}</p>
+            {{
+              flight.available === "true" ? "Available" : "Non Available"
+            }}
           </button>
         </div>
       </div>
@@ -358,26 +348,5 @@ const toggleSort = (field) => {
 </template>
 
 <style scoped>
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-}
 
-th {
-  font-weight: 500;
-  text-align: left;
-  padding: 16px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-td {
-  vertical-align: middle;
-  padding: 16px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-tr:hover {
-  background-color: #f9fafb;
-}
 </style>

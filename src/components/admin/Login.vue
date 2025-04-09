@@ -1,12 +1,11 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { getItems } from "@/utils/fetchUtil";  
+import { getItems } from "@/utils/fetchUtil";
 
 const username = ref("");
 const password = ref("");
-const router = useRouter(); 
-
+const router = useRouter();
 
 const handleLogin = async () => {
   if (username.value && password.value) {
@@ -14,7 +13,6 @@ const handleLogin = async () => {
     try {
       const account = await getItems(`${import.meta.env.VITE_APP_URL}/accounts?username=${username.value}&password=${password.value}`);
       localStorage.setItem('role', account[0].role);
-      
       router.push({ name: "AdminPanel" });
     } catch (error) {
       console.error("Login failed:", error);
@@ -26,7 +24,12 @@ const handleLogin = async () => {
 };
 
 const goBack = () => {
-  router.go(-1);
+  router.push('/')
+};
+
+const handleLogout = () => {
+  localStorage.removeItem('role'); 
+  router.push({ name: 'Login' }); 
 };
 </script>
 
@@ -78,10 +81,11 @@ const goBack = () => {
       <div class="text-center mt-4">
         <button @click="goBack" class="text-sm text-gray-600 hover:text-gray-800">Back</button>
       </div>
+
+  
     </div>
   </div>
 </template>
 
 <style scoped>
-
 </style>

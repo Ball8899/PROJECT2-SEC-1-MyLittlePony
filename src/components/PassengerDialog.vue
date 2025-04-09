@@ -35,9 +35,10 @@ const updatePassenger = () => {
 </script>
 
 <template>
-  <div
+  <div class="shadow-xl bg-white w-[450px] text-sm p-8 rounded-lg tracking-wide">
+    <div
     @click.stop="updatePassenger"
-    class="shadow-xl bg-white w-[450px] text-sm p-8 rounded-lg tracking-wide"
+    class=""
   >
     <div
       class="flex flex-row justify-end items-center gap-1 -mt-5 text-base mb-3"
@@ -114,8 +115,9 @@ const updatePassenger = () => {
         <li @click="selectedServiceType = service; openServiceType = !openServiceType" v-for="service in serviceType" :value="service" :key="service">{{ service }}</li>
       </ul>
     </div>
-    <div class="flex justify-end pt-3">
-      <button class="px-5 py-2 rounded-lg bg-blue-600 text-white">Search</button>
+  </div>
+   <div class="pt-3 flex justify-end">
+      <button click="" class="px-5 py-2 rounded-lg bg-blue-600 text-white">Submit</button>
     </div>
   </div>
 </template>

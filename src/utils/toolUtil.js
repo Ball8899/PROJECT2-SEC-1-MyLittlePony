@@ -1,9 +1,9 @@
 const getAirlineLogo = airline => {
   const formattedAirline = airline.replaceAll (' ', '');
   try {
-    return `/src/assets/airlines/${formattedAirline}.png`;
+    return `/assets/airlines/${formattedAirline}.png`;
   } catch (e) {
-    return `/src/assets/airlines/default.png`;
+    return `/assets/airlines/default.png`;
   }
 };
 

@@ -4,27 +4,27 @@ import { computed, ref ,onMounted,onUnmounted} from 'vue';
 const collectImgs = [
   {
     id: 1,
-    img: '/src/assets/image/p2.png'
+    img: '/assets/p2.png'
   },
   {
     id: 2,
-    img: '/src/assets/image/p3.png'
+    img: '/assets/p3.png'
   },
   {
     id: 3,
-    img: '/src/assets/image/p4.png'
+    img: '/assets/p4.png'
   },
   {
     id:4,
-    img:'/src/assets/image/p5.png'
+    img:'/assets/p5.png'
   },
   {
     id:5,
-    img:'/src/assets/image/p6.png'
+    img:'/assets/p6.png'
   },
   {
     id:6,
-    img:'/src/assets/image/p7.png'
+    img:'/src/assets/p7.png'
   },
 ];
 
