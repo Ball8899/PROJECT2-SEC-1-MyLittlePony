@@ -25,7 +25,9 @@ https://drive.google.com/file/d/1Z7isxS0e-VIUngj1aaGXfcWzL3UyXumK/view?usp=share
 - Press login button
 - If login successfully will redirect to FlightListAdmin for manange flights in system
 ###### FlightListAdmin
-- You can set available or non availaable flight just press button available or non availabe in column actions of table
+- You can filter flight booked approve(status) by click Waiting Cancelled
+- Can delete the flight booked when approve is cancelled
+- Can click the booked to go to booked details page
 
 ##### Booking Flight
 ###### Search flights
